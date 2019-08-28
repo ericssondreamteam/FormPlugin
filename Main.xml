@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
+  <ribbon>
+    <tabs>
+      <tab idMso="TabAddIns">
+        <group id="Form"
+               label="Form">
+          <button id="resendFormButton" label="Resend Form"
+               screentip="Resend custom-email tamplate to customer" onAction="ResendForm"
+               supertip="Resend XD."/>
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>
+

@@ -20,6 +20,11 @@ namespace FormPlugin
             //    must run when Outlook shuts down, see https://go.microsoft.com/fwlink/?LinkId=506785
         }
 
+        protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
+        {
+            return new Main();
+        }
+
         #region VSTO generated code
 
         /// <summary>
