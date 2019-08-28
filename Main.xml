@@ -5,8 +5,14 @@
       <tab idMso="TabAddIns">
         <group id="Form"
                label="Form">
+          <button id="createFormButton" label="Create Form"
+               screentip="Resend custom-email tamplate to customer" onAction="CreateForm"
+               supertip="Resend XD."/>
           <button id="resendFormButton" label="Resend Form"
                screentip="Resend custom-email tamplate to customer" onAction="ResendForm"
+               supertip="Resend XD."/>
+          <button id="checkMailFormButton" label="Check Mail"
+               screentip="Resend custom-email tamplate to customer" onAction="CheckMailForm"
                supertip="Resend XD."/>
         </group>
       </tab>
