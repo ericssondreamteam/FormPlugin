@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Windows.Forms;
 using Office = Microsoft.Office.Core;
 
 // TODO:  Follow these steps to enable the Ribbon (XML) item:
@@ -36,7 +37,18 @@ namespace FormPlugin
         public Main()
         {
         }
-
+        public void CreateForm(Office.IRibbonControl control)
+        {
+            MessageBox.Show("CreateForm");
+        }
+        public void ResendForm(Office.IRibbonControl control)
+        {
+            MessageBox.Show("ResendForm");
+        }
+        public void CheckMailForm(Office.IRibbonControl control)
+        {
+            MessageBox.Show("CheckMailForm");
+        }
         #region IRibbonExtensibility Members
 
         public string GetCustomUI(string ribbonID)
