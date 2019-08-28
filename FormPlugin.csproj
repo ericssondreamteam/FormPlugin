@@ -159,10 +159,20 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Data\CreateData.cs" />
+    <Compile Include="Forms\CreateTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreateTemplate.Designer.cs">
+      <DependentUpon>CreateTemplate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <EmbeddedResource Include="Forms\CreateTemplate.resx">
+      <DependentUpon>CreateTemplate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
