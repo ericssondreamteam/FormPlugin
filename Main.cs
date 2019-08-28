@@ -22,13 +22,17 @@ namespace FormPlugin
             Forms.CreateTemplate createTemaplate = new Forms.CreateTemplate();
             createTemaplate.ShowDialog();
         }
-        public void ResendForm(Office.IRibbonControl control)
+        public void LoadForm(Office.IRibbonControl control)
         {
-            MessageBox.Show("ResendForm");
+            MessageBox.Show("LoadForm");
         }
         public void CheckMailForm(Office.IRibbonControl control)
         {
             MessageBox.Show("CheckMailForm");
+        }
+        public void DefultReplay(Office.IRibbonControl control)
+        {
+            MessageBox.Show("DefultReplay");
         }
         #region IRibbonExtensibility Members
 

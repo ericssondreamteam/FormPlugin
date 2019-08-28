@@ -8,11 +8,14 @@
           <button id="createFormButton" label="Create Form"
                screentip="Resend custom-email tamplate to customer" onAction="CreateForm"
                supertip="Resend XD."/>
-          <button id="resendFormButton" label="Resend Form"
-               screentip="Resend custom-email tamplate to customer" onAction="ResendForm"
+          <button id="laodFormButton" label="Load Form"
+               screentip="Resend custom-email tamplate to customer" onAction="LoadForm"
                supertip="Resend XD."/>
           <button id="checkMailFormButton" label="Check Mail"
                screentip="Resend custom-email tamplate to customer" onAction="CheckMailForm"
+               supertip="Resend XD."/>
+          <button id="defaultReplayButton" label="Defult Replay"
+               screentip="Resend custom-email tamplate to customer" onAction="DefultReplay"
                supertip="Resend XD."/>
         </group>
       </tab>
