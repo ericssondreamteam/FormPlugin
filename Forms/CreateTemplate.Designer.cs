@@ -99,20 +99,23 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Red;
             this.label3.Location = new System.Drawing.Point(177, 445);
+            this.label3.Margin = new System.Windows.Forms.Padding(0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 20);
             this.label3.TabIndex = 8;
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(41, 225);
+            this.label4.Location = new System.Drawing.Point(45, 225);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(0, 20);
-            this.label4.TabIndex = 9;
+            this.label4.TabIndex = 9;     
             // 
             // CreateTemplate
             // 
@@ -130,6 +133,7 @@
             this.MinimumSize = new System.Drawing.Size(822, 562);
             this.Name = "CreateTemplate";
             this.Text = "CreateTemplate";
+            this.Load += new System.EventHandler(this.CreateTemplate_Load);
             this.ClientSizeChanged += new System.EventHandler(this.CreateTemplate_ClientSizeChanged);
             this.ResumeLayout(false);
             this.PerformLayout();

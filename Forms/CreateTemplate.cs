@@ -86,9 +86,21 @@ namespace FormPlugin.Forms
 
         private void CreateTemplate_ClientSizeChanged(object sender, EventArgs e)
         {
-            int width=Size.Width, high=Size.Height;
-            textBox1.Size = new System.Drawing.Size(width,high);
+            textBox1.Size = new System.Drawing.Size(Size.Width - 215, Size.Height / 2-70);
+            button1.Location = new System.Drawing.Point(Size.Width - 135, Size.Height / 2 - 56);
+            label4.Location = new System.Drawing.Point(45, Size.Height / 2 );
+            label3.Location = new System.Drawing.Point(Size.Width / 2 - 75, Size.Height - 120);
+            label4.MaximumSize = new System.Drawing.Size(Size.Width - 225, Size.Height / 2 - 130);
 
+        }
+
+        private void CreateTemplate_Load(object sender, EventArgs e)
+        {
+            textBox1.Size = new System.Drawing.Size(Size.Width - 215, Size.Height / 2 - 70);
+            button1.Location = new System.Drawing.Point(Size.Width - 135, Size.Height / 2 - 56);
+            label4.Location = new System.Drawing.Point(45, Size.Height / 2);
+            label3.Location = new System.Drawing.Point(Size.Width/2 - 75, Size.Height -120);
+            label4.MaximumSize = new System.Drawing.Size(Size.Width - 225, Size.Height / 2 - 130);
         }
     }
 }
