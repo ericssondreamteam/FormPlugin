@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Outlook;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Exception = System.Exception;
 using Office = Microsoft.Office.Core;
-
-
 
 namespace FormPlugin
 {
@@ -26,9 +27,36 @@ namespace FormPlugin
         {
             MessageBox.Show("LoadForm");
         }
+
+        internal static IEnumerable<MailItem> GetSelectedEmails()
+        {
+            foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
+            {
+                yield return email;
+            }
+        }
+
         public void CheckMailForm(Office.IRibbonControl control)
         {
-            MessageBox.Show("CheckMailForm");
+            try
+            {
+                MailItem mailItem = Globals.ThisAddIn.Application.ActiveExplorer().Selection[1] as MailItem;
+                MessageBox.Show("CheckMailForm");
+                /* Inspector inspector = Globals.ThisAddIn.Application.ActiveInspector();
+                 MailItem mailItem = inspector.CurrentItem as MailItem;
+                 string temp = mailItem.Body;
+                 int target = temp.IndexOf("\r\nFrom:");
+                 string contentToCheck = temp.Substring(0, target);*/
+                GetSelectedEmails();
+                Functions functions = new Functions(mailItem);
+                functions.check(mailItem);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception");
+            }
+
+           
         }
         public void DefultReplay(Office.IRibbonControl control)
         {
