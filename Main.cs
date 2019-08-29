@@ -27,7 +27,8 @@ namespace FormPlugin
         }
         public void LoadForm(Office.IRibbonControl control)
         {
-            MessageBox.Show("LoadForm");
+            LoadTemplate loadTemplate = new LoadTemplate();
+            loadTemplate.Show();
         }
         public void CheckMailForm(Office.IRibbonControl control)
         {
