@@ -1,6 +1,7 @@
 ﻿using FormPlugin.Data;
 using Microsoft.Office.Interop.Outlook;
 using System;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using Outlook = Microsoft.Office.Interop.Outlook;
@@ -35,8 +36,14 @@ namespace FormPlugin.Forms
             mailItem.HTMLBody = createBodyMail();
             string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             path += "\\Forms";
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+                
+            }
+
             MessageBox.Show(path);
-            //mailItem.SaveAs("");
+            mailItem.SaveAs(path+"\\test.oft");//, OlSaveAsType.olTemplate
             // mailItem.Display(true);
             // MessageBox.Show("Your template was successfuly saved");
 
