@@ -12,7 +12,8 @@ namespace FormPlugin
 {
     public class Functions
     {
-        public const String question = "abc";
+        //public const List<String> constraints;
+        public const String question = "Podaj swój ulubiony kolor:";
         public MailItem mailItem;
 
         public Functions(MailItem mailItem)

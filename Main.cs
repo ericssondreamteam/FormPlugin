@@ -27,7 +27,8 @@ namespace FormPlugin
         {
             MessageBox.Show("LoadForm");
         }
-
+/*
+ * May be useful one day
         internal static IEnumerable<MailItem> GetSelectedEmails()
         {
             foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
@@ -35,6 +36,7 @@ namespace FormPlugin
                 yield return email;
             }
         }
+ */
 
         public void CheckMailForm(Office.IRibbonControl control)
         {
@@ -42,12 +44,6 @@ namespace FormPlugin
             {
                 MailItem mailItem = Globals.ThisAddIn.Application.ActiveExplorer().Selection[1] as MailItem;
                 MessageBox.Show("CheckMailForm");
-                /* Inspector inspector = Globals.ThisAddIn.Application.ActiveInspector();
-                 MailItem mailItem = inspector.CurrentItem as MailItem;
-                 string temp = mailItem.Body;
-                 int target = temp.IndexOf("\r\nFrom:");
-                 string contentToCheck = temp.Substring(0, target);*/
-                GetSelectedEmails();
                 Functions functions = new Functions(mailItem);
                 functions.check(mailItem);
             }
@@ -58,7 +54,7 @@ namespace FormPlugin
 
            
         }
-        public void DefultReplay(Office.IRibbonControl control)
+        public void DefultReply(Office.IRibbonControl control)
         {
             MessageBox.Show("DefultReplay");
         }
