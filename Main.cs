@@ -1,10 +1,12 @@
 ﻿using FormPlugin.Data;
 using FormPlugin.Forms;
+using Microsoft.Office.Interop.Outlook;
 using System;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Exception = System.Exception;
 using Office = Microsoft.Office.Core;
 
 
@@ -31,9 +33,32 @@ namespace FormPlugin
             LoadTemplate loadTemplate = new LoadTemplate();
             loadTemplate.Show();
         }
+        
+ /* May be useful one day
+        internal static IEnumerable<MailItem> GetSelectedEmails()
+        {
+            foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
+            {
+                yield return email;
+            }
+        }
+ */
+
         public void CheckMailForm(Office.IRibbonControl control)
         {
-            MessageBox.Show("CheckMailForm");
+            try
+            {
+                MailItem mailItem = Globals.ThisAddIn.Application.ActiveExplorer().Selection[1] as MailItem;
+                MessageBox.Show("CheckMailForm");
+                CheckMail functions = new CheckMail(mailItem);
+                functions.check(mailItem);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception");
+            }
+
+
         }
         public void DefultReplay(Office.IRibbonControl control)
         {
