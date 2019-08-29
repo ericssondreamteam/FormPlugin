@@ -19,11 +19,16 @@ namespace FormPlugin.Forms
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            data.addQuestion(textBox1.Text);          
-            ListViewItem itm;         
-            itm = new ListViewItem(textBox1.Text);
-            //to oglnie do poprawy, ale napierw tempalate
-            listView1.Items.Add(itm);
+            //dodanie do naszego modelu danych
+            data.addQuestion(textBox1.Text);
+            StringBuilder temp = new StringBuilder();
+            int questionCounter = 1;
+            foreach (string s in data.getAllQuestions())
+            {
+                temp.Append( questionCounter + ". " + s +"\n");
+                questionCounter++;
+            }
+            label4.Text = temp.ToString();
             textBox1.Clear();
         }
 
@@ -53,10 +58,7 @@ namespace FormPlugin.Forms
                     Close();
 
                 }
-            }
-           
-
-
+            }     
         }
 
         private string createBodyMail()
