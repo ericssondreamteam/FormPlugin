@@ -29,22 +29,33 @@ namespace FormPlugin.Forms
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            //save tamplate
-            Close();
-            Outlook.Application outlookApp = new Outlook.Application();
-            MailItem mailItem = outlookApp.CreateItem(OlItemType.olMailItem);
-            mailItem.HTMLBody = createBodyMail();
-            
+            //check if directory exist
             if (!Directory.Exists(Configuration.pathFileTemplate))
-            {
                 Directory.CreateDirectory(Configuration.pathFileTemplate);
-                
+            //save tamplate
+            if(textBox2.Text.Equals(""))
+            {
+                label3.Text = "Please enter a name";
             }
+            else
+            {
+                if (ifFileExist(Configuration.pathFileTemplate + "\\" + textBox2.Text + ".oft"))
+                {
+                    label3.Text = "This file exists. We cannot save";
+                }
+                else
+                {
+                    
+                    Outlook.Application outlookApp = new Outlook.Application();
+                    MailItem mailItem = outlookApp.CreateItem(OlItemType.olMailItem);
+                    mailItem.HTMLBody = createBodyMail();
+                    mailItem.SaveAs(Configuration.pathFileTemplate + "\\"+textBox2.Text+".oft");
+                    Close();
 
-            MessageBox.Show(Configuration.pathFileTemplate);
-            mailItem.SaveAs(Configuration.pathFileTemplate + "\\test.oft");//, OlSaveAsType.olTemplate
-            // mailItem.Display(true);
-            // MessageBox.Show("Your template was successfuly saved");
+                }
+            }
+           
+
 
         }
 
@@ -63,7 +74,22 @@ namespace FormPlugin.Forms
 
         private void TextBox2_TextChanged(object sender, EventArgs e)
         {
-            if(File.Exists())
+            if (ifFileExist(Configuration.pathFileTemplate + "\\" + textBox2.Text+".oft"))
+            {
+                label3.Text = "This file exists. Please enter another name";
+            }
+            else
+                label3.Text = "";
+            
+        }
+        bool ifFileExist(string path)
+        {
+            if (File.Exists(path))
+            {
+                return true;
+            }
+            else
+                return false;
         }
     }
 }
