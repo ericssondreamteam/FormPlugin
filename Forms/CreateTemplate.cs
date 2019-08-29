@@ -39,7 +39,7 @@ namespace FormPlugin.Forms
             }
             else
             {
-                if (ifFileExist(Configuration.pathFileTemplate + "\\" + textBox2.Text + ".oft"))
+                if (File.Exists(Configuration.pathFileTemplate + "\\" + textBox2.Text + ".oft"))
                 {
                     label3.Text = "This file exists. We cannot save";
                 }
@@ -74,22 +74,13 @@ namespace FormPlugin.Forms
 
         private void TextBox2_TextChanged(object sender, EventArgs e)
         {
-            if (ifFileExist(Configuration.pathFileTemplate + "\\" + textBox2.Text+".oft"))
+            if (File.Exists(Configuration.pathFileTemplate + "\\" + textBox2.Text+".oft"))
             {
                 label3.Text = "This file exists. Please enter another name";
             }
             else
-                label3.Text = "";
-            
+                label3.Text = "";            
         }
-        bool ifFileExist(string path)
-        {
-            if (File.Exists(path))
-            {
-                return true;
-            }
-            else
-                return false;
-        }
+       
     }
 }
