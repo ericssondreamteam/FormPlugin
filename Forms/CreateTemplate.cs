@@ -19,33 +19,46 @@ namespace FormPlugin.Forms
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            data.addQuestion(textBox1.Text);          
-            ListViewItem itm;         
-            itm = new ListViewItem(textBox1.Text);
-            //to oglnie do poprawy, ale napierw tempalate
-            listView1.Items.Add(itm);
+            //dodanie do naszego modelu danych
+            data.addQuestion(textBox1.Text);
+            StringBuilder temp = new StringBuilder();
+            int questionCounter = 1;
+            foreach (string s in data.getAllQuestions())
+            {
+                temp.Append( questionCounter + ". " + s +"\n");
+                questionCounter++;
+            }
+            label4.Text = temp.ToString();
             textBox1.Clear();
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            //save tamplate
-            Close();
-            Outlook.Application outlookApp = new Outlook.Application();
-            MailItem mailItem = outlookApp.CreateItem(OlItemType.olMailItem);
-            mailItem.HTMLBody = createBodyMail();
-            
+            //check if directory exist
             if (!Directory.Exists(Configuration.pathFileTemplate))
-            {
                 Directory.CreateDirectory(Configuration.pathFileTemplate);
-                
+            //save tamplate
+            if(textBox2.Text.Equals(""))
+            {
+                label3.Text = "Please enter a name";
             }
+            else
+            {
+                if (File.Exists(Configuration.pathFileTemplate + "\\" + textBox2.Text + ".oft"))
+                {
+                    label3.Text = "This file exists. We cannot save";
+                }
+                else
+                {
+                    
+                    Outlook.Application outlookApp = new Outlook.Application();
+                    MailItem mailItem = outlookApp.CreateItem(OlItemType.olMailItem);
+                    mailItem.HTMLBody = createBodyMail();
+                    mailItem.SaveAs(Configuration.pathFileTemplate + "\\"+textBox2.Text+".oft");
+                    Close();
 
-            MessageBox.Show(Configuration.pathFileTemplate);
-            mailItem.SaveAs(Configuration.pathFileTemplate + "\\test.oft");//, OlSaveAsType.olTemplate
-            // mailItem.Display(true);
-            // MessageBox.Show("Your template was successfuly saved");
-
+                }
+            }     
         }
 
         private string createBodyMail()
@@ -60,5 +73,16 @@ namespace FormPlugin.Forms
             }
             return body.ToString();
         }
+
+        private void TextBox2_TextChanged(object sender, EventArgs e)
+        {
+            if (File.Exists(Configuration.pathFileTemplate + "\\" + textBox2.Text+".oft"))
+            {
+                label3.Text = "This file exists. Please enter another name";
+            }
+            else
+                label3.Text = "";            
+        }
+       
     }
 }
