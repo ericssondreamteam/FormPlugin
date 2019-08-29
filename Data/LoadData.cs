@@ -30,10 +30,27 @@ namespace FormPlugin.Data
             mail.Display(true);
         }
 
+        public void sendMail(String subject, String sender)
+        {
+            Outlook.Application oApp = new Outlook.Application();
+            Outlook.MailItem mail = oApp.CreateItemFromTemplate(pathFile) as Outlook.MailItem;
+            mail.To = sender;
+            mail.Subject = subject;
+            //mail.Display(true);
+            mail.Send();
+        }
+
+
         public void setPathFile(string path)
         {
             pathFile = path;
         }
+
+        public String getPathFile()
+        {
+            return pathFile;
+        }
+
 
         public void setMailTo(string to)
         {

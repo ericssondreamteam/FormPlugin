@@ -37,7 +37,11 @@ namespace FormPlugin
         }
         public void DefultReplay(Office.IRibbonControl control)
         {
-            MessageBox.Show("DefultReplay");
+            SendForm sendForm = new SendForm();
+            sendForm.Show();
+
+
+            //MessageBox.Show("DefultReplay");
         }
         #region IRibbonExtensibility Members
 
