@@ -91,6 +91,7 @@
             // 
             this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.textBox2.Location = new System.Drawing.Point(177, 467);
+            this.textBox2.MaximumSize = new System.Drawing.Size(10000, 10000);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(464, 26);
             this.textBox2.TabIndex = 7;
@@ -126,8 +127,10 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
+            this.MinimumSize = new System.Drawing.Size(822, 562);
             this.Name = "CreateTemplate";
             this.Text = "CreateTemplate";
+            this.ClientSizeChanged += new System.EventHandler(this.CreateTemplate_ClientSizeChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 

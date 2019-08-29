@@ -83,6 +83,12 @@ namespace FormPlugin.Forms
             else
                 label3.Text = "";            
         }
-       
+
+        private void CreateTemplate_ClientSizeChanged(object sender, EventArgs e)
+        {
+            int width=Size.Width, high=Size.Height;
+            textBox1.Size = new System.Drawing.Size(width,high);
+
+        }
     }
 }
