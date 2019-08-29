@@ -34,16 +34,15 @@ namespace FormPlugin.Forms
             Outlook.Application outlookApp = new Outlook.Application();
             MailItem mailItem = outlookApp.CreateItem(OlItemType.olMailItem);
             mailItem.HTMLBody = createBodyMail();
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            path += "\\Forms";
-            if (!Directory.Exists(path))
+            
+            if (!Directory.Exists(Configuration.pathFileTemplate))
             {
-                Directory.CreateDirectory(path);
+                Directory.CreateDirectory(Configuration.pathFileTemplate);
                 
             }
 
-            MessageBox.Show(path);
-            mailItem.SaveAs(path+"\\test.oft");//, OlSaveAsType.olTemplate
+            MessageBox.Show(Configuration.pathFileTemplate);
+            mailItem.SaveAs(Configuration.pathFileTemplate + "\\test.oft");//, OlSaveAsType.olTemplate
             // mailItem.Display(true);
             // MessageBox.Show("Your template was successfuly saved");
 
