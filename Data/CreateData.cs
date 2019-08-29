@@ -13,9 +13,15 @@ namespace FormPlugin.Data
         {
             questions = new List<string>();
         }
-        void addQuestion(string question)
+        public void addQuestion(string question)
         {
             questions.Add(question);
         }
+
+        public List<string> getAllQuestions()
+        {
+            return questions;
+        }
+
     }
 }
