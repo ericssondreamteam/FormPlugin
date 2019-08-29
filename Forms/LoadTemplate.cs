@@ -1,5 +1,6 @@
 ﻿using FormPlugin.Data;
 using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace FormPlugin.Forms
@@ -29,21 +30,25 @@ namespace FormPlugin.Forms
         private void Button2_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            string pathTemplate = Environment.GetFolderPath(Environment.SpecialFolder.Templates);
-            openFileDialog.InitialDirectory = pathTemplate;
-            //openFileDialog.DefaultExt = "oft";
-            openFileDialog.Filter = "oft files (*.oft)|*.oft|All files (*.*)|*.*";
-            openFileDialog.RestoreDirectory = false;
-            openFileDialog.Title = "Template for email";
-
-
-            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            string pathTemplate = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Forms";
+            if (Directory.Exists(pathTemplate))
             {
-                string path = openFileDialog.FileName;
-                loadData.setPathFile(path);
-                checkTemplate = true;
-                label3.Text = openFileDialog.SafeFileName;
+                openFileDialog.InitialDirectory = pathTemplate;
+                openFileDialog.Filter = "oft files (*.oft)|*.oft|All files (*.*)|*.*";
+                openFileDialog.RestoreDirectory = false;
+                openFileDialog.Title = "Template for email";
+
+                if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    string path = openFileDialog.FileName;
+                    loadData.setPathFile(path);
+                    checkTemplate = true;
+                    label3.Text = openFileDialog.SafeFileName;
+                }
             }
+            else
+                MessageBox.Show("First use 'Create Form' button from menu.", "Warning");
+            
         }
 
         private void Label2_Click(object sender, EventArgs e)
