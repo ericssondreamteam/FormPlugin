@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FormPlugin.Data
 {
-    class CreateData
+    public class CreateData
     {
         List<string> questions;
         public CreateData()

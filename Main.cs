@@ -20,9 +20,10 @@ namespace FormPlugin
         {
         }
         public void CreateForm(Office.IRibbonControl control)
-        {           
-            Forms.CreateTemplate createTemaplate = new Forms.CreateTemplate();
-            createTemaplate.ShowDialog();
+        {
+            CreateData question = new CreateData();
+            CreateTemplate createTemaplate = new CreateTemplate(question);
+            createTemaplate.Show();
         }
         public void LoadForm(Office.IRibbonControl control)
         {
