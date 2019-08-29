@@ -35,6 +35,8 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.button2 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -88,11 +90,30 @@
             this.listView1.TabIndex = 5;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(41, 467);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(129, 20);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Template Name: ";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(177, 467);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(464, 26);
+            this.textBox2.TabIndex = 7;
+            this.textBox2.TextChanged += new System.EventHandler(this.TextBox2_TextChanged);
+            // 
             // CreateTemplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 506);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -113,5 +134,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

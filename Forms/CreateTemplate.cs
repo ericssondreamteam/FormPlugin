@@ -61,5 +61,10 @@ namespace FormPlugin.Forms
             }
             return body.ToString();
         }
+
+        private void TextBox2_TextChanged(object sender, EventArgs e)
+        {
+            if(File.Exists())
+        }
     }
 }
