@@ -30,10 +30,9 @@ namespace FormPlugin.Forms
         private void Button2_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            string pathTemplate = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Forms";
-            if (Directory.Exists(pathTemplate))
+            if (Directory.Exists(Configuration.pathFileTemplate))
             {
-                openFileDialog.InitialDirectory = pathTemplate;
+                openFileDialog.InitialDirectory = Configuration.pathFileTemplate;
                 openFileDialog.Filter = "oft files (*.oft)|*.oft|All files (*.*)|*.*";
                 openFileDialog.RestoreDirectory = false;
                 openFileDialog.Title = "Template for email";

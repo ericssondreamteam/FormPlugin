@@ -18,6 +18,7 @@ namespace FormPlugin
 
         public Main()
         {
+            Configuration conf = new Configuration();
         }
         public void CreateForm(Office.IRibbonControl control)
         {
