@@ -22,7 +22,7 @@ namespace FormPlugin
             this.mailItem = mailItem;
         }
 
-        public void CreateItemFromTemplate()
+        public void CreateItemFromTemplateAndCheck()
         {
             OlDefaultFolders defaultFolder = OlDefaultFolders.olFolderDrafts;
             Application app = new Application();
