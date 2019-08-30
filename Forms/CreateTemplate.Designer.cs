@@ -35,7 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // label1
@@ -109,20 +109,20 @@
             this.label3.TabIndex = 8;
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label4
+            // listView1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(45, 225);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 20);
-            this.label4.TabIndex = 9;     
+            this.listView1.Location = new System.Drawing.Point(45, 225);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(589, 217);
+            this.listView1.TabIndex = 10;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // CreateTemplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 506);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label2);
@@ -149,6 +149,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ListView listView1;
     }
 }

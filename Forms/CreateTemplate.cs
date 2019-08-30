@@ -28,7 +28,7 @@ namespace FormPlugin.Forms
                 temp.Append( questionCounter + ". " + s +"\n");
                 questionCounter++;
             }
-            label4.Text = temp.ToString();
+            listView1.Text = temp.ToString();
             textBox1.Clear();
         }
 
@@ -88,9 +88,9 @@ namespace FormPlugin.Forms
         {
             textBox1.Size = new System.Drawing.Size(Size.Width - 215, Size.Height / 2-70);
             button1.Location = new System.Drawing.Point(Size.Width - 135, Size.Height / 2 - 56);
-            label4.Location = new System.Drawing.Point(45, Size.Height / 2 );
+            listView1.Location = new System.Drawing.Point(45, Size.Height / 2 );
             label3.Location = new System.Drawing.Point(Size.Width / 2 - 75, Size.Height - 120);
-            label4.MaximumSize = new System.Drawing.Size(Size.Width - 225, Size.Height / 2 - 130);
+            listView1.MaximumSize = new System.Drawing.Size(Size.Width - 225, Size.Height / 2 - 130);
 
         }
 
@@ -98,9 +98,11 @@ namespace FormPlugin.Forms
         {
             textBox1.Size = new System.Drawing.Size(Size.Width - 215, Size.Height / 2 - 70);
             button1.Location = new System.Drawing.Point(Size.Width - 135, Size.Height / 2 - 56);
-            label4.Location = new System.Drawing.Point(45, Size.Height / 2);
+            listView1.Location = new System.Drawing.Point(45, Size.Height / 2);
             label3.Location = new System.Drawing.Point(Size.Width/2 - 75, Size.Height -120);
-            label4.MaximumSize = new System.Drawing.Size(Size.Width - 225, Size.Height / 2 - 130);
+            listView1.MaximumSize = new System.Drawing.Size(Size.Width - 225, Size.Height / 2 - 130);
         }
+
+
     }
 }
