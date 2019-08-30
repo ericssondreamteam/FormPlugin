@@ -30,7 +30,8 @@ namespace FormPlugin
             MailItem mail = app.CreateItemFromTemplate(filePath, folder) as MailItem;
             mail.Save();
 
-            String formBody = mail.Body;
+            String formBody = mail.Body;//this is template
+            funWithString(formBody);
             String body = mailItem.Body;
             bool myBool = body.Contains(formBody);
 
@@ -42,6 +43,22 @@ namespace FormPlugin
             {
                 MessageBox.Show("Format is not ok.");
             }
+        }
+
+        private void funWithString(string formBody)
+        {//"Hi,\r\nplease fill form ;)\r\n\r\n1. Ulubiony kolor\r\n\r\n\r\n2. Podaj swój ulubiony kolor:\r\n\r\n\r\n"
+            string[] cos = formBody.Replace("\r","").Split('\n');
+            List<string> list = new List<string>();
+            foreach (string s in cos)
+            {
+                if (!s.Equals(""))
+                    list.Add(s);
+            }
+            foreach(string s in list)
+            {
+                Debug.WriteLine(s);
+            }
+
         }
 
         public void setFilePath(string path)
