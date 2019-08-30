@@ -51,5 +51,19 @@ namespace FormPlugin.Forms
                 MessageBox.Show("First choose your template", "Warning");
 
         }
+
+        private void Check_Load(object sender, EventArgs e)
+        {
+            if (Directory.Exists(Configuration.pathFileTemplate))
+            {
+                string path = Configuration.pathFileTemplate + "\\Default.oft";
+                if(File.Exists(path))
+                {
+                    checkMail.setFilePath(path);
+                    checkTemplate = true;
+                    button2.Text = "CHECK " + "Default.oft";
+                }
+            }
+        }
     }
 }
