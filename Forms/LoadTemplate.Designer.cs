@@ -35,7 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.listView1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -104,15 +104,15 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Template not selected.";
             // 
-            // label4
+            // listView1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(459, 102);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(118, 15);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "This field is optional.";
+            this.listView1.AutoSize = true;
+            this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listView1.Location = new System.Drawing.Point(459, 102);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(118, 15);
+            this.listView1.TabIndex = 7;
+            this.listView1.Text = "This field is optional.";
             // 
             // label5
             // 
@@ -130,7 +130,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(683, 369);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -154,7 +154,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label listView1;
         private System.Windows.Forms.Label label5;
     }
 }

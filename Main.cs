@@ -56,6 +56,7 @@ namespace FormPlugin
             catch (Exception ex)
             {
                 MessageBox.Show("Exception");
+                _ = ex.Message;
             }
 
 
