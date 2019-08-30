@@ -86,22 +86,26 @@ namespace FormPlugin.Forms
 
         private void CreateTemplate_ClientSizeChanged(object sender, EventArgs e)
         {
-            textBox1.Size = new System.Drawing.Size(Size.Width - 215, Size.Height / 2-70);
-            button1.Location = new System.Drawing.Point(Size.Width - 135, Size.Height / 2 - 56);
+            textBox1.Size = new System.Drawing.Size(Size.Width - 215, Size.Height / 3-70);
+            button1.Location = new System.Drawing.Point(Size.Width - 135, Size.Height / 3 - 56);
             richTextBox1.Location = new System.Drawing.Point(45, Size.Height / 2 );
             label3.Location = new System.Drawing.Point(Size.Width / 2 - 75, Size.Height - 120);
-            richTextBox1.MaximumSize = new System.Drawing.Size(Size.Width - 215, Size.Height / 2 - 130);
+            richTextBox1.MaximumSize = new System.Drawing.Size(Size.Width - 215, Size.Height / 2 );
             richTextBox1.Size = new System.Drawing.Size(Size.Width - 215, Size.Height / 2 - 70);
+            richTextBox1.Location = new System.Drawing.Point(45, Size.Height / 3 + 40);
+            label5.Location = new System.Drawing.Point(45, Size.Height / 3);
         }
 
         private void CreateTemplate_Load(object sender, EventArgs e)
         {
-            textBox1.Size = new System.Drawing.Size(Size.Width - 215, Size.Height / 2 - 70);
-            button1.Location = new System.Drawing.Point(Size.Width - 135, Size.Height / 2 - 56);
+            textBox1.Size = new System.Drawing.Size(Size.Width - 215, Size.Height / 3 - 70);
+            button1.Location = new System.Drawing.Point(Size.Width - 135, Size.Height / 3 - 56);
             richTextBox1.Location = new System.Drawing.Point(45, Size.Height / 2);
             label3.Location = new System.Drawing.Point(Size.Width/2 - 75, Size.Height -120);
-            richTextBox1.MaximumSize = new System.Drawing.Size(Size.Width - 215, Size.Height / 2 - 130);
+            richTextBox1.MaximumSize = new System.Drawing.Size(Size.Width - 215, Size.Height / 2 );
             richTextBox1.Size = new System.Drawing.Size(Size.Width - 215, Size.Height / 2 - 70);
+            richTextBox1.Location =  new System.Drawing.Point(45, Size.Height / 3+40);
+            label5.Location = new System.Drawing.Point(45, Size.Height / 3 );
         }
 
 
