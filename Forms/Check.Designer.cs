@@ -61,6 +61,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Check";
             this.Text = "Check";
+            this.Load += new System.EventHandler(this.Check_Load);
             this.ResumeLayout(false);
 
         }
