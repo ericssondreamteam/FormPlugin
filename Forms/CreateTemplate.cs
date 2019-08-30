@@ -108,6 +108,9 @@ namespace FormPlugin.Forms
             label5.Location = new System.Drawing.Point(45, Size.Height / 3 );
         }
 
+        private void TextBox1_TextChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

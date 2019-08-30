@@ -17,7 +17,6 @@ namespace FormPlugin.Data
         public void createMail()
         {
             Outlook.Application oApp = new Outlook.Application();
-            //Outlook._MailItem oMailItem = (Outlook._MailItem)oApp.CreateItem(Outlook.OlItemType.olMailItem);
             Outlook.MailItem mail = oApp.CreateItemFromTemplate(pathFile) as Outlook.MailItem;
             
             //check if the mailto is fill
@@ -35,7 +34,6 @@ namespace FormPlugin.Data
             Outlook.MailItem mail = oApp.CreateItemFromTemplate(pathFile) as Outlook.MailItem;
             mail.To = sender;
             mail.Subject = subject;
-            //mail.Display(true);
             mail.Send();
         }
 

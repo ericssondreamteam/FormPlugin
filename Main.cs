@@ -18,7 +18,8 @@ namespace FormPlugin
 
         public Main()
         {
-            Configuration conf = new Configuration();
+            //nie jest potrzebne
+            //Configuration conf = new Configuration();
         }
         public void CreateForm(Office.IRibbonControl control)
         {
@@ -46,10 +47,6 @@ namespace FormPlugin
         {
             try
             {
-                //MailItem mailItem = Globals.ThisAddIn.Application.ActiveExplorer().Selection[1] as MailItem;
-                //MessageBox.Show("CheckMailForm");
-                //CheckMail functions = new CheckMail(mailItem);
-                //functions.check(mailItem);
                 Check check = new Check();
                 check.Show();
             }
@@ -65,9 +62,6 @@ namespace FormPlugin
         {
             SendForm sendForm = new SendForm();
             sendForm.Show();
-
-
-            //MessageBox.Show("DefultReplay");
         }
         #region IRibbonExtensibility Members
 

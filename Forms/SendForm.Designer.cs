@@ -66,7 +66,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(273, 196);
+            this.button2.Location = new System.Drawing.Point(279, 196);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(85, 38);
             this.button2.TabIndex = 4;
@@ -78,9 +78,9 @@
             // 
             this.button3.Location = new System.Drawing.Point(143, 63);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(183, 71);
+            this.button3.Size = new System.Drawing.Size(191, 47);
             this.button3.TabIndex = 5;
-            this.button3.Text = "Template";
+            this.button3.Text = "Choose template";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 

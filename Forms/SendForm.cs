@@ -32,14 +32,14 @@ namespace FormPlugin.Forms
                 openFileDialog.InitialDirectory = Configuration.pathFileTemplate;
                 openFileDialog.Filter = "oft files (*.oft)|*.oft|All files (*.*)|*.*";
                 openFileDialog.RestoreDirectory = false;
-                openFileDialog.Title = "Template for email";
+                openFileDialog.Title = "Send mail with template";
 
                 if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     string path = openFileDialog.FileName;
                     loadData.setPathFile(path);
                     checkTemplate = true;
-                    //label3.Text = openFileDialog.SafeFileName;
+                    button3.Text = openFileDialog.SafeFileName + " is choosen";
                 }
             }
             else
