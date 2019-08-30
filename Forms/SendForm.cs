@@ -4,11 +4,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using FormPlugin.Data;
-using System;
 using System.IO;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Outlook;
-using Outlook = Microsoft.Office.Interop.Outlook;
 namespace FormPlugin.Forms
 {
     public partial class SendForm : Form
@@ -56,11 +54,18 @@ namespace FormPlugin.Forms
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
+            if(checkTemplate)
             {
-                loadData.sendMail("RE: " + email.Subject, email.SenderName);
+                foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
+                {
+                    loadData.sendMail("RE: " + email.Subject, email.SenderName);
+                }
+                Close();
             }
-            Close();
+            else
+                MessageBox.Show("First choose your template", "Warning");
+
+
 
         }
     }

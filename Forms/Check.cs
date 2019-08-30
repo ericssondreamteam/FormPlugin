@@ -1,14 +1,7 @@
 ﻿using FormPlugin.Data;
 using Microsoft.Office.Interop.Outlook;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FormPlugin.Forms
@@ -39,9 +32,7 @@ namespace FormPlugin.Forms
                 {
                     string path = openFileDialog.FileName;
                     checkMail.setFilePath(path);
-                    //MessageBox.Show(path);
                     checkTemplate = true;
-                    //label3.Text = openFileDialog.SafeFileName;
                     button2.Text = "CHECK " + openFileDialog.SafeFileName;
                 }
             }
