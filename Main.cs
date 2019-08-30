@@ -9,8 +9,6 @@ using System.Windows.Forms;
 using Exception = System.Exception;
 using Office = Microsoft.Office.Core;
 
-
-
 namespace FormPlugin
 {
     [ComVisible(true)]
@@ -48,10 +46,12 @@ namespace FormPlugin
         {
             try
             {
-                MailItem mailItem = Globals.ThisAddIn.Application.ActiveExplorer().Selection[1] as MailItem;
-                MessageBox.Show("CheckMailForm");
-                CheckMail functions = new CheckMail(mailItem);
-                functions.check(mailItem);
+                //MailItem mailItem = Globals.ThisAddIn.Application.ActiveExplorer().Selection[1] as MailItem;
+                //MessageBox.Show("CheckMailForm");
+                //CheckMail functions = new CheckMail(mailItem);
+                //functions.check(mailItem);
+                Check check = new Check();
+                check.Show();
             }
             catch (Exception ex)
             {

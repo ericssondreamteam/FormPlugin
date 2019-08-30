@@ -1,30 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using FormPlugin.Data;
+﻿using FormPlugin.Data;
+using Microsoft.Office.Interop.Outlook;
+using System;
 using System.IO;
 using System.Windows.Forms;
-using Microsoft.Office.Interop.Outlook;
+
 namespace FormPlugin.Forms
 {
-    public partial class SendForm : Form
+    public partial class Check : Form
     {
+        CheckMail checkMail;
         bool checkTemplate = false;
-        LoadData loadData;
-        public SendForm()
+
+        public Check()
         {
             InitializeComponent();
-            loadData = new LoadData();
+            MailItem mailItem = Globals.ThisAddIn.Application.ActiveExplorer().Selection[1] as MailItem;
+            checkMail = new CheckMail(mailItem);
         }
 
-        private void Label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Button3_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (Directory.Exists(Configuration.pathFileTemplate))
@@ -37,36 +31,39 @@ namespace FormPlugin.Forms
                 if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     string path = openFileDialog.FileName;
-                    loadData.setPathFile(path);
+                    checkMail.setFilePath(path);
                     checkTemplate = true;
-                    //label3.Text = openFileDialog.SafeFileName;
+                    button2.Text = "CHECK " + openFileDialog.SafeFileName;
                 }
             }
             else
                 MessageBox.Show("First use 'Create Form' button from menu.", "Warning");
-
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            Close();
-        }
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            if(checkTemplate)
+            if (checkTemplate)
             {
-                foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
-                {
-                    loadData.sendMail("RE: " + email.Subject, email.SenderName);
-                }
                 Close();
+                checkMail.CreateItemFromTemplateAndCheck();
             }
             else
                 MessageBox.Show("First choose your template", "Warning");
 
+        }
 
-
+        private void Check_Load(object sender, EventArgs e)
+        {
+            if (Directory.Exists(Configuration.pathFileTemplate))
+            {
+                string path = Configuration.pathFileTemplate + "\\Default.oft";
+                if(File.Exists(path))
+                {
+                    checkMail.setFilePath(path);
+                    checkTemplate = true;
+                    button2.Text = "CHECK " + "Default.oft";
+                }
+            }
         }
     }
 }
