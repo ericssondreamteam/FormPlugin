@@ -45,7 +45,7 @@ namespace FormPlugin.Forms
             if (checkTemplate)
             {
                 Close();
-                checkMail.check();
+                checkMail.CreateItemFromTemplate();
             }
             else
                 MessageBox.Show("First choose your template", "Warning");

@@ -18,8 +18,7 @@ namespace FormPlugin.Data
         {
             Outlook.Application oApp = new Outlook.Application();
             //Outlook._MailItem oMailItem = (Outlook._MailItem)oApp.CreateItem(Outlook.OlItemType.olMailItem);
-            Outlook.MailItem mail =
-                oApp.CreateItemFromTemplate(pathFile) as Outlook.MailItem;
+            Outlook.MailItem mail = oApp.CreateItemFromTemplate(pathFile) as Outlook.MailItem;
             
             //check if the mailto is fill
             if(mailTo.Length > 0)

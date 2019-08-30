@@ -9,8 +9,6 @@ using System.Windows.Forms;
 using Exception = System.Exception;
 using Office = Microsoft.Office.Core;
 
-
-
 namespace FormPlugin
 {
     [ComVisible(true)]
