@@ -48,10 +48,12 @@ namespace FormPlugin
         {
             try
             {
-                MailItem mailItem = Globals.ThisAddIn.Application.ActiveExplorer().Selection[1] as MailItem;
-                MessageBox.Show("CheckMailForm");
-                CheckMail functions = new CheckMail(mailItem);
-                functions.check(mailItem);
+                //MailItem mailItem = Globals.ThisAddIn.Application.ActiveExplorer().Selection[1] as MailItem;
+                //MessageBox.Show("CheckMailForm");
+                //CheckMail functions = new CheckMail(mailItem);
+                //functions.check(mailItem);
+                Check check = new Check();
+                check.Show();
             }
             catch (Exception ex)
             {

@@ -15,13 +15,14 @@ namespace FormPlugin
         //public const List<String> constraints;
         public const String question = "Podaj swój ulubiony kolor:";
         public MailItem mailItem;
+        private string filePath;
 
         public CheckMail(MailItem mailItem)
         {
             this.mailItem = mailItem;
         }
 
-        public void check(MailItem mailItem)
+        public void check()
         {
             bool myBool = mailItem.Body.Contains(question);
             if (myBool == true)
@@ -30,10 +31,14 @@ namespace FormPlugin
             }
             else
             {
-                MessageBox.Show("Not ok");
+                MessageBox.Show("Format is not ok.");
             }
         }
 
+        public void setFilePath(string path)
+        {
+            filePath = path;
+        }
 
 
     }
