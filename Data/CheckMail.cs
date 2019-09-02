@@ -17,7 +17,7 @@ namespace FormPlugin
             this.mailItem = mailItem;
         }
 
-        public void CreateItemFromTemplateAndCheck()
+        public bool CreateItemFromTemplateAndCheck()
         {
             OlDefaultFolders defaultFolder = OlDefaultFolders.olFolderDrafts;
             Application app = new Application();
@@ -40,11 +40,13 @@ namespace FormPlugin
 
             if (conteinsAllTemplateLine == true && Tools.HaveWeAnswersForAllQuestions(templateLines,receviedMailLines))
             {
-                MessageBox.Show("OK");
+                //MessageBox.Show("OK");
+                return true;
             }
             else
             {
-                MessageBox.Show("Format is not ok.");
+                //MessageBox.Show("Format is not ok.");
+                return false;
             }
         }
 

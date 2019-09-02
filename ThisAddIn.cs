@@ -41,7 +41,9 @@ namespace FormPlugin
                     foreach (string s in filePaths)
                     {
                         check.setFilePath(s);
-                        check.CreateItemFromTemplateAndCheck();
+                        if (check.CreateItemFromTemplateAndCheck())
+                            MessageBox.Show("OK "+s);
+                    
                     }
                        
                 }

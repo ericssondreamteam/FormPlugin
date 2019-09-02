@@ -45,7 +45,11 @@ namespace FormPlugin.Forms
             if (checkTemplate)
             {
                 Close();
-                checkMail.CreateItemFromTemplateAndCheck();
+
+                if(checkMail.CreateItemFromTemplateAndCheck())
+                    MessageBox.Show("OK");
+                else
+                    MessageBox.Show("Format is not ok.");
             }
             else
                 MessageBox.Show("First choose your template", "Warning");
