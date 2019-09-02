@@ -163,6 +163,7 @@
     <Compile Include="Data\Configuration.cs" />
     <Compile Include="Data\CreateData.cs" />
     <Compile Include="Data\LoadData.cs" />
+    <Compile Include="Data\Tools.cs" />
     <Compile Include="Forms\Check.cs">
       <SubType>Form</SubType>
     </Compile>
