@@ -6,6 +6,8 @@ using System.Xml.Linq;
 using Outlook = Microsoft.Office.Interop.Outlook;
 using Office = Microsoft.Office.Core;
 using System.Windows.Forms;
+using System.IO;
+using FormPlugin.Data;
 
 namespace FormPlugin
 {
@@ -27,18 +29,23 @@ namespace FormPlugin
         }
         void items_ItemAdd(object Item)
         {
-            string filter = "USED CARS";
             Outlook.MailItem mail = (Outlook.MailItem)Item;
             if (Item != null)
             {
-                MessageBox.Show(mail.Subject);
-               /* if (mail.MessageClass == "IPM.Note" &&
-                           mail.Subject.ToUpper().Contains(filter.ToUpper()))
+                if (Directory.Exists(Configuration.pathFileTemplate))
                 {
-                    mail.Move(outlookNameSpace.GetDefaultFolder(
-                        Microsoft.Office.Interop.Outlook.
-                        OlDefaultFolders.olFolderJunk));
-                }*/
+                    string[] filePaths = Directory.GetFiles(Configuration.pathFileTemplate, "*.oft");
+                   // foreach (string s in filePaths)//test czy wczytuje wszytkie templaety
+                  //      MessageBox.Show(s);
+                    CheckMail check = new CheckMail(mail);
+                    foreach (string s in filePaths)
+                    {
+                        check.setFilePath(s);
+                        check.CreateItemFromTemplateAndCheck();
+                    }
+                       
+                }
+               
             }
 
         }
