@@ -34,31 +34,37 @@ namespace FormPlugin.Forms
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            //check if directory exist
-            if (!Directory.Exists(Configuration.pathFileTemplate))
-                Directory.CreateDirectory(Configuration.pathFileTemplate);
-            //save tamplate
-            if(textBox2.Text.Equals(""))
+            if(data.getAllQuestions().Count==0)
             {
-                label3.Text = "Please enter a name";
+                lackQuestionWarning.Text = "We cannot\n create template\n without any\n questions";
             }
-            else
-            {
-                if (File.Exists(Configuration.pathFileTemplate + "\\" + textBox2.Text + ".oft"))
+            else { 
+                //check if directory exist
+                if (!Directory.Exists(Configuration.pathFileTemplate))
+                    Directory.CreateDirectory(Configuration.pathFileTemplate);
+                //save tamplate
+                if(textBox2.Text.Equals(""))
                 {
-                    label3.Text = "This file exists. We cannot save";
+                    label3.Text = "Please enter a name";
                 }
                 else
                 {
+                    if (File.Exists(Configuration.pathFileTemplate + "\\" + textBox2.Text + ".oft"))
+                    {
+                        label3.Text = "This file exists. We cannot save";
+                    }
+                    else
+                    {
                     
-                    Outlook.Application outlookApp = new Outlook.Application();
-                    MailItem mailItem = outlookApp.CreateItem(OlItemType.olMailItem);
-                    mailItem.HTMLBody = createBodyMail();
-                    mailItem.SaveAs(Configuration.pathFileTemplate + "\\"+textBox2.Text+".oft");
-                    Close();
+                        Outlook.Application outlookApp = new Outlook.Application();
+                        MailItem mailItem = outlookApp.CreateItem(OlItemType.olMailItem);
+                        mailItem.HTMLBody = createBodyMail();
+                        mailItem.SaveAs(Configuration.pathFileTemplate + "\\"+textBox2.Text+".oft");
+                        Close();
 
+                    }
                 }
-            }     
+            }
         }
 
         private string createBodyMail()
@@ -106,6 +112,7 @@ namespace FormPlugin.Forms
             richTextBox1.Size = new System.Drawing.Size(Size.Width - 215, Size.Height / 2 - 70);
             richTextBox1.Location =  new System.Drawing.Point(45, Size.Height / 3+40);
             label5.Location = new System.Drawing.Point(45, Size.Height / 3 );
+           // lackQuestionWarning.Location = new System.Drawing.Point();
         }
 
         private void TextBox1_TextChanged(object sender, EventArgs e)

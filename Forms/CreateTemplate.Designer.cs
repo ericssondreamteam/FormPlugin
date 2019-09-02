@@ -37,6 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.lackQuestionWarning = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -129,11 +130,23 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Yours question:";
             // 
+            // lackQuestionWarning
+            // 
+            this.lackQuestionWarning.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lackQuestionWarning.AutoSize = true;
+            this.lackQuestionWarning.ForeColor = System.Drawing.Color.Red;
+            this.lackQuestionWarning.Location = new System.Drawing.Point(659, 345);
+            this.lackQuestionWarning.Name = "lackQuestionWarning";
+            this.lackQuestionWarning.Size = new System.Drawing.Size(0, 20);
+            this.lackQuestionWarning.TabIndex = 12;
+            this.lackQuestionWarning.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // CreateTemplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 506);
+            this.Controls.Add(this.lackQuestionWarning);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label3);
@@ -164,5 +177,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lackQuestionWarning;
     }
 }

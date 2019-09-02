@@ -38,14 +38,20 @@ namespace FormPlugin
                    // foreach (string s in filePaths)//test czy wczytuje wszytkie templaety
                   //      MessageBox.Show(s);
                     CheckMail check = new CheckMail(mail);
+                    bool anyTemplateSuits=false;
                     foreach (string s in filePaths)
                     {
                         check.setFilePath(s);
                         if (check.CreateItemFromTemplateAndCheck())
-                            MessageBox.Show("OK "+s);
+                        {
+                            MessageBox.Show("OK " + s);
+                            anyTemplateSuits = true;
+                        }
+                            
                     
                     }
-                       
+                    if (!anyTemplateSuits)
+                        MessageBox.Show("Email doesn't suit to any template");
                 }
                
             }
