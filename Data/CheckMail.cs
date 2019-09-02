@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Office.Interop.Outlook;
 using System.Windows.Forms;
 using Application = Microsoft.Office.Interop.Outlook.Application;
+using FormPlugin.Data;
 
 namespace FormPlugin
 {
@@ -37,7 +38,7 @@ namespace FormPlugin
                 }
             }
 
-            if (conteinsAllTemplateLine == true)
+            if (conteinsAllTemplateLine == true && Tools.HaveWeAnswersForAllQuestions(templateLines,receviedMailLines))
             {
                 MessageBox.Show("OK");
             }
