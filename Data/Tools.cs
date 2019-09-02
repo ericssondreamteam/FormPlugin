@@ -7,7 +7,18 @@ using System.Threading.Tasks;
 namespace FormPlugin.Data  
 {  
     class Tools  
-    {  
+    {
+        static public List<string> getEmailLineByLine(string emailContent)
+        {
+            string[] cos = emailContent.Replace("\r", "").Split('\n');
+            List<string> nextLineOfEmail = new List<string>();
+            foreach (string s in cos)
+            {
+                if (!s.Equals(""))
+                    nextLineOfEmail.Add(s);
+            }
+            return nextLineOfEmail;
+        }
         static public bool HaveWeAnswersForAllQuestions(List<string> template, List<string> recieivedMail)
         {
             bool haveWe=true;
