@@ -13,7 +13,6 @@ namespace FormPlugin.Forms
 {
     public partial class CreateTemplateForm : Form
     {
-        CreateData data;
         public CreateTemplateForm()
         {
             InitializeComponent();
@@ -23,7 +22,6 @@ namespace FormPlugin.Forms
             chooseTemplateLabel.Hide();
             deleteTempBut.Hide();
             label1.Hide();
-            data = new CreateData();
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,17 +62,17 @@ namespace FormPlugin.Forms
             StringBuilder body = new StringBuilder();
             body.Append("<html><body>Hi,<BR>please fill form ;)<BR><BR>");
             int questionCounter = 1;
-            foreach (string s in data.getAllQuestions())
+            foreach (ListViewItem anItem in questionList.Items)
             {
-                body.Append("<strong>" + questionCounter + ". " + s + "<strong>" + "<BR><BR><BR>");
+                body.Append("<strong>" + questionCounter + ". " + anItem.Text + "<strong>" + "<BR><BR><BR>");
                 questionCounter++;
-            }
+            }         
             return body.ToString();
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (data.getAllQuestions().Count == 0)
+            if (questionList.Items.Count == 0)
             {
                 warningLabelEmpty.Text = "We cannot\n create template\n without any\n questions";
             }
@@ -110,16 +108,6 @@ namespace FormPlugin.Forms
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            //dodanie do naszego modelu danych
-            data.addQuestion(questionTextBox.Text);
-            StringBuilder temp = new StringBuilder();
-            int questionCounter = 1;
-            foreach (string s in data.getAllQuestions())
-            {
-                temp.Append(questionCounter + ". " + s + "\n");
-                questionCounter++;
-            }
-            //richTextBox1.Text = temp.ToString(); dodanie do tabeli
             questionList.Items.Add(questionTextBox.Text);
             questionTextBox.Clear();
         }
