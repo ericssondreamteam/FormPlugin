@@ -41,6 +41,7 @@
             this.questionList = new System.Windows.Forms.ListView();
             this.warningLabelName = new System.Windows.Forms.Label();
             this.warningLabelEmpty = new System.Windows.Forms.Label();
+            this.deleteTempBut = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -171,11 +172,21 @@
             this.warningLabelEmpty.TabIndex = 15;
             this.warningLabelEmpty.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // deleteTempBut
+            // 
+            this.deleteTempBut.Location = new System.Drawing.Point(737, 12);
+            this.deleteTempBut.Name = "deleteTempBut";
+            this.deleteTempBut.Size = new System.Drawing.Size(101, 53);
+            this.deleteTempBut.TabIndex = 16;
+            this.deleteTempBut.Text = "Delete Template";
+            this.deleteTempBut.UseVisualStyleBackColor = true;
+            // 
             // CreateTemplateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(853, 558);
+            this.Controls.Add(this.deleteTempBut);
             this.Controls.Add(this.warningLabelEmpty);
             this.Controls.Add(this.warningLabelName);
             this.Controls.Add(this.questionList);
@@ -213,5 +224,6 @@
         private System.Windows.Forms.ListView questionList;
         private System.Windows.Forms.Label warningLabelName;
         private System.Windows.Forms.Label warningLabelEmpty;
+        private System.Windows.Forms.Button deleteTempBut;
     }
 }

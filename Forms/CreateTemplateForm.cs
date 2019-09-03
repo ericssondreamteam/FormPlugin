@@ -19,6 +19,7 @@ namespace FormPlugin.Forms
             comboBox1.SelectedText = "Create Template";
             chooseTemplateBox.Hide();
             chooseTemplateLabel.Hide();
+            deleteTempBut.Hide();
             this.data = data;
         }
 
@@ -28,11 +29,13 @@ namespace FormPlugin.Forms
             {
                 chooseTemplateBox.Hide();
                 chooseTemplateLabel.Hide();
+                deleteTempBut.Hide();
             }
             if(comboBox1.SelectedItem.Equals("Edit Template"))
             {
                 chooseTemplateBox.Show();
                 chooseTemplateLabel.Show();
+                deleteTempBut.Show();
             }
         }
 
