@@ -45,6 +45,7 @@
             this.upButton = new System.Windows.Forms.Button();
             this.downButton = new System.Windows.Forms.Button();
             this.deleteQuestionButton = new System.Windows.Forms.Button();
+            this.editButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -92,7 +93,7 @@
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(101, 56);
             this.addButton.TabIndex = 5;
-            this.addButton.Text = "Add/Edit";
+            this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
@@ -211,7 +212,7 @@
             // deleteQuestionButton
             // 
             this.deleteQuestionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.deleteQuestionButton.Location = new System.Drawing.Point(737, 286);
+            this.deleteQuestionButton.Location = new System.Drawing.Point(740, 355);
             this.deleteQuestionButton.Name = "deleteQuestionButton";
             this.deleteQuestionButton.Size = new System.Drawing.Size(101, 56);
             this.deleteQuestionButton.TabIndex = 19;
@@ -219,11 +220,23 @@
             this.deleteQuestionButton.UseVisualStyleBackColor = true;
             this.deleteQuestionButton.Click += new System.EventHandler(this.DeleteQuestionButton_Click);
             // 
+            // editButton
+            // 
+            this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.editButton.Location = new System.Drawing.Point(737, 286);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(101, 56);
+            this.editButton.TabIndex = 22;
+            this.editButton.Text = "Edit";
+            this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.Click += new System.EventHandler(this.EditButton_Click);
+            // 
             // CreateTemplateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(853, 558);
+            this.Controls.Add(this.editButton);
             this.Controls.Add(this.downButton);
             this.Controls.Add(this.upButton);
             this.Controls.Add(this.questionList);
@@ -269,5 +282,6 @@
         private System.Windows.Forms.Button upButton;
         private System.Windows.Forms.Button downButton;
         private System.Windows.Forms.Button deleteQuestionButton;
+        private System.Windows.Forms.Button editButton;
     }
 }

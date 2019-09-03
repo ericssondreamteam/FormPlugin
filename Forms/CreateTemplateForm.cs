@@ -16,7 +16,7 @@ namespace FormPlugin.Forms
 
         private bool czyEdytujemy = false;
         private bool templateZaladowany = false;
-        private bool editSpecificQuestion = false;
+       // private bool editSpecificQuestion = false;
         private int choosenQuestionNumber;
 
         public CreateTemplateForm()
@@ -140,18 +140,9 @@ namespace FormPlugin.Forms
         private void AddButton_Click(object sender, EventArgs e)
         {
             if(!czyEdytujemy || (czyEdytujemy && templateZaladowany))
-            {
-                if (!editSpecificQuestion)
-                {
+            {               
                     questionList.Items.Add(questionTextBox.Text);
-                    questionTextBox.Clear();
-                }
-                else
-                {
-                    questionList.Items[choosenQuestionNumber] = questionTextBox.Text;
-                    questionTextBox.Clear();
-                    editSpecificQuestion = false;
-                }
+                    questionTextBox.Clear();         
             }
             else if(czyEdytujemy == true && templateZaladowany == false)
             {
@@ -250,10 +241,16 @@ namespace FormPlugin.Forms
 
         private void QuestionList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            editSpecificQuestion = true;
+            //editSpecificQuestion = true;
             questionTextBox.Text = e.ToString();
             questionTextBox.Text=questionList.GetItemText(questionList.SelectedItem);
             choosenQuestionNumber = questionList.SelectedIndex;
+        }
+
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            questionList.Items[choosenQuestionNumber] = questionTextBox.Text;
+            questionTextBox.Clear();
         }
     }
 }
