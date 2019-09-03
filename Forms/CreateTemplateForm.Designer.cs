@@ -180,6 +180,7 @@
             this.deleteTempBut.TabIndex = 16;
             this.deleteTempBut.Text = "Delete Template";
             this.deleteTempBut.UseVisualStyleBackColor = true;
+            this.deleteTempBut.Click += new System.EventHandler(this.DeleteTempBut_Click);
             // 
             // CreateTemplateForm
             // 

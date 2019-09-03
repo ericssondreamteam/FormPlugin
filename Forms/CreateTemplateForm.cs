@@ -119,6 +119,9 @@ namespace FormPlugin.Forms
             questionTextBox.Clear();
         }
 
-       
+        private void DeleteTempBut_Click(object sender, EventArgs e)
+        {
+        
+        }
     }
 }
