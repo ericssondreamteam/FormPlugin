@@ -124,11 +124,6 @@ namespace FormPlugin.Forms
             questionTextBox.Clear();
         }
 
-        private void QuestionTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void Button1_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -163,11 +158,6 @@ namespace FormPlugin.Forms
             }
             else
                 MessageBox.Show("First use 'Create Form' button from menu.", "Warning");
-        }
-
-        private void QuestionList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

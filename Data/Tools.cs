@@ -27,7 +27,7 @@ namespace FormPlugin.Data
             foreach (string s in cos)
             {
                 if (!s.Equals("") && FirstCharacterIsNumber(s))
-                    nextLineOfEmail.Add(s);
+                    nextLineOfEmail.Add(s.Substring(s.IndexOf(" ")+1));
             }
             return nextLineOfEmail;
         }

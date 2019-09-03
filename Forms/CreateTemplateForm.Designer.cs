@@ -82,7 +82,7 @@
             this.questionTextBox.Name = "questionTextBox";
             this.questionTextBox.Size = new System.Drawing.Size(621, 137);
             this.questionTextBox.TabIndex = 4;
-            this.questionTextBox.TextChanged += new System.EventHandler(this.QuestionTextBox_TextChanged);
+           
             // 
             // addButton
             // 
@@ -143,7 +143,7 @@
             this.questionList.TabIndex = 13;
             this.questionList.UseCompatibleStateImageBehavior = false;
             this.questionList.View = System.Windows.Forms.View.List;
-            this.questionList.SelectedIndexChanged += new System.EventHandler(this.QuestionList_SelectedIndexChanged);
+            
             // 
             // warningLabelName
             // 
@@ -175,6 +175,7 @@
             this.deleteTempBut.TabIndex = 16;
             this.deleteTempBut.Text = "Delete Template";
             this.deleteTempBut.UseVisualStyleBackColor = true;
+            
             // 
             // browseButton
             // 
