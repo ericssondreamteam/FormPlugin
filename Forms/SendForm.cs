@@ -58,7 +58,7 @@ namespace FormPlugin.Forms
             {
                 foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
                 {
-                    loadData.sendMail("RE: " + email.Subject, email.SenderName);
+                    loadData.sendMail("RE: " + email.Subject, email.ReplyAll().To);
                 }
                 Close();
             }
