@@ -26,6 +26,7 @@ namespace FormPlugin.Forms
             browseButton.Hide();
             chooseTemplateLabel.Hide();
             deleteTempBut.Hide();
+            deleteQuestionButton.Hide();
             label1.Hide();
         }
 
@@ -39,7 +40,9 @@ namespace FormPlugin.Forms
                 chooseTemplateLabel.Hide();
                 deleteTempBut.Hide();
                 label1.Hide();
+                deleteQuestionButton.Hide();
                 czyEdytujemy = false;
+                questionList.Items.Clear();
             }
             if(comboBox1.SelectedItem.Equals("Edit Template"))
             {
@@ -49,7 +52,9 @@ namespace FormPlugin.Forms
                 chooseTemplateLabel.Show();
                 deleteTempBut.Show();
                 label1.Show();
+                deleteQuestionButton.Show();
                 czyEdytujemy = true;
+                questionList.Items.Clear();
             }
         }
 
@@ -187,6 +192,18 @@ namespace FormPlugin.Forms
             editSpecificQuestion = true;
             questionTextBox.Text= e.Item.Text;
             choosenQuestionNumber = e.ItemIndex;
+        }
+
+        private void DeleteQuestionButton_Click(object sender, EventArgs e)
+        {
+            if(questionList.SelectedItems!=null)
+            {
+                questionList.SelectedItems[0].Remove();
+            }
+            else
+            {
+                MessageBox.Show("Firstly, please choose an item");
+            }
         }
     }
 }

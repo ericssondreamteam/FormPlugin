@@ -43,6 +43,7 @@
             this.deleteTempBut = new System.Windows.Forms.Button();
             this.browseButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.deleteQuestionButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -137,6 +138,7 @@
             // questionList
             // 
             this.questionList.Location = new System.Drawing.Point(16, 286);
+            this.questionList.MultiSelect = false;
             this.questionList.Name = "questionList";
             this.questionList.Size = new System.Drawing.Size(621, 193);
             this.questionList.TabIndex = 13;
@@ -193,11 +195,23 @@
             this.label1.Size = new System.Drawing.Size(0, 20);
             this.label1.TabIndex = 18;
             // 
+            // deleteQuestionButton
+            // 
+            this.deleteQuestionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteQuestionButton.Location = new System.Drawing.Point(737, 286);
+            this.deleteQuestionButton.Name = "deleteQuestionButton";
+            this.deleteQuestionButton.Size = new System.Drawing.Size(101, 56);
+            this.deleteQuestionButton.TabIndex = 19;
+            this.deleteQuestionButton.Text = "Delete";
+            this.deleteQuestionButton.UseVisualStyleBackColor = true;
+            this.deleteQuestionButton.Click += new System.EventHandler(this.DeleteQuestionButton_Click);
+            // 
             // CreateTemplateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(853, 558);
+            this.Controls.Add(this.deleteQuestionButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.browseButton);
             this.Controls.Add(this.deleteTempBut);
@@ -239,5 +253,6 @@
         private System.Windows.Forms.Button deleteTempBut;
         private System.Windows.Forms.Button browseButton;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button deleteQuestionButton;
     }
 }
