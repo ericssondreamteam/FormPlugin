@@ -39,12 +39,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.warningLabelName = new System.Windows.Forms.Label();
             this.warningLabelEmpty = new System.Windows.Forms.Label();
-            this.deleteTempBut = new System.Windows.Forms.Button();
             this.browseButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.questionList = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.upButton = new System.Windows.Forms.Button();
+            this.downButton = new System.Windows.Forms.Button();
             this.deleteQuestionButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -63,7 +62,7 @@
             // chooseTemplateLabel
             // 
             this.chooseTemplateLabel.AutoSize = true;
-            this.chooseTemplateLabel.Location = new System.Drawing.Point(316, 21);
+            this.chooseTemplateLabel.Location = new System.Drawing.Point(348, 21);
             this.chooseTemplateLabel.Name = "chooseTemplateLabel";
             this.chooseTemplateLabel.Size = new System.Drawing.Size(142, 20);
             this.chooseTemplateLabel.TabIndex = 1;
@@ -159,18 +158,9 @@
             this.warningLabelEmpty.TabIndex = 15;
             this.warningLabelEmpty.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // deleteTempBut
-            // 
-            this.deleteTempBut.Location = new System.Drawing.Point(737, 12);
-            this.deleteTempBut.Name = "deleteTempBut";
-            this.deleteTempBut.Size = new System.Drawing.Size(101, 53);
-            this.deleteTempBut.TabIndex = 16;
-            this.deleteTempBut.Text = "Delete Template";
-            this.deleteTempBut.UseVisualStyleBackColor = true;
-            // 
             // browseButton
             // 
-            this.browseButton.Location = new System.Drawing.Point(464, 13);
+            this.browseButton.Location = new System.Drawing.Point(496, 13);
             this.browseButton.Name = "browseButton";
             this.browseButton.Size = new System.Drawing.Size(141, 37);
             this.browseButton.TabIndex = 17;
@@ -196,27 +186,27 @@
             this.questionList.TabIndex = 19;
             this.questionList.SelectedIndexChanged += new System.EventHandler(this.QuestionList_SelectedIndexChanged);
             // 
-            // button1
+            // upButton
             // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Location = new System.Drawing.Point(643, 355);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 39);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "UP";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click_1);
+            this.upButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.upButton.Location = new System.Drawing.Point(643, 355);
+            this.upButton.Name = "upButton";
+            this.upButton.Size = new System.Drawing.Size(72, 39);
+            this.upButton.TabIndex = 20;
+            this.upButton.Text = "UP";
+            this.upButton.UseVisualStyleBackColor = true;
+            this.upButton.Click += new System.EventHandler(this.Button1_Click_1);
             // 
-            // button2
+            // downButton
             // 
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Location = new System.Drawing.Point(643, 400);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 39);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "DOWN";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            this.downButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.downButton.Location = new System.Drawing.Point(643, 400);
+            this.downButton.Name = "downButton";
+            this.downButton.Size = new System.Drawing.Size(72, 39);
+            this.downButton.TabIndex = 21;
+            this.downButton.Text = "DOWN";
+            this.downButton.UseVisualStyleBackColor = true;
+            this.downButton.Click += new System.EventHandler(this.Button2_Click);
             // 
             // deleteQuestionButton
             // 
@@ -234,13 +224,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(853, 558);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.downButton);
+            this.Controls.Add(this.upButton);
             this.Controls.Add(this.questionList);
             this.Controls.Add(this.deleteQuestionButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.browseButton);
-            this.Controls.Add(this.deleteTempBut);
             this.Controls.Add(this.warningLabelEmpty);
             this.Controls.Add(this.warningLabelName);
             this.Controls.Add(this.label5);
@@ -254,7 +243,7 @@
             this.Controls.Add(this.comboBox1);
             this.MinimumSize = new System.Drawing.Size(875, 614);
             this.Name = "CreateTemplateForm";
-            this.Text = "Create or Edit Template";
+            this.Text = "s";
             this.SizeChanged += new System.EventHandler(this.ResizeEvent);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -274,12 +263,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label warningLabelName;
         private System.Windows.Forms.Label warningLabelEmpty;
-        private System.Windows.Forms.Button deleteTempBut;
         private System.Windows.Forms.Button browseButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox questionList;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button upButton;
+        private System.Windows.Forms.Button downButton;
         private System.Windows.Forms.Button deleteQuestionButton;
     }
 }

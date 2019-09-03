@@ -26,7 +26,6 @@ namespace FormPlugin.Forms
             comboBox1.SelectedText = "Create Template";
             browseButton.Hide();
             chooseTemplateLabel.Hide();
-            deleteTempBut.Hide();
             deleteQuestionButton.Hide();
             label1.Hide();
         }
@@ -39,7 +38,6 @@ namespace FormPlugin.Forms
                 label3.Show();
                 browseButton.Hide();
                 chooseTemplateLabel.Hide();
-                deleteTempBut.Hide();
                 label1.Hide();
                 deleteQuestionButton.Hide();
                 czyEdytujemy = false;
@@ -52,7 +50,6 @@ namespace FormPlugin.Forms
                 label3.Hide();
                 browseButton.Show();
                 chooseTemplateLabel.Show();
-                deleteTempBut.Show();
                 label1.Show();
                 label1.Text = String.Empty;
                 deleteQuestionButton.Show();
@@ -146,7 +143,6 @@ namespace FormPlugin.Forms
             {
                 if (!editSpecificQuestion)
                 {
-
                     questionList.Items.Add(questionTextBox.Text);
                     questionTextBox.Clear();
                 }
