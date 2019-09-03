@@ -45,6 +45,8 @@
             this.questionList = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.deleteQuestionButton = new System.Windows.Forms.Button();
+
             this.SuspendLayout();
             // 
             // comboBox1
@@ -92,7 +94,7 @@
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(101, 56);
             this.addButton.TabIndex = 5;
-            this.addButton.Text = "Add";
+            this.addButton.Text = "Add/Edit";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
@@ -135,6 +137,17 @@
             this.label5.Size = new System.Drawing.Size(120, 20);
             this.label5.TabIndex = 12;
             this.label5.Text = "Yours question:";
+            // 
+            // questionList
+            // 
+            //this.questionList.Location = new System.Drawing.Point(16, 286);
+            //this.questionList.MultiSelect = false;
+            //this.questionList.Name = "questionList";
+            //this.questionList.Size = new System.Drawing.Size(621, 193);
+            //this.questionList.TabIndex = 13;
+            //this.questionList.UseCompatibleStateImageBehavior = false;
+            //this.questionList.View = System.Windows.Forms.View.List;
+            //this.questionList.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.QuestionList_ItemSelectionChanged);
             // 
             // warningLabelName
             // 
@@ -215,6 +228,17 @@
             this.button2.Text = "DOWN";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
+            //
+            // deleteQuestionButton
+            // 
+            this.deleteQuestionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteQuestionButton.Location = new System.Drawing.Point(737, 286);
+            this.deleteQuestionButton.Name = "deleteQuestionButton";
+            this.deleteQuestionButton.Size = new System.Drawing.Size(101, 56);
+            this.deleteQuestionButton.TabIndex = 19;
+            this.deleteQuestionButton.Text = "Delete";
+            this.deleteQuestionButton.UseVisualStyleBackColor = true;
+            this.deleteQuestionButton.Click += new System.EventHandler(this.DeleteQuestionButton_Click);
             // 
             // CreateTemplateForm
             // 
@@ -224,6 +248,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.questionList);
+            this.Controls.Add(this.deleteQuestionButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.browseButton);
             this.Controls.Add(this.deleteTempBut);
@@ -242,8 +267,6 @@
             this.Name = "CreateTemplateForm";
             this.Text = "Create or Edit Template";
             this.SizeChanged += new System.EventHandler(this.ResizeEvent);
-            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.dragDrop);
-            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.dragEnter);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,5 +291,6 @@
         private System.Windows.Forms.ListBox questionList;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button deleteQuestionButton;
     }
 }

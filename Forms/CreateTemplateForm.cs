@@ -15,6 +15,9 @@ namespace FormPlugin.Forms
     {
 
         bool czyEdytujemy = false;
+        private bool editSpecificQuestion = false;
+        private int choosenQuestionNumber;
+
         public CreateTemplateForm()
         {
             InitializeComponent();
@@ -23,11 +26,8 @@ namespace FormPlugin.Forms
             browseButton.Hide();
             chooseTemplateLabel.Hide();
             deleteTempBut.Hide();
+            deleteQuestionButton.Hide();
             label1.Hide();
-
-            questionList.AllowDrop = true;
-            questionList.DragDrop += new DragEventHandler(dragDrop);
-            questionList.DragEnter += new DragEventHandler(dragEnter);
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -40,7 +40,9 @@ namespace FormPlugin.Forms
                 chooseTemplateLabel.Hide();
                 deleteTempBut.Hide();
                 label1.Hide();
+                deleteQuestionButton.Hide();
                 czyEdytujemy = false;
+                questionList.Items.Clear();
             }
             if(comboBox1.SelectedItem.Equals("Edit Template"))
             {
@@ -50,7 +52,9 @@ namespace FormPlugin.Forms
                 chooseTemplateLabel.Show();
                 deleteTempBut.Show();
                 label1.Show();
+                deleteQuestionButton.Show();
                 czyEdytujemy = true;
+                questionList.Items.Clear();
             }
         }
 
@@ -134,8 +138,19 @@ namespace FormPlugin.Forms
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            questionList.Items.Add(questionTextBox.Text);
-            questionTextBox.Clear();
+            if(!editSpecificQuestion)
+            {
+
+                questionList.Items.Add(questionTextBox.Text);
+                questionTextBox.Clear();
+            }
+            else
+            {
+                //DODAJ zamiana elementu w listBox
+                //questionList.Items[choosenQuestionNumber].Text= questionTextBox.Text;
+                questionTextBox.Clear();
+                editSpecificQuestion = false;
+            }
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -151,19 +166,14 @@ namespace FormPlugin.Forms
                 if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     string filePath = openFileDialog.FileName;
-                    //loadData.setPathFile(path);
-                    //checkTemplate = true;
                     label1.Text = openFileDialog.SafeFileName;
 
-                    //TERAZ PROSZE PANSTWA PAN KAROL
-                    //questionList
                     Application app = new Application();
                     MailItem mail = app.CreateItemFromTemplate(filePath) as MailItem;
                     List<String> questionsFromTemplate = Tools.getQuestionsFromEmail(mail.Body);
 
                     
                     foreach (String s in questionsFromTemplate) {
-                        //MessageBox.Show(s);
                         questionList.Items.Add(s);                      
                     }
                     
@@ -173,15 +183,6 @@ namespace FormPlugin.Forms
                 MessageBox.Show("First use 'Create Form' button from menu.", "Warning");
         }
 
-        private void dragEnter(object sender, DragEventArgs e)
-        {
-            e.Effect = DragDropEffects.Copy;
-        }
-
-        private void dragDrop(object sender, DragEventArgs e)
-        {
-            questionList.Items.Add(e.Data.ToString());
-        }
 
         private void Button1_Click_1(object sender, EventArgs e)
         {
@@ -222,6 +223,26 @@ namespace FormPlugin.Forms
                 questionList.Items.Remove(selectedItem);
                 questionList.Items.Insert(newIndex, selectedItem);
                 questionList.SetSelected(newIndex, true);
+            }
+        }
+
+        private void QuestionList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            editSpecificQuestion = true;
+            questionTextBox.Text= e.Item.Text;
+            choosenQuestionNumber = e.ItemIndex;
+        }
+
+        private void DeleteQuestionButton_Click(object sender, EventArgs e)
+        {
+            if(questionList.SelectedItems!=null)
+            {
+                //DODAJ usuwanko z listBox
+                //questionList.SelectedItems[0].Remove();
+            }
+            else
+            {
+                MessageBox.Show("Firstly, please choose an item");
             }
         }
     }
