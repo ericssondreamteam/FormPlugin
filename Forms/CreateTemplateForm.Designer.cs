@@ -143,6 +143,7 @@
             this.questionList.TabIndex = 13;
             this.questionList.UseCompatibleStateImageBehavior = false;
             this.questionList.View = System.Windows.Forms.View.List;
+            this.questionList.SelectedIndexChanged += new System.EventHandler(this.QuestionList_SelectedIndexChanged);
             // 
             // warningLabelName
             // 

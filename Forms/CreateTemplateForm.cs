@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using Outlook = Microsoft.Office.Interop.Outlook;
 using Application = Microsoft.Office.Interop.Outlook.Application;
+using System.Collections.Generic;
 
 namespace FormPlugin.Forms
 {
@@ -147,14 +148,26 @@ namespace FormPlugin.Forms
 
                     //TERAZ PROSZE PANSTWA PAN KAROL
                     //questionList
-                    OlDefaultFolders defaultFolder = OlDefaultFolders.olFolderDrafts;
                     Application app = new Application();
-                    Folder folder = app.Session.GetDefaultFolder(defaultFolder) as Folder;
-                    MailItem mail = app.CreateItemFromTemplate(filePath, folder) as MailItem;
+                    MailItem mail = app.CreateItemFromTemplate(filePath) as MailItem;
+                    List<String> questionsFromTemplate = Tools.getQuestionsFromEmail(mail.Body);
+
+                    
+                    foreach (String s in questionsFromTemplate) {
+                        //MessageBox.Show(s);
+                        questionList.Items.Add(s);
+                    }
+                    
+                    //questionList.Text = temp.ToString();
                 }
             }
             else
                 MessageBox.Show("First use 'Create Form' button from menu.", "Warning");
+        }
+
+        private void QuestionList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
