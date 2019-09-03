@@ -29,32 +29,35 @@ namespace FormPlugin
         }
         void items_ItemAdd(object Item)
         {
-            Outlook.MailItem mail = (Outlook.MailItem)Item;
-            if (Item != null)
+            if (Item is Outlook.MailItem)
             {
-                if (Directory.Exists(Configuration.pathFileTemplate))
+                Outlook.MailItem mail = (Outlook.MailItem)Item;
+                if (Item != null)
                 {
-                    string[] filePaths = Directory.GetFiles(Configuration.pathFileTemplate, "*.oft");
-                   // foreach (string s in filePaths)//test czy wczytuje wszytkie templaety
-                  //      MessageBox.Show(s);
-                    CheckMail check = new CheckMail(mail);
-                    bool anyTemplateSuits=false;
-                    foreach (string s in filePaths)
+                    if (Directory.Exists(Configuration.pathFileTemplate))
                     {
-                        check.setFilePath(s);
-                        if (check.CreateItemFromTemplateAndCheck())
+                        string[] filePaths = Directory.GetFiles(Configuration.pathFileTemplate, "*.oft");
+                        // foreach (string s in filePaths)//test czy wczytuje wszytkie templaety
+                        //      MessageBox.Show(s);
+                        CheckMail check = new CheckMail(mail);
+                        bool anyTemplateSuits = false;
+                        foreach (string s in filePaths)
                         {
-                            MessageBox.Show("OK " + s);
-                            anyTemplateSuits = true;
+                            check.setFilePath(s);
+                            if (check.CreateItemFromTemplateAndCheck())
+                            {
+                                MessageBox.Show("OK " + s);
+                                anyTemplateSuits = true;
+                            }
+
+
                         }
-                            
-                    
+                        if (!anyTemplateSuits)
+                            MessageBox.Show("Email doesn't suit to any template");
                     }
-                    if (!anyTemplateSuits)
-                        MessageBox.Show("Email doesn't suit to any template");
+
                 }
-               
-            }
+            }  
 
         }
 

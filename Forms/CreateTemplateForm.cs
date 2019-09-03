@@ -24,6 +24,10 @@ namespace FormPlugin.Forms
             chooseTemplateLabel.Hide();
             deleteTempBut.Hide();
             label1.Hide();
+
+            questionList.AllowDrop = true;
+            questionList.DragDrop += new DragEventHandler(dragDrop);
+            questionList.DragEnter += new DragEventHandler(dragEnter);
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -70,9 +74,9 @@ namespace FormPlugin.Forms
             StringBuilder body = new StringBuilder();
             body.Append("<html><body>Hi,<BR>please fill form ;)<BR><BR>");
             int questionCounter = 1;
-            foreach (ListViewItem anItem in questionList.Items)
+            foreach (object anItem in questionList.Items)
             {
-                body.Append("<strong>" + questionCounter + ". " + anItem.Text + "<strong>" + "<BR><BR><BR>");
+                body.Append("<strong>" + questionCounter + ". " + anItem.ToString() + "<strong>" + "<BR><BR><BR>");
                 questionCounter++;
             }         
             return body.ToString();
@@ -167,6 +171,58 @@ namespace FormPlugin.Forms
             }
             else
                 MessageBox.Show("First use 'Create Form' button from menu.", "Warning");
+        }
+
+        private void dragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void dragDrop(object sender, DragEventArgs e)
+        {
+            questionList.Items.Add(e.Data.ToString());
+        }
+
+        private void Button1_Click_1(object sender, EventArgs e)
+        {
+            if(questionList.SelectedIndex == -1)
+            {
+                MessageBox.Show("Select item to move up or down", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                int newIndex = questionList.SelectedIndex - 1;
+
+                if (newIndex < 0)
+                    return;
+
+                object selectedItem = questionList.SelectedItem;
+
+                questionList.Items.Remove(selectedItem);
+                questionList.Items.Insert(newIndex, selectedItem);
+                questionList.SetSelected(newIndex, true);
+            }
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            if (questionList.SelectedIndex == -1)
+            {
+                MessageBox.Show("Select item to move up or down", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                int newIndex = questionList.SelectedIndex + 1;
+
+                if (newIndex > questionList.Items.Count - 1)
+                    return;
+
+                object selectedItem = questionList.SelectedItem;
+
+                questionList.Items.Remove(selectedItem);
+                questionList.Items.Insert(newIndex, selectedItem);
+                questionList.SetSelected(newIndex, true);
+            }
         }
     }
 }
