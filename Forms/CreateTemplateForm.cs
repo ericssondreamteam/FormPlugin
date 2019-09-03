@@ -14,6 +14,7 @@ namespace FormPlugin.Forms
     public partial class CreateTemplateForm : Form
     {
         CreateData data;
+        bool czyEdytujemy = false;
         public CreateTemplateForm()
         {
             InitializeComponent();
@@ -30,17 +31,23 @@ namespace FormPlugin.Forms
         {
             if(comboBox1.SelectedItem.Equals("Create Template"))
             {
+                textBox2.Show();
+                label3.Show();
                 browseButton.Hide();
                 chooseTemplateLabel.Hide();
                 deleteTempBut.Hide();
                 label1.Hide();
+                czyEdytujemy = false;
             }
             if(comboBox1.SelectedItem.Equals("Edit Template"))
             {
+                textBox2.Hide();
+                label3.Hide();
                 browseButton.Show();
                 chooseTemplateLabel.Show();
                 deleteTempBut.Show();
                 label1.Show();
+                czyEdytujemy = true;
             }
         }
 
@@ -84,27 +91,41 @@ namespace FormPlugin.Forms
                 if (!Directory.Exists(Configuration.pathFileTemplate))
                     Directory.CreateDirectory(Configuration.pathFileTemplate);
                 //save tamplate
-                if (textBox2.Text.Equals(""))
+
+                if(czyEdytujemy == false)
                 {
-                    warningLabelName.Text = "Please enter a name";
-                }
-                else
-                {
-                    if (File.Exists(Configuration.pathFileTemplate + "\\" + textBox2.Text + ".oft"))
+                    if (textBox2.Text.Equals(""))
                     {
-                        warningLabelName.Text = "This file exists. We cannot save";
+                        warningLabelName.Text = "Please enter a name";
                     }
                     else
                     {
+                        if (File.Exists(Configuration.pathFileTemplate + "\\" + textBox2.Text + ".oft"))
+                        {
+                            warningLabelName.Text = "This file exists. We cannot save";
+                        }
+                        else
+                        {
 
-                        Outlook.Application outlookApp = new Outlook.Application();
-                        MailItem mailItem = outlookApp.CreateItem(OlItemType.olMailItem);
-                        mailItem.HTMLBody = createBodyMail();
-                        mailItem.SaveAs(Configuration.pathFileTemplate + "\\" + textBox2.Text + ".oft");
-                        Close();
+                            Outlook.Application outlookApp = new Outlook.Application();
+                            MailItem mailItem = outlookApp.CreateItem(OlItemType.olMailItem);
+                            mailItem.HTMLBody = createBodyMail();
+                            mailItem.SaveAs(Configuration.pathFileTemplate + "\\" + textBox2.Text + ".oft");
+                            Close();
 
+                        }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("RZECZYWISCIE ZAPISUJEMY EDYTOWANY PLIK");
+                    Outlook.Application outlookApp = new Outlook.Application();
+                    MailItem mailItem = outlookApp.CreateItem(OlItemType.olMailItem);
+                    mailItem.HTMLBody = createBodyMail();
+                    mailItem.SaveAs(Configuration.pathFileTemplate + "\\" + label1.Text);
+                    Close();
+                }
+                
             }
         }
 
@@ -151,6 +172,7 @@ namespace FormPlugin.Forms
                     foreach (String s in questionsFromTemplate) {
                         //MessageBox.Show(s);
                         questionList.Items.Add(s);
+                        data.addQuestion(s);
                     }
                     
                     //questionList.Text = temp.ToString();
