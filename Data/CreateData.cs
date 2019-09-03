@@ -18,6 +18,9 @@ namespace FormPlugin.Data
         {
             return questions;
         }
-
+        public void clear()
+        {
+            questions.Clear();
+        }
     }
 }

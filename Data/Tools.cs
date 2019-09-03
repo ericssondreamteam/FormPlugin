@@ -19,6 +19,18 @@ namespace FormPlugin.Data
             }
             return nextLineOfEmail;
         }
+
+        static public List<string> getQuestionsFromEmail(string emailContent)
+        {
+            string[] cos = emailContent.Replace("\r", "").Split('\n');
+            List<string> nextLineOfEmail = new List<string>();
+            foreach (string s in cos)
+            {
+                if (!s.Equals("") && FirstCharacterIsNumber(s))
+                    nextLineOfEmail.Add(s);
+            }
+            return nextLineOfEmail;
+        }
         static public bool HaveWeAnswersForAllQuestions(List<string> template, List<string> recieivedMail)
         {
             bool haveWe=true;
