@@ -14,7 +14,8 @@ namespace FormPlugin.Forms
     public partial class CreateTemplateForm : Form
     {
 
-        bool czyEdytujemy = false;
+        private bool czyEdytujemy = false;
+        private bool templateZaladowany = false;
         private bool editSpecificQuestion = false;
         private int choosenQuestionNumber;
 
@@ -42,6 +43,7 @@ namespace FormPlugin.Forms
                 label1.Hide();
                 deleteQuestionButton.Hide();
                 czyEdytujemy = false;
+                templateZaladowany = false;
                 questionList.Items.Clear();
             }
             if(comboBox1.SelectedItem.Equals("Edit Template"))
@@ -52,8 +54,10 @@ namespace FormPlugin.Forms
                 chooseTemplateLabel.Show();
                 deleteTempBut.Show();
                 label1.Show();
+                label1.Text = String.Empty;
                 deleteQuestionButton.Show();
                 czyEdytujemy = true;
+                //templateZaladowany = false;
                 questionList.Items.Clear();
             }
         }
@@ -138,19 +142,27 @@ namespace FormPlugin.Forms
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            if(!editSpecificQuestion)
+            if(!czyEdytujemy || (czyEdytujemy && templateZaladowany))
             {
+                if (!editSpecificQuestion)
+                {
 
-                questionList.Items.Add(questionTextBox.Text);
-                questionTextBox.Clear();
+                    questionList.Items.Add(questionTextBox.Text);
+                    questionTextBox.Clear();
+                }
+                else
+                {
+                    //DODAJ zamiana elementu w listBox
+                    //questionList.Items[choosenQuestionNumber].Text= questionTextBox.Text;
+                    questionTextBox.Clear();
+                    editSpecificQuestion = false;
+                }
             }
-            else
+            else if(czyEdytujemy == true && templateZaladowany == false)
             {
-                //DODAJ zamiana elementu w listBox
-                //questionList.Items[choosenQuestionNumber].Text= questionTextBox.Text;
-                questionTextBox.Clear();
-                editSpecificQuestion = false;
+                MessageBox.Show("First you should load your template to edition.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -166,6 +178,7 @@ namespace FormPlugin.Forms
                 if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     string filePath = openFileDialog.FileName;
+                    label1.Show();
                     label1.Text = openFileDialog.SafeFileName;
 
                     Application app = new Application();
@@ -176,7 +189,7 @@ namespace FormPlugin.Forms
                     foreach (String s in questionsFromTemplate) {
                         questionList.Items.Add(s);                      
                     }
-                    
+                    templateZaladowany = true;
                 }
             }
             else
