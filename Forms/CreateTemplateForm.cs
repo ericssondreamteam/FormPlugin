@@ -6,6 +6,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using Outlook = Microsoft.Office.Interop.Outlook;
+using Application = Microsoft.Office.Interop.Outlook.Application;
 
 namespace FormPlugin.Forms
 {
@@ -17,9 +18,10 @@ namespace FormPlugin.Forms
             InitializeComponent();
             comboBox1.SelectedItem = "Create Template";
             comboBox1.SelectedText = "Create Template";
-            chooseTemplateBox.Hide();
+            browseButton.Hide();
             chooseTemplateLabel.Hide();
             deleteTempBut.Hide();
+            label1.Hide();
             data = new CreateData();
         }
 
@@ -27,15 +29,17 @@ namespace FormPlugin.Forms
         {
             if(comboBox1.SelectedItem.Equals("Create Template"))
             {
-                chooseTemplateBox.Hide();
+                browseButton.Hide();
                 chooseTemplateLabel.Hide();
                 deleteTempBut.Hide();
+                label1.Hide();
             }
             if(comboBox1.SelectedItem.Equals("Edit Template"))
             {
-                chooseTemplateBox.Show();
+                browseButton.Show();
                 chooseTemplateLabel.Show();
                 deleteTempBut.Show();
+                label1.Show();
             }
         }
 
@@ -119,6 +123,38 @@ namespace FormPlugin.Forms
             questionTextBox.Clear();
         }
 
-       
+        private void QuestionTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (Directory.Exists(Configuration.pathFileTemplate))
+            {
+                openFileDialog.InitialDirectory = Configuration.pathFileTemplate;
+                openFileDialog.Filter = "oft files (*.oft)|*.oft|All files (*.*)|*.*";
+                openFileDialog.RestoreDirectory = false;
+                openFileDialog.Title = "Template for email";
+
+                if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    //loadData.setPathFile(path);
+                    //checkTemplate = true;
+                    label1.Text = openFileDialog.SafeFileName;
+
+                    //TERAZ PROSZE PANSTWA PAN KAROL
+                    //questionList
+                    OlDefaultFolders defaultFolder = OlDefaultFolders.olFolderDrafts;
+                    Application app = new Application();
+                    Folder folder = app.Session.GetDefaultFolder(defaultFolder) as Folder;
+                    MailItem mail = app.CreateItemFromTemplate(filePath, folder) as MailItem;
+                }
+            }
+            else
+                MessageBox.Show("First use 'Create Form' button from menu.", "Warning");
+        }
     }
 }

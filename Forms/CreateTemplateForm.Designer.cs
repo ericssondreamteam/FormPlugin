@@ -30,7 +30,6 @@
         {
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.chooseTemplateLabel = new System.Windows.Forms.Label();
-            this.chooseTemplateBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.questionTextBox = new System.Windows.Forms.TextBox();
             this.addButton = new System.Windows.Forms.Button();
@@ -42,6 +41,8 @@
             this.warningLabelName = new System.Windows.Forms.Label();
             this.warningLabelEmpty = new System.Windows.Forms.Label();
             this.deleteTempBut = new System.Windows.Forms.Button();
+            this.browseButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -59,19 +60,11 @@
             // chooseTemplateLabel
             // 
             this.chooseTemplateLabel.AutoSize = true;
-            this.chooseTemplateLabel.Location = new System.Drawing.Point(254, 21);
+            this.chooseTemplateLabel.Location = new System.Drawing.Point(316, 21);
             this.chooseTemplateLabel.Name = "chooseTemplateLabel";
             this.chooseTemplateLabel.Size = new System.Drawing.Size(142, 20);
             this.chooseTemplateLabel.TabIndex = 1;
             this.chooseTemplateLabel.Text = "Choose Template: ";
-            // 
-            // chooseTemplateBox
-            // 
-            this.chooseTemplateBox.FormattingEnabled = true;
-            this.chooseTemplateBox.Location = new System.Drawing.Point(427, 12);
-            this.chooseTemplateBox.Name = "chooseTemplateBox";
-            this.chooseTemplateBox.Size = new System.Drawing.Size(210, 28);
-            this.chooseTemplateBox.TabIndex = 2;
             // 
             // label2
             // 
@@ -89,6 +82,7 @@
             this.questionTextBox.Name = "questionTextBox";
             this.questionTextBox.Size = new System.Drawing.Size(621, 137);
             this.questionTextBox.TabIndex = 4;
+            this.questionTextBox.TextChanged += new System.EventHandler(this.QuestionTextBox_TextChanged);
             // 
             // addButton
             // 
@@ -181,11 +175,31 @@
             this.deleteTempBut.Text = "Delete Template";
             this.deleteTempBut.UseVisualStyleBackColor = true;
             // 
+            // browseButton
+            // 
+            this.browseButton.Location = new System.Drawing.Point(464, 13);
+            this.browseButton.Name = "browseButton";
+            this.browseButton.Size = new System.Drawing.Size(141, 37);
+            this.browseButton.TabIndex = 17;
+            this.browseButton.Text = "browse";
+            this.browseButton.UseVisualStyleBackColor = true;
+            this.browseButton.Click += new System.EventHandler(this.Button1_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(485, 53);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 20);
+            this.label1.TabIndex = 18;
+            // 
             // CreateTemplateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(853, 558);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.browseButton);
             this.Controls.Add(this.deleteTempBut);
             this.Controls.Add(this.warningLabelEmpty);
             this.Controls.Add(this.warningLabelName);
@@ -197,7 +211,6 @@
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.questionTextBox);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.chooseTemplateBox);
             this.Controls.Add(this.chooseTemplateLabel);
             this.Controls.Add(this.comboBox1);
             this.MinimumSize = new System.Drawing.Size(875, 614);
@@ -213,7 +226,6 @@
 
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label chooseTemplateLabel;
-        private System.Windows.Forms.ComboBox chooseTemplateBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox questionTextBox;
         private System.Windows.Forms.Button addButton;
@@ -225,5 +237,7 @@
         private System.Windows.Forms.Label warningLabelName;
         private System.Windows.Forms.Label warningLabelEmpty;
         private System.Windows.Forms.Button deleteTempBut;
+        private System.Windows.Forms.Button browseButton;
+        private System.Windows.Forms.Label label1;
     }
 }
