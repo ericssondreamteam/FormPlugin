@@ -46,7 +46,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.deleteQuestionButton = new System.Windows.Forms.Button();
-
             this.SuspendLayout();
             // 
             // comboBox1
@@ -138,17 +137,6 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "Yours question:";
             // 
-            // questionList
-            // 
-            //this.questionList.Location = new System.Drawing.Point(16, 286);
-            //this.questionList.MultiSelect = false;
-            //this.questionList.Name = "questionList";
-            //this.questionList.Size = new System.Drawing.Size(621, 193);
-            //this.questionList.TabIndex = 13;
-            //this.questionList.UseCompatibleStateImageBehavior = false;
-            //this.questionList.View = System.Windows.Forms.View.List;
-            //this.questionList.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.QuestionList_ItemSelectionChanged);
-            // 
             // warningLabelName
             // 
             this.warningLabelName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -206,6 +194,7 @@
             this.questionList.Name = "questionList";
             this.questionList.Size = new System.Drawing.Size(621, 204);
             this.questionList.TabIndex = 19;
+            this.questionList.SelectedIndexChanged += new System.EventHandler(this.QuestionList_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -228,7 +217,7 @@
             this.button2.Text = "DOWN";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
-            //
+            // 
             // deleteQuestionButton
             // 
             this.deleteQuestionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));

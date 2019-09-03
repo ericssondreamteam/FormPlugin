@@ -146,8 +146,7 @@ namespace FormPlugin.Forms
             }
             else
             {
-                //DODAJ zamiana elementu w listBox
-                //questionList.Items[choosenQuestionNumber].Text= questionTextBox.Text;
+                questionList.Items[choosenQuestionNumber]= questionTextBox.Text;
                 questionTextBox.Clear();
                 editSpecificQuestion = false;
             }
@@ -226,24 +225,25 @@ namespace FormPlugin.Forms
             }
         }
 
-        private void QuestionList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
-        {
-            editSpecificQuestion = true;
-            questionTextBox.Text= e.Item.Text;
-            choosenQuestionNumber = e.ItemIndex;
-        }
 
         private void DeleteQuestionButton_Click(object sender, EventArgs e)
         {
             if(questionList.SelectedItems!=null)
             {
-                //DODAJ usuwanko z listBox
-                //questionList.SelectedItems[0].Remove();
+                questionList.Items.RemoveAt(choosenQuestionNumber);
             }
             else
             {
                 MessageBox.Show("Firstly, please choose an item");
             }
+        }
+
+        private void QuestionList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            editSpecificQuestion = true;
+            questionTextBox.Text = e.ToString();
+            questionTextBox.Text=questionList.GetItemText(questionList.SelectedItem);
+            choosenQuestionNumber = questionList.SelectedIndex;
         }
     }
 }
