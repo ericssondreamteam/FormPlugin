@@ -176,6 +176,12 @@
     <Compile Include="Forms\CreateTemplate.Designer.cs">
       <DependentUpon>CreateTemplate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CreateTemplateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreateTemplateForm.Designer.cs">
+      <DependentUpon>CreateTemplateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LoadTemplate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CreateTemplate.resx">
       <DependentUpon>CreateTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreateTemplateForm.resx">
+      <DependentUpon>CreateTemplateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoadTemplate.resx">
       <DependentUpon>LoadTemplate.cs</DependentUpon>
