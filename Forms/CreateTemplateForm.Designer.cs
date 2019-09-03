@@ -189,10 +189,11 @@
             // 
             // upButton
             // 
+            this.upButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.upButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.upButton.Location = new System.Drawing.Point(643, 355);
+            this.upButton.Location = new System.Drawing.Point(655, 355);
             this.upButton.Name = "upButton";
-            this.upButton.Size = new System.Drawing.Size(72, 39);
+            this.upButton.Size = new System.Drawing.Size(60, 39);
             this.upButton.TabIndex = 20;
             this.upButton.Text = "UP";
             this.upButton.UseVisualStyleBackColor = true;
@@ -200,12 +201,13 @@
             // 
             // downButton
             // 
+            this.downButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.downButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.downButton.Location = new System.Drawing.Point(643, 400);
+            this.downButton.Location = new System.Drawing.Point(655, 400);
             this.downButton.Name = "downButton";
-            this.downButton.Size = new System.Drawing.Size(72, 39);
+            this.downButton.Size = new System.Drawing.Size(60, 39);
             this.downButton.TabIndex = 21;
-            this.downButton.Text = "DOWN";
+            this.downButton.Text = "Down";
             this.downButton.UseVisualStyleBackColor = true;
             this.downButton.Click += new System.EventHandler(this.Button2_Click);
             // 

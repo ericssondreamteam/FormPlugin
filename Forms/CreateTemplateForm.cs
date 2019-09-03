@@ -61,8 +61,8 @@ namespace FormPlugin.Forms
 
         private void ResizeEvent(object sender, EventArgs e)
         {
-            questionTextBox.Size = new Size(Size.Width - 215, 137);
-            questionList.Size = new Size(Size.Width - 215, Size.Height- 420); ;
+            questionTextBox.Size = new Size(Size.Width - 245, 137);
+            questionList.Size = new Size(Size.Width - 245, Size.Height- 420); ;
         }
 
         private void TextBox2_TextChanged(object sender, EventArgs e)
