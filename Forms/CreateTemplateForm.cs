@@ -12,7 +12,7 @@ namespace FormPlugin.Forms
     public partial class CreateTemplateForm : Form
     {
         CreateData data;
-        public CreateTemplateForm(CreateData data)
+        public CreateTemplateForm()
         {
             InitializeComponent();
             comboBox1.SelectedItem = "Create Template";
@@ -20,7 +20,7 @@ namespace FormPlugin.Forms
             chooseTemplateBox.Hide();
             chooseTemplateLabel.Hide();
             deleteTempBut.Hide();
-            this.data = data;
+            data = new CreateData();
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)

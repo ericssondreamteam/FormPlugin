@@ -66,8 +66,7 @@ namespace FormPlugin
 
         public void test(Office.IRibbonControl control)
         {
-            CreateData question = new CreateData();
-            CreateTemplateForm create = new CreateTemplateForm(question);
+            CreateTemplateForm create = new CreateTemplateForm();
             create.Show();
         }
         #region IRibbonExtensibility Members
