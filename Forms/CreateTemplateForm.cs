@@ -46,10 +46,10 @@ namespace FormPlugin.Forms
         {
             if (File.Exists(Configuration.pathFileTemplate + "\\" + textBox2.Text + ".oft"))
             {
-                label3.Text = "This file exists. Please enter another name";
+                warningLabelName.Text = "This file exists. Please enter another name";
             }
             else
-                label3.Text = "";
+                warningLabelName.Text = "";
         }
         private string createBodyMail()
         {
@@ -78,13 +78,13 @@ namespace FormPlugin.Forms
                 //save tamplate
                 if (textBox2.Text.Equals(""))
                 {
-                    label3.Text = "Please enter a name";
+                    warningLabelName.Text = "Please enter a name";
                 }
                 else
                 {
                     if (File.Exists(Configuration.pathFileTemplate + "\\" + textBox2.Text + ".oft"))
                     {
-                        label3.Text = "This file exists. We cannot save";
+                        warningLabelName.Text = "This file exists. We cannot save";
                     }
                     else
                     {
@@ -115,5 +115,7 @@ namespace FormPlugin.Forms
             questionList.Items.Add(questionTextBox.Text);
             questionTextBox.Clear();
         }
+
+       
     }
 }

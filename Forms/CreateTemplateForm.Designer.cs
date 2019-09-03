@@ -147,6 +147,7 @@
             this.questionList.Size = new System.Drawing.Size(621, 193);
             this.questionList.TabIndex = 13;
             this.questionList.UseCompatibleStateImageBehavior = false;
+            this.questionList.View = System.Windows.Forms.View.List;
             // 
             // warningLabelName
             // 
@@ -164,7 +165,7 @@
             this.warningLabelEmpty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.warningLabelEmpty.AutoSize = true;
             this.warningLabelEmpty.ForeColor = System.Drawing.Color.Red;
-            this.warningLabelEmpty.Location = new System.Drawing.Point(733, 400);
+            this.warningLabelEmpty.Location = new System.Drawing.Point(715, 400);
             this.warningLabelEmpty.Name = "warningLabelEmpty";
             this.warningLabelEmpty.Size = new System.Drawing.Size(0, 20);
             this.warningLabelEmpty.TabIndex = 15;
