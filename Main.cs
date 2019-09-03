@@ -63,6 +63,13 @@ namespace FormPlugin
             SendForm sendForm = new SendForm();
             sendForm.Show();
         }
+
+        public void test(Office.IRibbonControl control)
+        {
+            CreateData question = new CreateData();
+            CreateTemplateForm create = new CreateTemplateForm(question);
+            create.Show();
+        }
         #region IRibbonExtensibility Members
 
         public string GetCustomUI(string ribbonID)
