@@ -82,7 +82,6 @@
             this.questionTextBox.Name = "questionTextBox";
             this.questionTextBox.Size = new System.Drawing.Size(621, 137);
             this.questionTextBox.TabIndex = 4;
-           
             // 
             // addButton
             // 
@@ -91,7 +90,7 @@
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(101, 56);
             this.addButton.TabIndex = 5;
-            this.addButton.Text = "Add";
+            this.addButton.Text = "Add/Edit";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
@@ -143,7 +142,7 @@
             this.questionList.TabIndex = 13;
             this.questionList.UseCompatibleStateImageBehavior = false;
             this.questionList.View = System.Windows.Forms.View.List;
-            
+            this.questionList.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.QuestionList_ItemSelectionChanged);
             // 
             // warningLabelName
             // 
@@ -175,7 +174,6 @@
             this.deleteTempBut.TabIndex = 16;
             this.deleteTempBut.Text = "Delete Template";
             this.deleteTempBut.UseVisualStyleBackColor = true;
-            
             // 
             // browseButton
             // 

@@ -15,6 +15,9 @@ namespace FormPlugin.Forms
     {
 
         bool czyEdytujemy = false;
+        private bool editSpecificQuestion = false;
+        private int choosenQuestionNumber;
+
         public CreateTemplateForm()
         {
             InitializeComponent();
@@ -130,8 +133,18 @@ namespace FormPlugin.Forms
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            questionList.Items.Add(questionTextBox.Text);
-            questionTextBox.Clear();
+            if(!editSpecificQuestion)
+            {
+
+                questionList.Items.Add(questionTextBox.Text);
+                questionTextBox.Clear();
+            }
+            else
+            {
+                questionList.Items[choosenQuestionNumber].Text= questionTextBox.Text;
+                questionTextBox.Clear();
+                editSpecificQuestion = false;
+            }
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -167,6 +180,13 @@ namespace FormPlugin.Forms
             }
             else
                 MessageBox.Show("First use 'Create Form' button from menu.", "Warning");
+        }
+
+        private void QuestionList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            editSpecificQuestion = true;
+            questionTextBox.Text= e.Item.Text;
+            choosenQuestionNumber = e.ItemIndex;
         }
     }
 }
