@@ -23,9 +23,8 @@ namespace FormPlugin
         }
         public void CreateForm(Office.IRibbonControl control)
         {
-            CreateData question = new CreateData();
-            CreateTemplate createTemaplate = new CreateTemplate(question);
-            createTemaplate.Show();
+            CreateTemplateForm create = new CreateTemplateForm();
+            create.Show();
         }
         public void LoadForm(Office.IRibbonControl control)
         {
@@ -64,11 +63,7 @@ namespace FormPlugin
             sendForm.Show();
         }
 
-        public void test(Office.IRibbonControl control)
-        {
-            CreateTemplateForm create = new CreateTemplateForm();
-            create.Show();
-        }
+     
         #region IRibbonExtensibility Members
 
         public string GetCustomUI(string ribbonID)

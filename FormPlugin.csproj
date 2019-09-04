@@ -161,7 +161,6 @@
   <ItemGroup>
     <Compile Include="Data\CheckMail.cs" />
     <Compile Include="Data\Configuration.cs" />
-    <Compile Include="Data\CreateData.cs" />
     <Compile Include="Data\LoadData.cs" />
     <Compile Include="Data\Tools.cs" />
     <Compile Include="Forms\Check.cs">
@@ -169,12 +168,6 @@
     </Compile>
     <Compile Include="Forms\Check.Designer.cs">
       <DependentUpon>Check.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\CreateTemplate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CreateTemplate.Designer.cs">
-      <DependentUpon>CreateTemplate.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CreateTemplateForm.cs">
       <SubType>Form</SubType>
@@ -200,9 +193,6 @@
     </Compile>
     <EmbeddedResource Include="Forms\Check.resx">
       <DependentUpon>Check.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CreateTemplate.resx">
-      <DependentUpon>CreateTemplate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CreateTemplateForm.resx">
       <DependentUpon>CreateTemplateForm.cs</DependentUpon>
