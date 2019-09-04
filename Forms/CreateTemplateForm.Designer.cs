@@ -32,7 +32,6 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.chooseTemplateLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.questionTextBox = new System.Windows.Forms.TextBox();
             this.addButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,6 +46,9 @@
             this.downButton = new System.Windows.Forms.Button();
             this.deleteQuestionButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
+            this.questionTextBox = new System.Windows.Forms.RichTextBox();
+            this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.fontFormatButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -78,14 +80,6 @@
             this.label2.Size = new System.Drawing.Size(284, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "Write question and press \"Add\" button.";
-            // 
-            // questionTextBox
-            // 
-            this.questionTextBox.Location = new System.Drawing.Point(16, 104);
-            this.questionTextBox.Multiline = true;
-            this.questionTextBox.Name = "questionTextBox";
-            this.questionTextBox.Size = new System.Drawing.Size(621, 137);
-            this.questionTextBox.TabIndex = 4;
             // 
             // addButton
             // 
@@ -234,11 +228,35 @@
             this.editButton.UseVisualStyleBackColor = true;
             this.editButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
+            // questionTextBox
+            // 
+            this.questionTextBox.Location = new System.Drawing.Point(16, 104);
+            this.questionTextBox.Name = "questionTextBox";
+            this.questionTextBox.Size = new System.Drawing.Size(621, 137);
+            this.questionTextBox.TabIndex = 23;
+            this.questionTextBox.Text = "\n";
+            // 
+            // fontDialog1
+            // 
+            this.fontDialog1.Apply += new System.EventHandler(this.FontDialog1_Apply);
+            // 
+            // fontFormatButton
+            // 
+            this.fontFormatButton.Location = new System.Drawing.Point(319, 68);
+            this.fontFormatButton.Name = "fontFormatButton";
+            this.fontFormatButton.Size = new System.Drawing.Size(123, 30);
+            this.fontFormatButton.TabIndex = 24;
+            this.fontFormatButton.Text = "Font Format";
+            this.fontFormatButton.UseVisualStyleBackColor = true;
+            this.fontFormatButton.Click += new System.EventHandler(this.FontFormatButton_Click);
+            // 
             // CreateTemplateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(853, 558);
+            this.Controls.Add(this.fontFormatButton);
+            this.Controls.Add(this.questionTextBox);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.downButton);
             this.Controls.Add(this.upButton);
@@ -253,7 +271,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.addButton);
-            this.Controls.Add(this.questionTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.chooseTemplateLabel);
             this.Controls.Add(this.comboBox1);
@@ -272,7 +289,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label chooseTemplateLabel;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox questionTextBox;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Label label3;
@@ -287,5 +303,8 @@
         private System.Windows.Forms.Button downButton;
         private System.Windows.Forms.Button deleteQuestionButton;
         private System.Windows.Forms.Button editButton;
+        private System.Windows.Forms.RichTextBox questionTextBox;
+        private System.Windows.Forms.FontDialog fontDialog1;
+        private System.Windows.Forms.Button fontFormatButton;
     }
 }

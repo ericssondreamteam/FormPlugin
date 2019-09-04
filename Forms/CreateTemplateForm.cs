@@ -252,5 +252,22 @@ namespace FormPlugin.Forms
             questionList.Items[choosenQuestionNumber] = questionTextBox.Text;
             questionTextBox.Clear();
         }
+
+        private void FontDialog1_Apply(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FontFormatButton_Click(object sender, EventArgs e)
+        {
+            FontDialog font = new FontDialog();
+            if(font.ShowDialog()==DialogResult.OK)
+            {
+                questionTextBox.SelectionFont = font.Font;
+                questionTextBox.SelectionColor = font.Color;
+               // questionTextBox.Selection
+            }
+            
+        }
     }
 }
