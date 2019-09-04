@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateTemplateForm));
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.chooseTemplateLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -256,9 +257,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.chooseTemplateLabel);
             this.Controls.Add(this.comboBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(875, 614);
             this.Name = "CreateTemplateForm";
-            this.Text = "s";
+            this.Text = "Create or Edit";
             this.SizeChanged += new System.EventHandler(this.ResizeEvent);
             this.ResumeLayout(false);
             this.PerformLayout();
