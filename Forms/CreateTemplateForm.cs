@@ -81,9 +81,12 @@ namespace FormPlugin.Forms
             int questionCounter = 1;
             foreach (object anItem in questionList.Items)
             {
+                //body.Append(ParseRtfToHTML(questionCounter,anItem.ToString());
                 body.Append("<strong>" + questionCounter + ". " + anItem.ToString() + "<strong>" + "<BR><BR><BR>");
                 questionCounter++;
-            }         
+            }
+            //<h1 style=\"color: red; font - size:40px; \">Heading</h1>
+            body.Append("</body></html>");
             return body.ToString();
         }
 
@@ -141,7 +144,7 @@ namespace FormPlugin.Forms
         {
             if(!czyEdytujemy || (czyEdytujemy && templateZaladowany))
             {               
-                    questionList.Items.Add(questionTextBox.Text);
+                    questionList.Items.Add(questionTextBox.Rtf);
                     questionTextBox.Clear();         
             }
             else if(czyEdytujemy == true && templateZaladowany == false)
@@ -243,13 +246,13 @@ namespace FormPlugin.Forms
         {
             //editSpecificQuestion = true;
             questionTextBox.Text = e.ToString();
-            questionTextBox.Text=questionList.GetItemText(questionList.SelectedItem);
+            questionTextBox.Text = questionList.GetItemText(questionList.SelectedItem);
             choosenQuestionNumber = questionList.SelectedIndex;
         }
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            questionList.Items[choosenQuestionNumber] = questionTextBox.Text;
+            questionList.Items[choosenQuestionNumber] = questionTextBox.Rtf;
             questionTextBox.Clear();
         }
 
@@ -261,12 +264,12 @@ namespace FormPlugin.Forms
         private void FontFormatButton_Click(object sender, EventArgs e)
         {
             FontDialog font = new FontDialog();
+            font.ShowColor = true;
             if(font.ShowDialog()==DialogResult.OK)
             {
                 questionTextBox.SelectionFont = font.Font;
                 questionTextBox.SelectionColor = font.Color;
-               // questionTextBox.Selection
-            }
+            }       
             
         }
     }

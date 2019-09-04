@@ -96,5 +96,22 @@ namespace FormPlugin.Data
 
             return answer;
         }
+
+        static public string ParseRtfToHTML(int questionCounter, string anItem)
+        {
+            StringBuilder body = new StringBuilder();
+            body.Append("<div style >");
+
+            return body.ToString();
+        }
+        class FontProperties
+        {
+            public int size;
+            public string color;
+            public bool isItalic;
+            public bool isBold;
+            public string fontName;
+
+        }
     }  
 } 
