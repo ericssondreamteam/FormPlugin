@@ -2,6 +2,7 @@
 using FormPlugin.Forms;
 using Microsoft.Office.Interop.Outlook;
 using System;
+using System.Collections;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -16,6 +17,8 @@ namespace FormPlugin
     {
         private Office.IRibbonUI ribbon;
         private static int counter = 0;
+        private static bool checkIfFitToTemplate = false;
+        private static bool checkIfTemplateWasSend = false;
 
         public Main()
         {
@@ -66,24 +69,28 @@ namespace FormPlugin
 
         public void CheckConversation(Office.IRibbonControl control)
         {
-            MessageBox.Show("Conversation", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             int counter = 0;
             foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
             {
+                //DZIAŁA MIMO IŻ NIE POWINNO XD
                 if (counter == 0)
+                {
                     check(email);
+                    automaticReply();
+                } 
                 else
-                    break;
+                    MessageBox.Show("You choose more than one mail", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 counter++;
             }
             Main.counter = 0;
+            checkIfFitToTemplate = false;
         }
 
         private void check(MailItem newEmail)
         {
             Conversation conv = newEmail.GetConversation();
             SimpleItems simpleItems = conv.GetRootItems();
-            //int counter = 0;
+            bool isTemplate = false;
 
             foreach (object item in simpleItems)
             {
@@ -96,7 +103,14 @@ namespace FormPlugin
                         bool checkTemplate = checkTemplateConversation(mail);
                         Folder inFolder = mail.Parent as Folder;
                         string msg = mail.Subject + " in folder " + inFolder.Name + " Sender: " + mail.SenderName + " Date: " + mail.ReceivedTime;
-                        MessageBox.Show(counter + ". " + msg + "\nCHECK: " + checkTemplate);
+                        if (checkIfTemplateWasSend)
+                            isTemplate = true;
+
+                        MessageBox.Show(counter + ". " + msg +
+                            "\nTemplate was sent: " + isTemplate +
+                            "\nTemplate was filled: " + checkTemplate);
+                        if (checkTemplate)
+                            checkIfFitToTemplate = checkTemplate;
                     }
                     EnumerateConversation(item, conv);
                 }
@@ -110,6 +124,7 @@ namespace FormPlugin
         private void EnumerateConversation(object item, Conversation conversation)
         {
             SimpleItems items = conversation.GetChildren(item);
+            bool isTemplate = false;
             if (items.Count > 0)
             {
                 foreach (object myItem in items)
@@ -121,7 +136,14 @@ namespace FormPlugin
                         bool checkTemplate = checkTemplateConversation(mailItem);
                         Folder inFolder = mailItem.Parent as Folder;
                         string msg = mailItem.Subject + " in folder " + inFolder.Name + " Sender: " + mailItem.SenderName + " Date: " + mailItem.ReceivedTime;
-                        MessageBox.Show(counter + ". " + msg + "\nCHECK: " + checkTemplate);
+                        if (checkIfTemplateWasSend)
+                            isTemplate = true;
+
+                        MessageBox.Show(counter + ". " + msg +
+                            "\nTemplate was sent: " + isTemplate +
+                            "\nTemplate was filled: " + checkTemplate);
+                        if (checkTemplate)
+                            checkIfFitToTemplate = checkTemplate;
                     }
                     EnumerateConversation(myItem, conversation);
                 }
@@ -142,6 +164,14 @@ namespace FormPlugin
                     {
                         anyTemplateSuits = true;
                     }
+                    if(check.checkIfThereIsATemplate())
+                    {
+                        checkIfTemplateWasSend = true;
+                    }
+/*                    else
+                    {
+                        checkIfTemplateWasSend = false;
+                    }*/
                 }
                 if (!anyTemplateSuits)
                 {
@@ -150,6 +180,19 @@ namespace FormPlugin
                 return anyTemplateSuits;
             }
             return false;
+        }
+
+        private void automaticReply()
+        {
+            if (checkIfFitToTemplate || Main.counter < 2 || !checkIfTemplateWasSend)
+            {
+                MessageBox.Show("NIE ODSYŁAMY :)" +
+                    "\nTemplateWasSend: " + checkIfTemplateWasSend +
+                    "\nTemplateFilled: " + checkIfFitToTemplate + 
+                    "\nCountMails: " + Main.counter);
+            }
+            else if (!checkIfFitToTemplate && checkIfTemplateWasSend)
+                MessageBox.Show("ODSYŁAMY automatycznie");
         }
 
 
