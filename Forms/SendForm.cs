@@ -7,6 +7,8 @@ using FormPlugin.Data;
 using System.IO;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Outlook;
+using Outlook = Microsoft.Office.Interop.Outlook;
+using Microsoft.Office.Interop.Outlook;
 namespace FormPlugin.Forms
 {
     public partial class SendForm : Form
@@ -72,7 +74,26 @@ namespace FormPlugin.Forms
             {
                 foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
                 {
-                    loadData.sendMail("RE: " + email.Subject, email.ReplyAll().To);
+                    Outlook.Application oApp = new Outlook.Application();
+                    MailItem emailToReply = oApp.CreateItemFromTemplate(loadData.getPathFile()) as Outlook.MailItem;
+                    emailToReply.Subject = "RE: " + email.Subject;
+                    emailToReply.To = email.ReplyAll().To;
+                    //emailToReply = email.Reply();
+                    //emailToReply.Display(true);
+                    //loadData.sendMail("RE: " + email.Subject, email.ReplyAll().To);
+                    //Outlook.MailItem mail = (Outlook.MailItem)Item;
+                    if (email != null)
+                    {
+                        Outlook.MailItem replyMail = email.Reply();
+
+                        //MessageBox.Show(replyMail.HTMLBody);
+                        //replyMail.BodyHtml = ;
+                        replyMail.HTMLBody = emailToReply.HTMLBody + replyMail.HTMLBody;
+                        //replyMail.Body += emailToReply.Body; 
+                        replyMail.To = email.ReplyAll().To;
+                        replyMail.Display(true);
+                        //replyMail.Display(true);
+                    }
                 }
                 Close();
             }
