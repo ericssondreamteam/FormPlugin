@@ -183,50 +183,6 @@ namespace FormPlugin.Forms
                 MessageBox.Show("First use 'Create Form' button from menu.", "Warning");
         }
 
-
-        private void Button1_Click_1(object sender, EventArgs e)
-        {
-            if(questionList.SelectedIndex == -1)
-            {
-                MessageBox.Show("Select item to move up or down", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                int newIndex = questionList.SelectedIndex - 1;
-
-                if (newIndex < 0)
-                    return;
-
-                object selectedItem = questionList.SelectedItem;
-
-                questionList.Items.Remove(selectedItem);
-                questionList.Items.Insert(newIndex, selectedItem);
-                questionList.SetSelected(newIndex, true);
-            }
-        }
-
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            if (questionList.SelectedIndex == -1)
-            {
-                MessageBox.Show("Select item to move up or down", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                int newIndex = questionList.SelectedIndex + 1;
-
-                if (newIndex > questionList.Items.Count - 1)
-                    return;
-
-                object selectedItem = questionList.SelectedItem;
-
-                questionList.Items.Remove(selectedItem);
-                questionList.Items.Insert(newIndex, selectedItem);
-                questionList.SetSelected(newIndex, true);
-            }
-        }
-
-
         private void DeleteQuestionButton_Click(object sender, EventArgs e)
         {
             if(questionList.SelectedItems!=null)
@@ -268,6 +224,48 @@ namespace FormPlugin.Forms
                // questionTextBox.Selection
             }
             
+        }
+
+        private void UpButton_Click(object sender, EventArgs e)
+        {
+            if (questionList.SelectedIndex == -1)
+            {
+                MessageBox.Show("Select item to move up or down", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                int newIndex = questionList.SelectedIndex - 1;
+
+                if (newIndex < 0)
+                    return;
+
+                object selectedItem = questionList.SelectedItem;
+
+                questionList.Items.Remove(selectedItem);
+                questionList.Items.Insert(newIndex, selectedItem);
+                questionList.SetSelected(newIndex, true);
+            }
+        }
+
+        private void DownButton_Click(object sender, EventArgs e)
+        {
+            if (questionList.SelectedIndex == -1)
+            {
+                MessageBox.Show("Select item to move up or down", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                int newIndex = questionList.SelectedIndex + 1;
+
+                if (newIndex > questionList.Items.Count - 1)
+                    return;
+
+                object selectedItem = questionList.SelectedItem;
+
+                questionList.Items.Remove(selectedItem);
+                questionList.Items.Insert(newIndex, selectedItem);
+                questionList.SetSelected(newIndex, true);
+            }
         }
     }
 }

@@ -42,13 +42,15 @@
             this.browseButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.questionList = new System.Windows.Forms.ListBox();
-            this.upButton = new System.Windows.Forms.Button();
-            this.downButton = new System.Windows.Forms.Button();
             this.deleteQuestionButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
             this.questionTextBox = new System.Windows.Forms.RichTextBox();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.fontFormatButton = new System.Windows.Forms.Button();
+            this.upButton = new System.Windows.Forms.PictureBox();
+            this.downButton = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.upButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.downButton)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -182,30 +184,6 @@
             this.questionList.TabIndex = 19;
             this.questionList.SelectedIndexChanged += new System.EventHandler(this.QuestionList_SelectedIndexChanged);
             // 
-            // upButton
-            // 
-            this.upButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.upButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.upButton.Location = new System.Drawing.Point(655, 355);
-            this.upButton.Name = "upButton";
-            this.upButton.Size = new System.Drawing.Size(60, 39);
-            this.upButton.TabIndex = 20;
-            this.upButton.Text = "UP";
-            this.upButton.UseVisualStyleBackColor = true;
-            this.upButton.Click += new System.EventHandler(this.Button1_Click_1);
-            // 
-            // downButton
-            // 
-            this.downButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.downButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.downButton.Location = new System.Drawing.Point(655, 400);
-            this.downButton.Name = "downButton";
-            this.downButton.Size = new System.Drawing.Size(60, 39);
-            this.downButton.TabIndex = 21;
-            this.downButton.Text = "Down";
-            this.downButton.UseVisualStyleBackColor = true;
-            this.downButton.Click += new System.EventHandler(this.Button2_Click);
-            // 
             // deleteQuestionButton
             // 
             this.deleteQuestionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -250,16 +228,38 @@
             this.fontFormatButton.UseVisualStyleBackColor = true;
             this.fontFormatButton.Click += new System.EventHandler(this.FontFormatButton_Click);
             // 
+            // upButton
+            // 
+            this.upButton.Image = ((System.Drawing.Image)(resources.GetObject("upButton.Image")));
+            this.upButton.Location = new System.Drawing.Point(643, 322);
+            this.upButton.Name = "upButton";
+            this.upButton.Size = new System.Drawing.Size(60, 56);
+            this.upButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.upButton.TabIndex = 25;
+            this.upButton.TabStop = false;
+            this.upButton.Click += new System.EventHandler(this.UpButton_Click);
+            // 
+            // downButton
+            // 
+            this.downButton.Image = ((System.Drawing.Image)(resources.GetObject("downButton.Image")));
+            this.downButton.Location = new System.Drawing.Point(643, 400);
+            this.downButton.Name = "downButton";
+            this.downButton.Size = new System.Drawing.Size(60, 56);
+            this.downButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.downButton.TabIndex = 26;
+            this.downButton.TabStop = false;
+            this.downButton.Click += new System.EventHandler(this.DownButton_Click);
+            // 
             // CreateTemplateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(853, 558);
+            this.Controls.Add(this.downButton);
+            this.Controls.Add(this.upButton);
             this.Controls.Add(this.fontFormatButton);
             this.Controls.Add(this.questionTextBox);
             this.Controls.Add(this.editButton);
-            this.Controls.Add(this.downButton);
-            this.Controls.Add(this.upButton);
             this.Controls.Add(this.questionList);
             this.Controls.Add(this.deleteQuestionButton);
             this.Controls.Add(this.label1);
@@ -279,6 +279,8 @@
             this.Name = "CreateTemplateForm";
             this.Text = "Create or Edit";
             this.SizeChanged += new System.EventHandler(this.ResizeEvent);
+            ((System.ComponentModel.ISupportInitialize)(this.upButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.downButton)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -299,12 +301,12 @@
         private System.Windows.Forms.Button browseButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox questionList;
-        private System.Windows.Forms.Button upButton;
-        private System.Windows.Forms.Button downButton;
         private System.Windows.Forms.Button deleteQuestionButton;
         private System.Windows.Forms.Button editButton;
         private System.Windows.Forms.RichTextBox questionTextBox;
         private System.Windows.Forms.FontDialog fontDialog1;
         private System.Windows.Forms.Button fontFormatButton;
+        private System.Windows.Forms.PictureBox upButton;
+        private System.Windows.Forms.PictureBox downButton;
     }
 }
