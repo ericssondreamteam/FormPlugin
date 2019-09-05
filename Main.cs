@@ -15,6 +15,7 @@ namespace FormPlugin
     public class Main : Office.IRibbonExtensibility
     {
         private Office.IRibbonUI ribbon;
+        private static int counter = 0;
 
         public Main()
         {
@@ -63,7 +64,95 @@ namespace FormPlugin
             sendForm.Show();
         }
 
-     
+        public void CheckConversation(Office.IRibbonControl control)
+        {
+            MessageBox.Show("Conversation", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            int counter = 0;
+            foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
+            {
+                if (counter == 0)
+                    check(email);
+                else
+                    break;
+                counter++;
+            }
+            Main.counter = 0;
+        }
+
+        private void check(MailItem newEmail)
+        {
+            Conversation conv = newEmail.GetConversation();
+            SimpleItems simpleItems = conv.GetRootItems();
+            //int counter = 0;
+
+            foreach (object item in simpleItems)
+            {
+                try
+                {
+                    if (item is MailItem)
+                    {
+                        Main.counter++;
+                        MailItem mail = item as MailItem;
+                        bool checkTemplate = checkTemplateConversation(mail);
+                        Folder inFolder = mail.Parent as Folder;
+                        string msg = mail.Subject + " in folder " + inFolder.Name + " Sender: " + mail.SenderName + " Date: " + mail.ReceivedTime;
+                        MessageBox.Show(counter + ". " + msg + "\nCHECK: " + checkTemplate);
+                    }
+                    EnumerateConversation(item, conv);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+            }
+        }
+
+        private void EnumerateConversation(object item, Conversation conversation)
+        {
+            SimpleItems items = conversation.GetChildren(item);
+            if (items.Count > 0)
+            {
+                foreach (object myItem in items)
+                {
+                    if (myItem is MailItem)
+                    {
+                        Main.counter++;
+                        MailItem mailItem = myItem as MailItem;
+                        bool checkTemplate = checkTemplateConversation(mailItem);
+                        Folder inFolder = mailItem.Parent as Folder;
+                        string msg = mailItem.Subject + " in folder " + inFolder.Name + " Sender: " + mailItem.SenderName + " Date: " + mailItem.ReceivedTime;
+                        MessageBox.Show(counter + ". " + msg + "\nCHECK: " + checkTemplate);
+                    }
+                    EnumerateConversation(myItem, conversation);
+                }
+            }
+        }
+
+        private bool checkTemplateConversation(MailItem mail)
+        {
+            if (Directory.Exists(Configuration.pathFileTemplate))
+            {
+                string[] filePaths = Directory.GetFiles(Configuration.pathFileTemplate, "*.oft");
+                CheckMail check = new CheckMail(mail);
+                bool anyTemplateSuits = false;
+                foreach (string s in filePaths)
+                {
+                    check.setFilePath(s);
+                    if (check.CreateItemFromTemplateAndCheck())
+                    {
+                        anyTemplateSuits = true;
+                    }
+                }
+                if (!anyTemplateSuits)
+                {
+                    anyTemplateSuits = false;
+                }
+                return anyTemplateSuits;
+            }
+            return false;
+        }
+
+
         #region IRibbonExtensibility Members
 
         public string GetCustomUI(string ribbonID)
