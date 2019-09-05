@@ -278,9 +278,10 @@
             this.MinimumSize = new System.Drawing.Size(875, 614);
             this.Name = "CreateTemplateForm";
             this.Text = "Create or Edit";
-            this.SizeChanged += new System.EventHandler(this.ResizeEvent);
             ((System.ComponentModel.ISupportInitialize)(this.upButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.downButton)).EndInit();
+            this.SizeChanged += new System.EventHandler(this.ResizeEvent);
+            
             this.ResumeLayout(false);
             this.PerformLayout();
 

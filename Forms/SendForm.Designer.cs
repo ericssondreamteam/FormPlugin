@@ -33,6 +33,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.allReceivers = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -84,11 +85,20 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
+            // allReceivers
+            // 
+            this.allReceivers.AutoSize = true;
+            this.allReceivers.Location = new System.Drawing.Point(160, 262);
+            this.allReceivers.Name = "allReceivers";
+            this.allReceivers.Size = new System.Drawing.Size(0, 20);
+            this.allReceivers.TabIndex = 6;
+            // 
             // SendForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(474, 294);
+            this.ClientSize = new System.Drawing.Size(474, 430);
+            this.Controls.Add(this.allReceivers);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -108,5 +118,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label allReceivers;
     }
 }
