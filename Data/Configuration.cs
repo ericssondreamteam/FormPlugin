@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using System.Windows.Forms;
 
 namespace FormPlugin.Data
 {
@@ -10,32 +11,20 @@ namespace FormPlugin.Data
         private static string configFilePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\Microsoft\\Outlook";
         private static string confFileName = "\\FormPluginConfiguration.txt";
         public static string ContorlMailFolder { get; set; }
-        /*                                UŻYCIE
-         static void Config()
-        {
-            if(Configuration.LoadConfiguration())
-            {
-                //super... niech się dzieje zawsze w tle i tyle
-                Console.WriteLine("Load Conf");
-            }
-            else
-            {
-                //nie mamy zapisanej konfiguracji - właściwie to pierwsze uruchomienie
-                //wycztaj pierwszą konfigurację jakisForm
-                //zapisz ją do pliku
-                Configuration.ContorlMailFolder = "NC MailBox";
-                Configuration.SaveConfiguration();
-                Console.WriteLine("Save Conf");
-            }
-        }
-             */
+        public static string FolderStoreID { get; set; }
+        public static string FolderEntryID { get; set; }
+                                      
+        
+             
 
         public static void SaveConfiguration()
         {
             if (Directory.Exists(configFilePath))
                 Directory.CreateDirectory(configFilePath);
             StringBuilder settings = new StringBuilder();
-            settings.Append(ContorlMailFolder);
+            settings.Append(ContorlMailFolder+"\n");
+            settings.Append(FolderStoreID + "\n");
+            settings.Append(FolderEntryID + "\n");
             if (!File.Exists(configFilePath + confFileName))
                 File.Create(configFilePath + confFileName).Close();
             File.WriteAllText(configFilePath + confFileName, settings.ToString());
@@ -51,12 +40,17 @@ namespace FormPlugin.Data
             if (File.Exists(configFilePath + confFileName))
             {
                 //set all settings
-                string line;
+                
                 StreamReader file = new StreamReader(configFilePath + confFileName);
-                while ((line = file.ReadLine()) != null)
+                try {
+                    ContorlMailFolder = file.ReadLine();
+                    FolderStoreID = file.ReadLine();
+                    FolderEntryID = file.ReadLine();
+                }catch(Exception e)
                 {
-                    ContorlMailFolder = line;
+                    MessageBox.Show("Zla konfiguracja:\n" + e.Message);
                 }
+                
                 file.Close();
                 ifConfExist = true;
                 return ifConfExist;
