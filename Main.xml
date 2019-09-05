@@ -17,6 +17,9 @@
           <button id="defaultReplayButton" label="Defult Replay"
                screentip="Resend custom-email tamplate to customer" onAction="DefultReplay"
                supertip="Resend XD."/>
+          <button id="checkConversation" label="Check Conversation"
+               screentip="Resend custom-email tamplate to customer" onAction="CheckConversation"
+               supertip="Resend XD."/>
           
         </group>
       </tab>

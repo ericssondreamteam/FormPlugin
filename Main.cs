@@ -63,7 +63,12 @@ namespace FormPlugin
             sendForm.Show();
         }
 
-     
+        public void CheckConversation(Office.IRibbonControl control)
+        {
+            MessageBox.Show("Conversation", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+
         #region IRibbonExtensibility Members
 
         public string GetCustomUI(string ribbonID)
