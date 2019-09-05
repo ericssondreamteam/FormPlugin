@@ -230,8 +230,9 @@
             // 
             // upButton
             // 
+            this.upButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.upButton.Image = ((System.Drawing.Image)(resources.GetObject("upButton.Image")));
-            this.upButton.Location = new System.Drawing.Point(643, 322);
+            this.upButton.Location = new System.Drawing.Point(655, 322);
             this.upButton.Name = "upButton";
             this.upButton.Size = new System.Drawing.Size(60, 56);
             this.upButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -241,8 +242,9 @@
             // 
             // downButton
             // 
+            this.downButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.downButton.Image = ((System.Drawing.Image)(resources.GetObject("downButton.Image")));
-            this.downButton.Location = new System.Drawing.Point(643, 400);
+            this.downButton.Location = new System.Drawing.Point(655, 400);
             this.downButton.Name = "downButton";
             this.downButton.Size = new System.Drawing.Size(60, 56);
             this.downButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -278,10 +280,9 @@
             this.MinimumSize = new System.Drawing.Size(875, 614);
             this.Name = "CreateTemplateForm";
             this.Text = "Create or Edit";
+            this.SizeChanged += new System.EventHandler(this.ResizeEvent);
             ((System.ComponentModel.ISupportInitialize)(this.upButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.downButton)).EndInit();
-            this.SizeChanged += new System.EventHandler(this.ResizeEvent);
-            
             this.ResumeLayout(false);
             this.PerformLayout();
 
