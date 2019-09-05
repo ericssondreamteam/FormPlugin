@@ -19,6 +19,7 @@ namespace FormPlugin
         private static int counter = 0;
         private static bool checkIfFitToTemplate = false;
         private static bool checkIfTemplateWasSend = false;
+        private static String pathForTemplate = null;
 
         public Main()
         {
@@ -75,8 +76,16 @@ namespace FormPlugin
                 //DZIAŁA MIMO IŻ NIE POWINNO XD
                 if (counter == 0)
                 {
-                    check(email);
-                    automaticReply();
+                    if(email != null)
+                    {
+                        check(email);
+                        automaticReply(email);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Mail jest null XD", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    
                 } 
                 else
                     MessageBox.Show("You choose more than one mail", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -84,6 +93,7 @@ namespace FormPlugin
             }
             Main.counter = 0;
             checkIfFitToTemplate = false;
+            checkIfTemplateWasSend = false;
         }
 
         private void check(MailItem newEmail)
@@ -167,11 +177,8 @@ namespace FormPlugin
                     if(check.checkIfThereIsATemplate())
                     {
                         checkIfTemplateWasSend = true;
+                        pathForTemplate = s;
                     }
-/*                    else
-                    {
-                        checkIfTemplateWasSend = false;
-                    }*/
                 }
                 if (!anyTemplateSuits)
                 {
@@ -182,17 +189,26 @@ namespace FormPlugin
             return false;
         }
 
-        private void automaticReply()
+        private void automaticReply(MailItem email)
         {
-            if (checkIfFitToTemplate || Main.counter < 2 || !checkIfTemplateWasSend)
+            if (checkIfFitToTemplate || !checkIfTemplateWasSend)
             {
                 MessageBox.Show("NIE ODSYŁAMY :)" +
                     "\nTemplateWasSend: " + checkIfTemplateWasSend +
-                    "\nTemplateFilled: " + checkIfFitToTemplate + 
-                    "\nCountMails: " + Main.counter);
+                    "\nTemplateFilled: " + checkIfFitToTemplate);
             }
             else if (!checkIfFitToTemplate && checkIfTemplateWasSend)
+            {
                 MessageBox.Show("ODSYŁAMY automatycznie");
+                DialogResult result = MessageBox.Show("Do you want to send template once again? \n" + email.Subject + ",\n " + email.ReplyAll().To, "Confirmation", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    //JEZELI PAWEŁ ZMIENI to trzeba zmienic sposob odpowiadania
+                    LoadData loadData = new LoadData();
+                    loadData.setPathFile(pathForTemplate);
+                    loadData.sendMail("RE: " + email.Subject, email.ReplyAll().To);
+                }
+            }                
         }
 
 
