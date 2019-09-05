@@ -15,6 +15,7 @@ namespace FormPlugin
     public class Main : Office.IRibbonExtensibility
     {
         private Office.IRibbonUI ribbon;
+        private static int counter = 0;
 
         public Main()
         {
@@ -75,13 +76,14 @@ namespace FormPlugin
                     break;
                 counter++;
             }
+            Main.counter = 0;
         }
 
         private void check(MailItem newEmail)
         {
             Conversation conv = newEmail.GetConversation();
             SimpleItems simpleItems = conv.GetRootItems();
-            int counter = 0;
+            //int counter = 0;
 
             foreach (object item in simpleItems)
             {
@@ -89,13 +91,14 @@ namespace FormPlugin
                 {
                     if (item is MailItem)
                     {
-                        counter++;
+                        Main.counter++;
                         MailItem mail = item as MailItem;
+                        bool checkTemplate = checkTemplateConversation(mail);
                         Folder inFolder = mail.Parent as Folder;
                         string msg = mail.Subject + " in folder " + inFolder.Name + " Sender: " + mail.SenderName + " Date: " + mail.ReceivedTime;
-                        MessageBox.Show(counter + ". " + msg);
+                        MessageBox.Show(counter + ". " + msg + "\nCHECK: " + checkTemplate);
                     }
-                    EnumerateConversation(item, conv, counter);
+                    EnumerateConversation(item, conv);
                 }
                 catch (Exception e)
                 {
@@ -104,9 +107,8 @@ namespace FormPlugin
             }
         }
 
-        private void EnumerateConversation(object item, Conversation conversation, int counter)
+        private void EnumerateConversation(object item, Conversation conversation)
         {
-            int i = counter;
             SimpleItems items = conversation.GetChildren(item);
             if (items.Count > 0)
             {
@@ -114,15 +116,40 @@ namespace FormPlugin
                 {
                     if (myItem is MailItem)
                     {
-                        i++;
+                        Main.counter++;
                         MailItem mailItem = myItem as MailItem;
+                        bool checkTemplate = checkTemplateConversation(mailItem);
                         Folder inFolder = mailItem.Parent as Folder;
                         string msg = mailItem.Subject + " in folder " + inFolder.Name + " Sender: " + mailItem.SenderName + " Date: " + mailItem.ReceivedTime;
-                        MessageBox.Show(i + ". " + msg);
+                        MessageBox.Show(counter + ". " + msg + "\nCHECK: " + checkTemplate);
                     }
-                    EnumerateConversation(myItem, conversation, i);
+                    EnumerateConversation(myItem, conversation);
                 }
             }
+        }
+
+        private bool checkTemplateConversation(MailItem mail)
+        {
+            if (Directory.Exists(Configuration.pathFileTemplate))
+            {
+                string[] filePaths = Directory.GetFiles(Configuration.pathFileTemplate, "*.oft");
+                CheckMail check = new CheckMail(mail);
+                bool anyTemplateSuits = false;
+                foreach (string s in filePaths)
+                {
+                    check.setFilePath(s);
+                    if (check.CreateItemFromTemplateAndCheck())
+                    {
+                        anyTemplateSuits = true;
+                    }
+                }
+                if (!anyTemplateSuits)
+                {
+                    anyTemplateSuits = false;
+                }
+                return anyTemplateSuits;
+            }
+            return false;
         }
 
 
