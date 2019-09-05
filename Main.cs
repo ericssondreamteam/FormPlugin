@@ -203,6 +203,7 @@ namespace FormPlugin
                 DialogResult result = MessageBox.Show("Do you want to send template once again? \n" + email.Subject + ",\n " + email.ReplyAll().To, "Confirmation", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
+                    //JEZELI PAWEŁ ZMIENI to trzeba zmienic sposob odpowiadania
                     LoadData loadData = new LoadData();
                     loadData.setPathFile(pathForTemplate);
                     loadData.sendMail("RE: " + email.Subject, email.ReplyAll().To);
