@@ -66,6 +66,63 @@ namespace FormPlugin
         public void CheckConversation(Office.IRibbonControl control)
         {
             MessageBox.Show("Conversation", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            int counter = 0;
+            foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
+            {
+                if (counter == 0)
+                    check(email);
+                else
+                    break;
+                counter++;
+            }
+        }
+
+        private void check(MailItem newEmail)
+        {
+            Conversation conv = newEmail.GetConversation();
+            SimpleItems simpleItems = conv.GetRootItems();
+            int counter = 0;
+
+            foreach (object item in simpleItems)
+            {
+                try
+                {
+                    if (item is MailItem)
+                    {
+                        counter++;
+                        MailItem mail = item as MailItem;
+                        Folder inFolder = mail.Parent as Folder;
+                        string msg = mail.Subject + " in folder " + inFolder.Name + " Sender: " + mail.SenderName + " Date: " + mail.ReceivedTime;
+                        MessageBox.Show(counter + ". " + msg);
+                    }
+                    EnumerateConversation(item, conv, counter);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+            }
+        }
+
+        private void EnumerateConversation(object item, Conversation conversation, int counter)
+        {
+            int i = counter;
+            SimpleItems items = conversation.GetChildren(item);
+            if (items.Count > 0)
+            {
+                foreach (object myItem in items)
+                {
+                    if (myItem is MailItem)
+                    {
+                        i++;
+                        MailItem mailItem = myItem as MailItem;
+                        Folder inFolder = mailItem.Parent as Folder;
+                        string msg = mailItem.Subject + " in folder " + inFolder.Name + " Sender: " + mailItem.SenderName + " Date: " + mailItem.ReceivedTime;
+                        MessageBox.Show(i + ". " + msg);
+                    }
+                    EnumerateConversation(myItem, conversation, i);
+                }
+            }
         }
 
 
