@@ -54,6 +54,29 @@ namespace FormPlugin
             filePath = path;
         }
 
+        public bool checkIfThereIsATemplate()
+        {
+            OlDefaultFolders defaultFolder = OlDefaultFolders.olFolderDrafts;
+            Application app = new Application();
+            Folder folder = app.Session.GetDefaultFolder(defaultFolder) as Folder;
+            MailItem mail = app.CreateItemFromTemplate(filePath, folder) as MailItem;
+            List<string> templateLines, receviedMailLines;
+            string body = mailItem.Body;
+            string templateBody = mail.Body;
+            receviedMailLines = Tools.getEmailLineByLine(body);
+            templateLines = Tools.getEmailLineByLine(templateBody);
+            bool conteinsAllTemplateLine = true;
+            foreach (string s in templateLines)
+            {
+                if (!body.Contains(s))
+                {
+                    conteinsAllTemplateLine = false;
+                    return conteinsAllTemplateLine;
+                }
+            }
+            return conteinsAllTemplateLine;
+        }
+
 
     }
 }
