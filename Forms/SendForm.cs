@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using FormPlugin.Data;
 using System.IO;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Outlook;
 using Outlook = Microsoft.Office.Interop.Outlook;
-using Microsoft.Office.Interop.Outlook;
 namespace FormPlugin.Forms
 {
     public partial class SendForm : Form
@@ -39,11 +34,11 @@ namespace FormPlugin.Forms
                 if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     string path = openFileDialog.FileName;
-                    loadData.setPathFile(path);
+                    loadData.SetPathFile(path);
                     checkTemplate = true;
                     button3.Text = openFileDialog.SafeFileName + " is choosen";
 
-                    allReceivers.Text = Tools.showAllReceivers();
+                    allReceivers.Text = Tools.ShowAllReceivers();
                 }
             }
             else
@@ -62,7 +57,7 @@ namespace FormPlugin.Forms
                 foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
                 {
                     Outlook.Application oApp = new Outlook.Application();
-                    MailItem emailToReply = oApp.CreateItemFromTemplate(loadData.getPathFile()) as Outlook.MailItem;
+                    MailItem emailToReply = oApp.CreateItemFromTemplate(loadData.GetPathFile()) as Outlook.MailItem;
                     emailToReply.Subject = "RE: " + email.Subject;
                     emailToReply.To = email.ReplyAll().To;
                     //emailToReply = email.Reply();

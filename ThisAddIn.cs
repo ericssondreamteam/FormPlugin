@@ -16,13 +16,11 @@ namespace FormPlugin
         {
             zmiennaDoSettinngs = Application;
             outlookNameSpace = Application.GetNamespace("MAPI");
-            inbox = outlookNameSpace.GetDefaultFolder(
-                   Outlook.OlDefaultFolders.olFolderInbox);
+            inbox = outlookNameSpace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderInbox);
 
             Configuration.Config(outlookNameSpace, ref inbox, Application);
             items = inbox.Items;
-            items.ItemAdd +=
-                new Outlook.ItemsEvents_ItemAddEventHandler(items_ItemAdd);
+            items.ItemAdd += new Outlook.ItemsEvents_ItemAddEventHandler(items_ItemAdd);
         }
 
         void items_ItemAdd(object Item)
@@ -35,8 +33,6 @@ namespace FormPlugin
                     if (Directory.Exists(Configuration.pathFileTemplate))
                     {
                         string[] filePaths = Directory.GetFiles(Configuration.pathFileTemplate, "*.oft");
-                        // foreach (string s in filePaths)//test czy wczytuje wszytkie templaety
-                        //      MessageBox.Show(s);
                         CheckMail check = new CheckMail(mail);
                         bool anyTemplateSuits = false;
                         foreach (string s in filePaths)
@@ -47,8 +43,6 @@ namespace FormPlugin
                                 MessageBox.Show("OK " + s);
                                 anyTemplateSuits = true;
                             }
-
-
                         }
                         if (!anyTemplateSuits)
                             MessageBox.Show("Email doesn't suit to any template");

@@ -37,8 +37,6 @@ namespace FormPlugin.Data
             else
             {
                 //nie mamy zapisanej konfiguracji - właściwie to pierwsze uruchomienie
-                //wycztaj pierwszą konfigurację jakisForm
-                //zapisz ją do pliku
                 ShowFolderInfo(outlookNameSpace, ref inbox, app);
                 SaveConfiguration();
             }
@@ -49,8 +47,7 @@ namespace FormPlugin.Data
                 "Rozsądnym wyborem będzie zaznaczenie folderu \"Inbox\" skrzynki \"NC MailBox\"" +
                 "\n(jest to wybór skrzynki dla której będą sprawdzane maile przychodzące pod kątem poprawności)" +
                 "\nPS Jak nic nie wybierzesz, albo wybierz coś aby wywalić to Ci się to uda...");
-            Outlook.Folder folder = app.Session.PickFolder() as Outlook.Folder;
-            if (folder != null)
+            if (app.Session.PickFolder() is Outlook.Folder folder)
             {
                 FolderStoreID = folder.StoreID;
                 FolderEntryID = folder.EntryID;
@@ -63,11 +60,14 @@ namespace FormPlugin.Data
         {
             if (Directory.Exists(configFilePath))
                 Directory.CreateDirectory(configFilePath);
+
             StringBuilder settings = new StringBuilder();
             settings.Append(FolderStoreID + "\n");
             settings.Append(FolderEntryID + "\n");
+
             if (!File.Exists(configFilePath + confFileName))
                 File.Create(configFilePath + confFileName).Close();
+
             File.WriteAllText(configFilePath + confFileName, settings.ToString());
 
 
@@ -78,10 +78,9 @@ namespace FormPlugin.Data
             bool ifConfExist;
             if (Directory.Exists(configFilePath))
                 Directory.CreateDirectory(configFilePath);
+
             if (File.Exists(configFilePath + confFileName))
             {
-                //set all settings
-
                 StreamReader file = new StreamReader(configFilePath + confFileName);
                 try
                 {
@@ -102,8 +101,6 @@ namespace FormPlugin.Data
                 ifConfExist = false;
                 return ifConfExist;
             }
-
-
         }
     }
 }

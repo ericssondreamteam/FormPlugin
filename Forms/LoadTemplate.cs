@@ -20,7 +20,7 @@ namespace FormPlugin.Forms
             if (checkTemplate)
             {
                 Close();
-                loadData.createMail();
+                loadData.CreateMail();
             }
             else
                 MessageBox.Show("First choose your template", "Warning");
@@ -40,7 +40,7 @@ namespace FormPlugin.Forms
                 if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     string path = openFileDialog.FileName;
-                    loadData.setPathFile(path);
+                    loadData.SetPathFile(path);
                     checkTemplate = true;
                     label3.Text = openFileDialog.SafeFileName;
                 }
@@ -58,13 +58,13 @@ namespace FormPlugin.Forms
         private void TextBox1_TextChanged(object sender, EventArgs e)
         {
             string to = textBox1.Text;
-            loadData.setMailTo(to);
+            loadData.SetMailTo(to);
         }
 
         private void TextBox2_TextChanged(object sender, EventArgs e)
         {
             string subject = textBox2.Text;
-            loadData.setSubject(subject);
+            loadData.SetSubject(subject);
         }
     }
 }

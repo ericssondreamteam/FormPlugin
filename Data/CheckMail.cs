@@ -24,8 +24,8 @@ namespace FormPlugin
             List<string> templateLines, receviedMailLines;
             string body = mailItem.Body;
             string templateBody = mail.Body;
-            receviedMailLines = Tools.getEmailLineByLine(body);
-            templateLines =Tools.getEmailLineByLine(templateBody);
+            receviedMailLines = Tools.GetEmailLineByLine(body);
+            templateLines =Tools.GetEmailLineByLine(templateBody);
             bool conteinsAllTemplateLine = true;
             foreach(string s in templateLines)
             {
@@ -63,8 +63,8 @@ namespace FormPlugin
             List<string> templateLines, receviedMailLines;
             string body = mailItem.Body;
             string templateBody = mail.Body;
-            receviedMailLines = Tools.getEmailLineByLine(body);
-            templateLines = Tools.getEmailLineByLine(templateBody);
+            receviedMailLines = Tools.GetEmailLineByLine(body);
+            templateLines = Tools.GetEmailLineByLine(templateBody);
             bool conteinsAllTemplateLine = true;
             foreach (string s in templateLines)
             {

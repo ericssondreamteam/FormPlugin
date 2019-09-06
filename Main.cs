@@ -221,7 +221,7 @@ namespace FormPlugin
             else if (!checkIfFitToTemplate && checkIfTemplateWasSend)
             {
                 MessageBox.Show("ODSYŁAMY automatycznie");
-                DialogResult result = MessageBox.Show("Do you want to send template once again? \n" + email.Subject + ",\n" + Tools.showAllReceivers(), "Confirmation", MessageBoxButtons.YesNo);
+                DialogResult result = MessageBox.Show("Do you want to send template once again? \n" + email.Subject + ",\n" + Tools.ShowAllReceivers(), "Confirmation", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
                     //JEZELI PAWEŁ ZMIENI to trzeba zmienic sposob odpowiadania

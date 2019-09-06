@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Outlook = Microsoft.Office.Interop.Outlook;
-using Microsoft.Office.Interop.Outlook;
+﻿using Microsoft.Office.Interop.Outlook;
 
 namespace FormPlugin.Data
 {
@@ -14,10 +7,10 @@ namespace FormPlugin.Data
         private string pathFile;
         private string mailTo = "";
         private string subject = "";
-        public void createMail()
+        public void CreateMail()
         {
-            Outlook.Application oApp = new Outlook.Application();
-            Outlook.MailItem mail = oApp.CreateItemFromTemplate(pathFile) as Outlook.MailItem;
+            Application oApp = new Application();
+            MailItem mail = oApp.CreateItemFromTemplate(pathFile) as MailItem;
             
             //check if the mailto is fill
             if(mailTo.Length > 0)
@@ -28,33 +21,33 @@ namespace FormPlugin.Data
             mail.Display(true);
         }
 
-        public void sendMail(String subject, String sender)
+        public void SendMail(string subject, string sender)
         {
-            Outlook.Application oApp = new Outlook.Application();
-            Outlook.MailItem mail = oApp.CreateItemFromTemplate(pathFile) as Outlook.MailItem;
+            Application oApp = new Application();
+            MailItem mail = oApp.CreateItemFromTemplate(pathFile) as MailItem;
             mail.To = sender;
             mail.Subject = subject;
             mail.Send();
         }
 
 
-        public void setPathFile(string path)
+        public void SetPathFile(string path)
         {
             pathFile = path;
         }
 
-        public String getPathFile()
+        public string GetPathFile()
         {
             return pathFile;
         }
 
 
-        public void setMailTo(string to)
+        public void SetMailTo(string to)
         {
             mailTo = to;
         }
 
-        public void setSubject(string sub)
+        public void SetSubject(string sub)
         {
             subject = sub;
         }

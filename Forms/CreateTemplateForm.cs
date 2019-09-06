@@ -173,7 +173,7 @@ namespace FormPlugin.Forms
 
                     Application app = new Application();
                     MailItem mail = app.CreateItemFromTemplate(filePath) as MailItem;
-                    List<String> questionsFromTemplate = Tools.getQuestionsFromEmail(mail.Body);
+                    List<String> questionsFromTemplate = Tools.GetQuestionsFromEmail(mail.Body);
 
                     
                     foreach (String s in questionsFromTemplate) {
