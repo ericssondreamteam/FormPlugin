@@ -45,7 +45,7 @@ namespace FormPlugin.Data
         }
         static public bool HaveWeAnswersForAllQuestions(List<string> template, List<string> recieivedMail)
         {
-            ZloWCzytejPostaciTYlkoDoTestow(template, recieivedMail);
+            //ZloWCzytejPostaciTYlkoDoTestow(template, recieivedMail);
             bool haveWe=true;
             for(int i = 0; i < template.Count; i++)
             {
