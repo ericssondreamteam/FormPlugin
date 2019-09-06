@@ -81,10 +81,12 @@ namespace FormPlugin.Forms
             int questionCounter = 1;
             foreach (object anItem in questionList.Items)
             {
-                //body.Append("<strong>" + questionCounter + ". " + anItem.ToString() + "<strong>" + "<BR><BR><BR>");
-                body.Append(questionCounter + ". " + anItem.ToString()  + "<BR><BR><BR>");
+                body.Append("<strong>" + questionCounter + ". " + anItem.ToString() + "</strong>" + "<BR><BR><BR>");
+                //body.Append(questionCounter + ". " + anItem.ToString()  + "<BR><BR><BR>");
                 questionCounter++;
-            }         
+            }
+
+            body.Append("</body></html>");
             return body.ToString();
         }
 

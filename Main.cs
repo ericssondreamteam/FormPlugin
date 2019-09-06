@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Exception = System.Exception;
 using Office = Microsoft.Office.Core;
+using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace FormPlugin
 {
@@ -208,9 +209,21 @@ namespace FormPlugin
                 if (result == DialogResult.Yes)
                 {
                     //JEZELI PAWEŁ ZMIENI to trzeba zmienic sposob odpowiadania
-                    LoadData loadData = new LoadData();
+                    /*LoadData loadData = new LoadData();
                     loadData.setPathFile(pathForTemplate);
-                    loadData.sendMail("RE: " + email.Subject, email.ReplyAll().To);
+                    loadData.sendMail("RE: " + email.Subject, email.ReplyAll().To);*/
+
+                    Outlook.Application oApp = new Outlook.Application();
+                    MailItem emailToReply = oApp.CreateItemFromTemplate(pathForTemplate) as MailItem;
+                    emailToReply.Subject = "RE: " + email.Subject;
+                    emailToReply.To = email.ReplyAll().To;
+                    if (email != null)
+                    {
+                        Outlook.MailItem replyMail = email.Reply();
+                        replyMail.HTMLBody = emailToReply.HTMLBody + replyMail.HTMLBody;
+                        replyMail.To = email.ReplyAll().To;
+                        replyMail.Send();
+                    }
                 }
             }                
         }
