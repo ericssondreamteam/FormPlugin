@@ -21,7 +21,13 @@ namespace FormPlugin.Data
             if (LoadConfiguration())
             {
                 //super... niech się dzieje zawsze w tle i tyle
-                inbox = outlookNameSpace.GetFolderFromID(Configuration.FolderEntryID, Configuration.FolderStoreID);
+                if(FolderEntryID.Equals("") || FolderStoreID.Equals(""))
+                {
+                    ShowFolderInfo(outlookNameSpace, ref inbox, app);
+                    SaveConfiguration();
+                }
+                else
+                    inbox = outlookNameSpace.GetFolderFromID(FolderEntryID, FolderStoreID);
             }
             else
             {
@@ -29,14 +35,15 @@ namespace FormPlugin.Data
                 //wycztaj pierwszą konfigurację jakisForm
                 //zapisz ją do pliku
                 ShowFolderInfo(outlookNameSpace, ref inbox, app);
-                Configuration.SaveConfiguration();
+                SaveConfiguration();
             }
         }
         private static void ShowFolderInfo(Outlook.NameSpace outlookNameSpace, ref Outlook.MAPIFolder inbox, Outlook.Application app)
         {
             MessageBox.Show("Za chwilę pojawi Ci się okno z wyborem folderu.\n" +
                 "Rozsądnym wyborem będzie zaznaczenie folderu \"Inbox\" skrzynki \"NC MailBox\"" +
-                "\n(jest to wybór skrzynki dla której będą sprawdzane maile przychodzące pod kątem poprawności)");
+                "\n(jest to wybór skrzynki dla której będą sprawdzane maile przychodzące pod kątem poprawności)" +
+                "\nPS Jak nic nie wybierzesz, albo wybierz coś aby wywalić to Ci się to uda...");
             Outlook.Folder folder = app.Session.PickFolder() as Outlook.Folder;
             if (folder != null)
             {
