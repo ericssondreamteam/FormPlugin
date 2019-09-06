@@ -279,6 +279,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(875, 614);
             this.Name = "CreateTemplateForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create or Edit";
             this.SizeChanged += new System.EventHandler(this.ResizeEvent);
             ((System.ComponentModel.ISupportInitialize)(this.upButton)).EndInit();
