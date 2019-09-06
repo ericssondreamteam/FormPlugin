@@ -20,6 +20,9 @@
           <button id="checkConversation" label="Check Conversation"
                screentip="Resend custom-email tamplate to customer" onAction="CheckConversation"
                supertip="Resend XD."/>
+          <button id="Settings" label="Settings"
+               screentip="Edit Settings" onAction="OnSettingsAction"
+               />
           
         </group>
       </tab>

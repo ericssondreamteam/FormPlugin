@@ -26,6 +26,22 @@ namespace FormPlugin
         {
 
         }
+        public void OnSettingsAction(Office.IRibbonControl control)
+        {
+            DialogResult dialogResult = MessageBox.Show("Want You edit settings?", "Editing Settings", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Configuration.DeleteConfig();
+                NameSpace outlookNameSpace = ThisAddIn.zmiennaDoSettinngs.GetNamespace("MAPI");
+                MAPIFolder inbox=outlookNameSpace.GetDefaultFolder(OlDefaultFolders.olFolderInbox);                
+                Configuration.Config(outlookNameSpace, ref inbox, ThisAddIn.zmiennaDoSettinngs.Application);
+                MessageBox.Show("Please restart outlook to introduce changes");
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
+            }
+        }
         public void CreateForm(Office.IRibbonControl control)
         {
             CreateTemplateForm create = new CreateTemplateForm();

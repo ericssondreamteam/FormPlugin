@@ -16,6 +16,11 @@ namespace FormPlugin.Data
         public static string FolderStoreID { get; set; }
         public static string FolderEntryID { get; set; }
 
+        public static void DeleteConfig()
+        {
+            if (File.Exists(configFilePath + confFileName))
+                File.Delete(configFilePath + confFileName);
+        }
         public static void Config(Outlook.NameSpace outlookNameSpace, ref Outlook.MAPIFolder inbox, Outlook.Application app)
         {
             if (LoadConfiguration())

@@ -11,8 +11,10 @@ namespace FormPlugin
         Outlook.NameSpace outlookNameSpace;
         Outlook.MAPIFolder inbox;
         Outlook.Items items;
+        public static Outlook.Application zmiennaDoSettinngs;
         private void ThisAddIn_Startup(object sender, EventArgs e)
         {
+            zmiennaDoSettinngs = Application;
             outlookNameSpace = Application.GetNamespace("MAPI");
             inbox = outlookNameSpace.GetDefaultFolder(
                    Outlook.OlDefaultFolders.olFolderInbox);
