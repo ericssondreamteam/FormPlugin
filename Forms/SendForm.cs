@@ -78,8 +78,9 @@ namespace FormPlugin.Forms
                         replyMail.HTMLBody = emailToReply.HTMLBody + replyMail.HTMLBody;
                         //replyMail.Body += emailToReply.Body; 
                         replyMail.To = email.ReplyAll().To;
-                        replyMail.Display(true);
                         //replyMail.Display(true);
+                        //replyMail.Display(true);
+                        replyMail.Send();
                     }
                 }
                 Close();
