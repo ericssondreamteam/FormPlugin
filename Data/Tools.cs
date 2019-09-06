@@ -1,3 +1,4 @@
+using Microsoft.Office.Interop.Outlook;
 using System;  
 using System.Collections.Generic;  
 using System.Linq;  
@@ -95,6 +96,19 @@ namespace FormPlugin.Data
             answer = char.IsNumber(firstCharacter);
 
             return answer;
+        }
+
+        public static String showAllReceivers()
+        {
+            String allReceiversText = "All receivers: \n";
+            int counter = 0;
+            foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
+            {
+                counter++;
+                allReceiversText += counter + ". " + email.ReplyAll().To + "\n";
+            }
+            allReceiversText = allReceiversText.Replace(";", "\n    ");
+            return allReceiversText;
         }
     }  
 } 

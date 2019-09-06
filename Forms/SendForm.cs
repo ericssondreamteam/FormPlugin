@@ -43,24 +43,11 @@ namespace FormPlugin.Forms
                     checkTemplate = true;
                     button3.Text = openFileDialog.SafeFileName + " is choosen";
 
-                    showAllReceivers();
+                    allReceivers.Text = Tools.showAllReceivers();
                 }
             }
             else
                 MessageBox.Show("First use 'Create Form' button from menu.", "Warning");
-        }
-
-        private void showAllReceivers()
-        {
-            String allReceiversText = "All receivers: \n";
-            int counter = 0;
-            foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
-            {
-                counter++;
-                allReceiversText += counter + ". " + email.ReplyAll().To + "\n";
-            }
-            allReceiversText = allReceiversText.Replace(";", "\n    ");
-            allReceivers.Text = allReceiversText;
         }
 
         private void Button2_Click(object sender, EventArgs e)

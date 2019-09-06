@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Linq;
 using Outlook = Microsoft.Office.Interop.Outlook;
-using Office = Microsoft.Office.Core;
 using System.Windows.Forms;
 using System.IO;
 using FormPlugin.Data;
@@ -16,17 +11,18 @@ namespace FormPlugin
         Outlook.NameSpace outlookNameSpace;
         Outlook.MAPIFolder inbox;
         Outlook.Items items;
-        private void ThisAddIn_Startup(object sender, System.EventArgs e)
+        private void ThisAddIn_Startup(object sender, EventArgs e)
         {
-            outlookNameSpace = this.Application.GetNamespace("MAPI");
+            outlookNameSpace = Application.GetNamespace("MAPI");
             inbox = outlookNameSpace.GetDefaultFolder(
-                    Microsoft.Office.Interop.Outlook.
-                    OlDefaultFolders.olFolderInbox);
+                   Outlook.OlDefaultFolders.olFolderInbox);
 
+            Configuration.Config(outlookNameSpace, ref inbox, Application);
             items = inbox.Items;
             items.ItemAdd +=
                 new Outlook.ItemsEvents_ItemAddEventHandler(items_ItemAdd);
         }
+
         void items_ItemAdd(object Item)
         {
             if (Item is Outlook.MailItem)
@@ -57,7 +53,7 @@ namespace FormPlugin
                     }
 
                 }
-            }  
+            }
 
         }
 
@@ -83,7 +79,7 @@ namespace FormPlugin
             this.Startup += new System.EventHandler(ThisAddIn_Startup);
             this.Shutdown += new System.EventHandler(ThisAddIn_Shutdown);
         }
-        
+
         #endregion
     }
 }
