@@ -23,8 +23,7 @@ namespace FormPlugin
 
         public Main()
         {
-            //nie jest potrzebne
-            //Configuration conf = new Configuration();
+
         }
         public void CreateForm(Office.IRibbonControl control)
         {
@@ -36,16 +35,6 @@ namespace FormPlugin
             LoadTemplate loadTemplate = new LoadTemplate();
             loadTemplate.Show();
         }
-        
- /* May be useful one day
-        internal static IEnumerable<MailItem> GetSelectedEmails()
-        {
-            foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
-            {
-                yield return email;
-            }
-        }
- */
 
         public void CheckMailForm(Office.IRibbonControl control)
         {
@@ -70,13 +59,26 @@ namespace FormPlugin
 
         public void CheckConversation(Office.IRibbonControl control)
         {
+            try
+            {
+                manuallyCheckAutomaticReply();
+            } catch (Exception ex)
+            {
+                MessageBox.Show("CHECK CONVERSATION: \n" + ex.Message + "\n" + ex.StackTrace,
+                    "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
+        }
+
+        private void manuallyCheckAutomaticReply()
+        {
             int counter = 0;
             foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
             {
                 //DZIAŁA MIMO IŻ NIE POWINNO XD
                 if (counter == 0)
                 {
-                    if(email != null)
+                    if (email != null)
                     {
                         check(email);
                         automaticReply(email);
@@ -85,8 +87,8 @@ namespace FormPlugin
                     {
                         MessageBox.Show("Mail jest null XD", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    
-                } 
+
+                }
                 else
                     MessageBox.Show("You choose more than one mail", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 counter++;
@@ -111,14 +113,15 @@ namespace FormPlugin
                         Main.counter++;
                         MailItem mail = item as MailItem;
                         bool checkTemplate = checkTemplateConversation(mail);
-                        Folder inFolder = mail.Parent as Folder;
-                        string msg = mail.Subject + " in folder " + inFolder.Name + " Sender: " + mail.SenderName + " Date: " + mail.ReceivedTime;
+                                               
+                        //DO TESTOWANIA
+                        /*Folder inFolder = mail.Parent as Folder;
+                        string msg = mail.Subject + " in folder " + inFolder.Name + " Sender: " + mail.SenderName + " Date: " + mail.ReceivedTime;*/
+                        /*MessageBox.Show(counter + ". " + msg +
+                            "\nTemplate was sent: " + isTemplate +
+                            "\nTemplate was filled: " + checkTemplate);*/
                         if (checkIfTemplateWasSend)
                             isTemplate = true;
-
-                        MessageBox.Show(counter + ". " + msg +
-                            "\nTemplate was sent: " + isTemplate +
-                            "\nTemplate was filled: " + checkTemplate);
                         if (checkTemplate)
                             checkIfFitToTemplate = checkTemplate;
                     }
@@ -144,14 +147,15 @@ namespace FormPlugin
                         Main.counter++;
                         MailItem mailItem = myItem as MailItem;
                         bool checkTemplate = checkTemplateConversation(mailItem);
-                        Folder inFolder = mailItem.Parent as Folder;
-                        string msg = mailItem.Subject + " in folder " + inFolder.Name + " Sender: " + mailItem.SenderName + " Date: " + mailItem.ReceivedTime;
+                        
+                        //DO TESTOWANIA
+                        /*Folder inFolder = mailItem.Parent as Folder;
+                        string msg = mailItem.Subject + " in folder " + inFolder.Name + " Sender: " + mailItem.SenderName + " Date: " + mailItem.ReceivedTime;*/
+                        /*MessageBox.Show(counter + ". " + msg +
+                            "\nTemplate was sent: " + isTemplate +
+                            "\nTemplate was filled: " + checkTemplate);*/
                         if (checkIfTemplateWasSend)
                             isTemplate = true;
-
-                        MessageBox.Show(counter + ". " + msg +
-                            "\nTemplate was sent: " + isTemplate +
-                            "\nTemplate was filled: " + checkTemplate);
                         if (checkTemplate)
                             checkIfFitToTemplate = checkTemplate;
                     }
@@ -200,7 +204,7 @@ namespace FormPlugin
             else if (!checkIfFitToTemplate && checkIfTemplateWasSend)
             {
                 MessageBox.Show("ODSYŁAMY automatycznie");
-                DialogResult result = MessageBox.Show("Do you want to send template once again? \n" + email.Subject + ",\n " + email.ReplyAll().To, "Confirmation", MessageBoxButtons.YesNo);
+                DialogResult result = MessageBox.Show("Do you want to send template once again? \n" + email.Subject + ",\n" + Tools.showAllReceivers(), "Confirmation", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
                     //JEZELI PAWEŁ ZMIENI to trzeba zmienic sposob odpowiadania
