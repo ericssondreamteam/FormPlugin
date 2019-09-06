@@ -34,6 +34,9 @@ namespace FormPlugin.Data
         }
         private static void ShowFolderInfo(Outlook.NameSpace outlookNameSpace, ref Outlook.MAPIFolder inbox, Outlook.Application app)
         {
+            MessageBox.Show("Za chwilę pojawi Ci się okno z wyborem folderu.\n" +
+                "Rozsądnym wyborem będzie zaznaczenie folderu \"Inbox\" skrzynki \"NC MailBox\"" +
+                "\n(jest to wybór skrzynki dla której będą sprawdzane maile przychodzące pod kątem poprawności)");
             Outlook.Folder folder = app.Session.PickFolder() as Outlook.Folder;
             if (folder != null)
             {
