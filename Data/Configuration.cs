@@ -10,7 +10,7 @@ namespace FormPlugin.Data
         public static string pathFileTemplate = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Forms_Plugin_Outlook";
         private static string configFilePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\Microsoft\\Outlook";
         private static string confFileName = "\\FormPluginConfiguration.txt";
-        public static string ContorlMailFolder { get; set; }
+
         public static string FolderStoreID { get; set; }
         public static string FolderEntryID { get; set; }
                                       
@@ -22,7 +22,6 @@ namespace FormPlugin.Data
             if (Directory.Exists(configFilePath))
                 Directory.CreateDirectory(configFilePath);
             StringBuilder settings = new StringBuilder();
-            settings.Append(ContorlMailFolder+"\n");
             settings.Append(FolderStoreID + "\n");
             settings.Append(FolderEntryID + "\n");
             if (!File.Exists(configFilePath + confFileName))
@@ -43,7 +42,6 @@ namespace FormPlugin.Data
                 
                 StreamReader file = new StreamReader(configFilePath + confFileName);
                 try {
-                    ContorlMailFolder = file.ReadLine();
                     FolderStoreID = file.ReadLine();
                     FolderEntryID = file.ReadLine();
                 }catch(Exception e)

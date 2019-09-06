@@ -21,9 +21,7 @@ namespace FormPlugin
         {
             outlookNameSpace = this.Application.GetNamespace("MAPI");
             inbox = outlookNameSpace.GetDefaultFolder(
-                   Outlook.OlDefaultFolders.olFolderInbox);
-            MessageBox.Show(outlookNameSpace.Accounts.Count.ToString()+"\n"+outlookNameSpace.Folders.Count);
-            
+                   Outlook.OlDefaultFolders.olFolderInbox);          
             
             Config();
             items = inbox.Items;
@@ -35,7 +33,6 @@ namespace FormPlugin
             if (Configuration.LoadConfiguration())
             {
                 //super... niech się dzieje zawsze w tle i tyle
-                //Console.WriteLine("Load Conf");
                 inbox = outlookNameSpace.GetFolderFromID(Configuration.FolderEntryID, Configuration.FolderStoreID);
             }
             else
@@ -43,45 +40,17 @@ namespace FormPlugin
                 //nie mamy zapisanej konfiguracji - właściwie to pierwsze uruchomienie
                 //wycztaj pierwszą konfigurację jakisForm
                 //zapisz ją do pliku
-                Configuration.ContorlMailFolder = "NC MailBox";
                 ShowFolderInfo();
                 Configuration.SaveConfiguration();
-                //Console.WriteLine("Save Conf");
             }
         }
         private void ShowFolderInfo()
         {
-            Outlook.Folder folder =
-                Application.Session.PickFolder()
-                as Outlook.Folder;
+            Outlook.Folder folder =  Application.Session.PickFolder() as Outlook.Folder;
             if (folder != null)
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.AppendLine("Folder EntryID:");
-                sb.AppendLine(folder.EntryID);
-                sb.AppendLine();
-                sb.AppendLine("Folder StoreID:");
-                sb.AppendLine(folder.StoreID);
-                sb.AppendLine();
+            {              
                 Configuration.FolderStoreID = folder.StoreID;
-                Configuration.FolderEntryID = folder.EntryID;
-                sb.AppendLine("Unread Item Count: "
-                    + folder.UnReadItemCount);
-                sb.AppendLine("Default MessageClass: "
-                    + folder.DefaultMessageClass);
-                sb.AppendLine("Current View: "
-                    + folder.CurrentView.Name);
-                sb.AppendLine("Folder Path: "
-                    + folder.FolderPath);
-                MessageBox.Show(sb.ToString(),
-                    "Folder Information",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-                /* Outlook.Folder folderFromID =
-                     Application.Session.GetFolderFromID(
-                     folder.EntryID, folder.StoreID)
-                     as Outlook.Folder;
-                 folderFromID.Display();*/
+                Configuration.FolderEntryID = folder.EntryID;               
                 inbox = outlookNameSpace.GetFolderFromID(folder.EntryID, folder.StoreID);
             }
         }
