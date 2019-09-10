@@ -22,22 +22,22 @@ namespace FormPlugin.Data
             }
         }
 
-        private static void AddACategory(string categoryName)
+        private static void AddACategory(string categoryName, Outlook.OlCategoryColor color)
         {
             Outlook.Categories categories =
                 ThisAddIn.zmiennaDoSettinngs.Session.Categories;
             if (!CategoryExists(categoryName))
             {
                 _ = categories.Add(categoryName,
-                    Outlook.OlCategoryColor.olCategoryColorDarkBlue);
+                    color);
             }
         }
 
         internal static void AddCategorires()
         {
-            AddACategory("red");
-            AddACategory("yellow");
-            AddACategory("green");
+            AddACategory("Good Response",Outlook.OlCategoryColor.olCategoryColorDarkGreen);
+            AddACategory("Bad Response",Outlook.OlCategoryColor.olCategoryColorDarkRed);
+            AddACategory("You Must Decide",Outlook.OlCategoryColor.olCategoryColorDarkYellow);
         }
 
         private static bool CategoryExists(string categoryName)

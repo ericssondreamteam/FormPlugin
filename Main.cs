@@ -216,14 +216,14 @@ namespace FormPlugin
             if(!checkIfTemplateWasSend)
             {
                 //ORANGE CATEGORY
-                oznaczCalaKonwersacjeKategoria(email, "yellow");
+                oznaczCalaKonwersacjeKategoria(email, "You Must Decide");
                 ///////////////
                 MessageBox.Show("Musisz wysłać dopiero template.");
             }
             else if (checkIfFitToTemplate)
             {
                 //GREEN CATEGORY
-                oznaczCalaKonwersacjeKategoria(email, "green");
+                oznaczCalaKonwersacjeKategoria(email, "Good Response");
                 ////////////
                 MessageBox.Show("NIE ODSYŁAMY bo zgadza się template :)" +
                     "\nTemplateWasSend: " + checkIfTemplateWasSend +
@@ -232,7 +232,7 @@ namespace FormPlugin
             else if (!checkIfFitToTemplate && checkIfTemplateWasSend)
             {
                 //RED CATEGORY
-                oznaczCalaKonwersacjeKategoria(email, "red");
+                oznaczCalaKonwersacjeKategoria(email, "Bad Response");
                 /////////////
                 MessageBox.Show("ODSYŁAMY automatycznie bo chamy niemyte nie czytajoXD");
                 DialogResult result = MessageBox.Show("Do you want to send template once again? \n" + email.Subject + ",\n" + Tools.ShowAllReceivers(), "Confirmation", MessageBoxButtons.YesNo);
@@ -262,6 +262,18 @@ namespace FormPlugin
                 if(item is MailItem)
                 {
                     MailItem mail = item as MailItem;
+                    string existingCategories = mail.Categories;
+                    if (string.IsNullOrEmpty(existingCategories))
+                    {
+                        mail.Categories = category;
+                    }
+                    else
+                    {
+
+                        mail.Categories = existingCategories + ", "+category;
+                        
+                    }
+
                     mail.Categories = category; //DO ODKOMENTOWANIA
                     //MessageBox.Show("Kategoria nadana " + category); //DO SPRAWDZANIA
                 }
@@ -279,7 +291,18 @@ namespace FormPlugin
                     if (myItem is MailItem)
                     { 
                         MailItem mailItem = myItem as MailItem;
-                        mailItem.Categories = category; //DO ODKOMENTOWANIA
+                        string existingCategories = mailItem.Categories;
+                        if (string.IsNullOrEmpty(existingCategories))
+                        {
+                            mailItem.Categories = category;
+                        }
+                        else
+                        {
+
+                            mailItem.Categories = existingCategories + ", " + category;
+
+                        }
+                        //mailItem.Categories = category; //DO ODKOMENTOWANIA
                         //MessageBox.Show("Kategoria nadana " + category); //DO SPRAWDZANIA
                     }
                     getNextItemFromConversation(myItem, conv, category);
