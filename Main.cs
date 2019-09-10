@@ -216,11 +216,15 @@ namespace FormPlugin
             if(!checkIfTemplateWasSend)
             {
                 //ORANGE CATEGORY
+                oznaczCalaKonwersacjeKategoria(email, "Orange");
+                ///////////////
                 MessageBox.Show("Musisz wysłać dopiero template.");
             }
             else if (checkIfFitToTemplate)
             {
                 //GREEN CATEGORY
+                oznaczCalaKonwersacjeKategoria(email, "Green");
+                ////////////
                 MessageBox.Show("NIE ODSYŁAMY bo zgadza się template :)" +
                     "\nTemplateWasSend: " + checkIfTemplateWasSend +
                     "\nTemplateFilled: " + checkIfFitToTemplate);
@@ -228,6 +232,8 @@ namespace FormPlugin
             else if (!checkIfFitToTemplate && checkIfTemplateWasSend)
             {
                 //RED CATEGORY
+                oznaczCalaKonwersacjeKategoria(email, "Red");
+                /////////////
                 MessageBox.Show("ODSYŁAMY automatycznie bo chamy niemyte nie czytajoXD");
                 DialogResult result = MessageBox.Show("Do you want to send template once again? \n" + email.Subject + ",\n" + Tools.ShowAllReceivers(), "Confirmation", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
@@ -245,6 +251,40 @@ namespace FormPlugin
                     }
                 }
             }                
+        }
+
+        private void oznaczCalaKonwersacjeKategoria(MailItem email, String category)
+        {
+            Conversation conv = email.GetConversation();
+            SimpleItems simpleItems = conv.GetRootItems();
+            foreach (object item in simpleItems)
+            {
+                if(item is MailItem)
+                {
+                    MailItem mail = item as MailItem;
+                    //mail.Categories = category; //DO ODKOMENTOWANIA
+                    //MessageBox.Show("Kategoria nadana " + category); //DO SPRAWDZANIA
+                }
+                getNextItemFromConversation(item, conv, category);
+            }
+        }
+
+        private void getNextItemFromConversation(object email, Conversation conv, String category)
+        {
+            SimpleItems items = conv.GetChildren(email);
+            if (items.Count > 0)
+            {
+                foreach (object myItem in items)
+                {
+                    if (myItem is MailItem)
+                    { 
+                        MailItem mailItem = myItem as MailItem;
+                        //mailItem.Categories = category; //DO ODKOMENTOWANIA
+                        //MessageBox.Show("Kategoria nadana " + category); //DO SPRAWDZANIA
+                    }
+                    getNextItemFromConversation(myItem, conv, category);
+                }
+            }
         }
 
 
