@@ -212,15 +212,20 @@ namespace FormPlugin
 
         private void automaticReply(MailItem email)
         {
-            if (checkIfFitToTemplate || !checkIfTemplateWasSend)
+
+            if(!checkIfTemplateWasSend)
             {
-                MessageBox.Show("NIE ODSYŁAMY :)" +
+                MessageBox.Show("Musisz wysłać dopiero template.");
+            }
+            else if (checkIfFitToTemplate)
+            {
+                MessageBox.Show("NIE ODSYŁAMY bo zgadza się template :)" +
                     "\nTemplateWasSend: " + checkIfTemplateWasSend +
                     "\nTemplateFilled: " + checkIfFitToTemplate);
             }
             else if (!checkIfFitToTemplate && checkIfTemplateWasSend)
             {
-                MessageBox.Show("ODSYŁAMY automatycznie");
+                MessageBox.Show("ODSYŁAMY automatycznie bo chamy niemyte nie czytajoXD");
                 DialogResult result = MessageBox.Show("Do you want to send template once again? \n" + email.Subject + ",\n" + Tools.ShowAllReceivers(), "Confirmation", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
