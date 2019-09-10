@@ -21,6 +21,8 @@ namespace FormPlugin
             Configuration.Config(outlookNameSpace, ref inbox, Application);
             items = inbox.Items;
             items.ItemAdd += new Outlook.ItemsEvents_ItemAddEventHandler(items_ItemAdd);
+            //Categories.EnumerateCategories();
+            Categories.AddCategorires();
         }
 
         void items_ItemAdd(object Item)
