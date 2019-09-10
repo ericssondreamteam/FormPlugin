@@ -215,25 +215,23 @@ namespace FormPlugin
 
             if(!checkIfTemplateWasSend)
             {
+                //ORANGE CATEGORY
                 MessageBox.Show("Musisz wysłać dopiero template.");
             }
             else if (checkIfFitToTemplate)
             {
+                //GREEN CATEGORY
                 MessageBox.Show("NIE ODSYŁAMY bo zgadza się template :)" +
                     "\nTemplateWasSend: " + checkIfTemplateWasSend +
                     "\nTemplateFilled: " + checkIfFitToTemplate);
             }
             else if (!checkIfFitToTemplate && checkIfTemplateWasSend)
             {
+                //RED CATEGORY
                 MessageBox.Show("ODSYŁAMY automatycznie bo chamy niemyte nie czytajoXD");
                 DialogResult result = MessageBox.Show("Do you want to send template once again? \n" + email.Subject + ",\n" + Tools.ShowAllReceivers(), "Confirmation", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    //JEZELI PAWEŁ ZMIENI to trzeba zmienic sposob odpowiadania
-                    /*LoadData loadData = new LoadData();
-                    loadData.setPathFile(pathForTemplate);
-                    loadData.sendMail("RE: " + email.Subject, email.ReplyAll().To);*/
-
                     Outlook.Application oApp = new Outlook.Application();
                     MailItem emailToReply = oApp.CreateItemFromTemplate(pathForTemplate) as MailItem;
                     emailToReply.Subject = "RE: " + email.Subject;
