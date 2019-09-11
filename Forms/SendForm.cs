@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Microsoft.Office.Interop.Outlook;
 using Outlook = Microsoft.Office.Interop.Outlook;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace FormPlugin.Forms
 {
@@ -20,6 +21,10 @@ namespace FormPlugin.Forms
             InitializeComponent();
             loadData = new LoadData();
             reciversAll = new List<String>();
+            editButton.Enabled = false;
+            labelWarningError.Hide();
+            allReceivers.Hide();
+            info.Hide();
         }
 
         private void Label1_Click(object sender, EventArgs e)
@@ -39,12 +44,14 @@ namespace FormPlugin.Forms
 
                 if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
+                    button3.ForeColor = SystemColors.ControlText;
                     string path = openFileDialog.FileName;
                     loadData.SetPathFile(path);
                     checkTemplate = true;
-                    button3.Text = openFileDialog.SafeFileName + " is choosen";
+                    info.Show();
+                    info.Text = openFileDialog.SafeFileName + " is chosen";
                     allReceivers.Text = Tools.ShowAllReceivers();
-                    MessageBox.Show(allReceivers.Text.ToString());
+                    //MessageBox.Show(allReceivers.Text.ToString());
                     
                     String[] pom = new String[2];
                     foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
@@ -116,27 +123,43 @@ namespace FormPlugin.Forms
         }
         private void QuestionList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (questionList.SelectedIndex != -1)
+                editButton.Enabled = true;
             string a = allReceivers.Text;
-            //MessageBox.Show(a);
-            //questionTextBox.Text = questionList.GetItemText(questionList.SelectedItem);
             choosenQuestionNumber = questionList.SelectedIndex;
+            questionTextBox.Text = questionList.GetItemText(questionList.SelectedItem);
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
             string to = questionTextBox.Text;
-            if(to != null)
+            if(to != null && to.Length > 0)
             {
                 reciversAll.Add(to);
                 questionList.Items.Add(to);
                 questionTextBox.Text = "";
             }
+            else
+            {
+                //WYSIWIETL ZE MUSI BYC JAKAS DLUGOSC
+                labelWarningError.Show();
+                labelWarningError.Text = "Length of e-mail recipient should be greater than 0";
+            }
         }
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            questionList.Items[choosenQuestionNumber] = questionTextBox.Text;
+            string to = questionTextBox.Text;
+            if(to != null && to.Length > 0)
+                questionList.Items[choosenQuestionNumber] = questionTextBox.Text;
+            else
+            {
+                //WYSWIETLAM GNOJA
+                labelWarningError.Show();
+                labelWarningError.Text = "Length of e-mail recipient should be greater than 0";
+            }
             questionTextBox.Clear();
+            
         }
         private void DeleteQuestionButton_Click(object sender, EventArgs e)
         {
@@ -158,6 +181,12 @@ namespace FormPlugin.Forms
         private void QuestionTextBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void SendForm_SizeChanged(object sender, EventArgs e)
+        {
+            questionTextBox.Size = new Size(Size.Width - 330, questionTextBox.Height);
+            questionList.Size = new Size(Size.Width - 330, Size.Height - 450);
         }
     }
 }
