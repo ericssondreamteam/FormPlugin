@@ -3,6 +3,7 @@ using FormPlugin.Forms;
 using Microsoft.Office.Interop.Outlook;
 using System;
 using System.Collections;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -79,15 +80,16 @@ namespace FormPlugin
             try
             {
                 manuallyCheckAutomaticReply();
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("CHECK CONVERSATION: \n" + ex.Message + "\n" + ex.StackTrace,
                     "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
+
         }
 
-        private void manuallyCheckAutomaticReply()
+        public static void manuallyCheckAutomaticReply()
         {
             int counter = 0;
             foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
@@ -115,7 +117,27 @@ namespace FormPlugin
             checkIfTemplateWasSend = false;
         }
 
-        private void check(MailItem newEmail)
+        public static void manuallyCheckAutomaticReplyMain(object Item)
+        {
+            if (Item is Outlook.MailItem)
+            {
+                Outlook.MailItem email = (Outlook.MailItem)Item;
+                if (Item != null)
+                {
+                    check(email);
+                    automaticReply(email);
+                }
+                else
+                {
+                    MessageBox.Show("Mail jest null XD", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            Main.counter = 0;
+            checkIfFitToTemplate = false;
+            checkIfTemplateWasSend = false;            
+        }
+
+        public static void check(MailItem newEmail)
         {
             Conversation conv = newEmail.GetConversation();
             SimpleItems simpleItems = conv.GetRootItems();
@@ -151,7 +173,7 @@ namespace FormPlugin
             }
         }
 
-        private void EnumerateConversation(object item, Conversation conversation)
+        public static void EnumerateConversation(object item, Conversation conversation)
         {
             SimpleItems items = conversation.GetChildren(item);
             bool isTemplate = false;
@@ -181,7 +203,7 @@ namespace FormPlugin
             }
         }
 
-        private bool checkTemplateConversation(MailItem mail)
+        public static bool checkTemplateConversation(MailItem mail)
         {
             if (Directory.Exists(Configuration.pathFileTemplate))
             {
@@ -210,25 +232,34 @@ namespace FormPlugin
             return false;
         }
 
-        private void automaticReply(MailItem email)
+        public static void automaticReply(MailItem email)
         {
-            if (checkIfFitToTemplate || !checkIfTemplateWasSend)
+
+            if(!checkIfTemplateWasSend)
             {
-                MessageBox.Show("NIE ODSYŁAMY :)" +
+                //ORANGE CATEGORY
+                oznaczCalaKonwersacjeKategoria(email, "You Must Decide");
+                ///////////////
+                MessageBox.Show("Musisz wysłać dopiero template.");
+            }
+            else if (checkIfFitToTemplate)
+            {
+                //GREEN CATEGORY
+                oznaczCalaKonwersacjeKategoria(email, "Good Response");
+                ////////////
+                MessageBox.Show("NIE ODSYŁAMY bo zgadza się template :)" +
                     "\nTemplateWasSend: " + checkIfTemplateWasSend +
                     "\nTemplateFilled: " + checkIfFitToTemplate);
             }
             else if (!checkIfFitToTemplate && checkIfTemplateWasSend)
             {
-                MessageBox.Show("ODSYŁAMY automatycznie");
+                //RED CATEGORY
+                oznaczCalaKonwersacjeKategoria(email, "Bad Response");
+                /////////////
+                MessageBox.Show("ODSYŁAMY automatycznie bo chamy niemyte nie czytajoXD");
                 DialogResult result = MessageBox.Show("Do you want to send template once again? \n" + email.Subject + ",\n" + Tools.ShowAllReceivers(), "Confirmation", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    //JEZELI PAWEŁ ZMIENI to trzeba zmienic sposob odpowiadania
-                    /*LoadData loadData = new LoadData();
-                    loadData.setPathFile(pathForTemplate);
-                    loadData.sendMail("RE: " + email.Subject, email.ReplyAll().To);*/
-
                     Outlook.Application oApp = new Outlook.Application();
                     MailItem emailToReply = oApp.CreateItemFromTemplate(pathForTemplate) as MailItem;
                     emailToReply.Subject = "RE: " + email.Subject;
@@ -242,6 +273,83 @@ namespace FormPlugin
                     }
                 }
             }                
+        }
+
+        public static void oznaczCalaKonwersacjeKategoria(MailItem email, string category)
+        {
+            Conversation conv = email.GetConversation();
+            SimpleItems simpleItems = conv.GetRootItems();
+            foreach (object item in simpleItems)
+            {
+                if(item is MailItem)
+                {
+                    MailItem mail = item as MailItem;
+                    string existingCategories = mail.Categories;
+                    if (string.IsNullOrEmpty(existingCategories))
+                    {
+                        mail.Categories = category;
+                    }
+                    else
+                    {
+
+                        mail.Categories = existingCategories + ", "+category;
+                        
+                    }
+                    //mail.Categories = RemoveUnnecessaryCategories(mail.Categories, category);
+                    //mail.Categories = category; //DO ODKOMENTOWANIA
+                    //MessageBox.Show("Kategoria nadana " + category); //DO SPRAWDZANIA
+                }
+                getNextItemFromConversation(item, conv, category);
+            }
+        }
+
+        public static void getNextItemFromConversation(object email, Conversation conv, String category)
+        {
+            SimpleItems items = conv.GetChildren(email);
+            if (items.Count > 0)
+            {
+                foreach (object myItem in items)
+                {
+                    if (myItem is MailItem)
+                    { 
+                        MailItem mailItem = myItem as MailItem;
+                        string existingCategories = mailItem.Categories;
+                        if (string.IsNullOrEmpty(existingCategories))
+                        {
+                            mailItem.Categories = category;
+                        }
+                        else
+                        {
+
+                            mailItem.Categories = existingCategories + ", " + category;
+
+                        }
+                        //mailItem.Categories = RemoveUnnecessaryCategories(mailItem.Categories, category);
+                        //mailItem.Categories = category; //DO ODKOMENTOWANIA
+                        //MessageBox.Show("Kategoria nadana " + category); //DO SPRAWDZANIA
+                    }
+                    getNextItemFromConversation(myItem, conv, category);
+                }
+            }
+        }
+        public static string RemoveUnnecessaryCategories(string categories, string addedCategories )
+        {
+            Debug.WriteLine("PRzed:" +categories);
+            string[] categ = categories.Split(',');
+            string finnalCategories = "";
+            foreach (string s in categ)
+            {
+                Debug.WriteLine(s);
+                if(!s.Trim().Equals("Good Response".Trim()) && !s.Trim().Equals("Bad Response".Trim()) && !s.Trim().Equals("You Must Decide".Trim())  )
+                {
+                    finnalCategories = finnalCategories + ", " + s;
+                }
+            }
+            finnalCategories = finnalCategories + ", " + addedCategories;
+            if (finnalCategories.StartsWith(","))
+                finnalCategories=finnalCategories.Substring(2).Trim();
+            Debug.WriteLine("PO: "+finnalCategories);
+            return finnalCategories;
         }
 
 

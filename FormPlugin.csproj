@@ -159,6 +159,7 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Data\Categries.cs" />
     <Compile Include="Data\CheckMail.cs" />
     <Compile Include="Data\Configuration.cs" />
     <Compile Include="Data\LoadData.cs" />
