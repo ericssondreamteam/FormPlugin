@@ -30,6 +30,7 @@ namespace FormPlugin.Forms
             label1.Hide();
             //editButton.Hide();
             editButton.Enabled = false;
+            deleteQuestionButton.Enabled = false;
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -144,16 +145,23 @@ namespace FormPlugin.Forms
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            if(!czyEdytujemy || (czyEdytujemy && templateZaladowany))
-            {               
-                    questionList.Items.Add(questionTextBox.Text);
-                    questionTextBox.Clear();         
-            }
-            else if(czyEdytujemy == true && templateZaladowany == false)
+            if(questionTextBox.Text.Length > 0)
             {
-                
-                MessageBox.Show("First you should load your template to edition.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (!czyEdytujemy || (czyEdytujemy && templateZaladowany))
+                {
+                    questionList.Items.Add(questionTextBox.Text);
+                    questionTextBox.Clear();
+                }
+                else if (czyEdytujemy == true && templateZaladowany == false)
+                {
+
+                    MessageBox.Show("First you should load your template to edition.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            } else
+            {
+                //NIE MOZESZ DODAC PUSTEGO TEKSTU
             }
+            
             
         }
 
@@ -191,30 +199,47 @@ namespace FormPlugin.Forms
 
         private void DeleteQuestionButton_Click(object sender, EventArgs e)
         {
-            if(questionList.SelectedItems!=null)
+            if(questionList.SelectedIndex != -1)
             {
-                questionList.Items.RemoveAt(choosenQuestionNumber);
+                if (questionList.SelectedItems != null)
+                {
+                    questionList.Items.RemoveAt(choosenQuestionNumber);
+                }
+                else
+                {
+                    MessageBox.Show("Firstly, please choose an item");
+                }
             }
             else
             {
-                MessageBox.Show("Firstly, please choose an item");
+                //ZAZNACZ COS XD
             }
+            
         }
 
         private void QuestionList_SelectedIndexChanged(object sender, EventArgs e)
         {
             //editSpecificQuestion = true;
             if (questionList.SelectedIndex != -1)
+            {
                 editButton.Enabled = true;
-
+                deleteQuestionButton.Enabled = true;
+            }               
             questionTextBox.Text=questionList.GetItemText(questionList.SelectedItem);
             choosenQuestionNumber = questionList.SelectedIndex;
         }
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            questionList.Items[choosenQuestionNumber] = questionTextBox.Text;
-            questionTextBox.Clear();
+            if(questionTextBox.Text.Length > 0)
+            {
+                questionList.Items[choosenQuestionNumber] = questionTextBox.Text;
+                questionTextBox.Clear();
+            } else
+            {
+                //<MUSI BYC DLUZSZY NIZ 0
+            }
+            
         }
 
         private void FontDialog1_Apply(object sender, EventArgs e)
