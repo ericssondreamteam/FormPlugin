@@ -253,8 +253,7 @@ namespace FormPlugin
             }
             else if (!checkIfFitToTemplate && checkIfTemplateWasSend)
             {
-                //RED CATEGORY
-                oznaczCalaKonwersacjeKategoria(email, "Bad Response");
+                
                 /////////////
                 MessageBox.Show("ODSYŁAMY automatycznie bo chamy niemyte nie czytajoXD");
                 DialogResult result = MessageBox.Show("Do you want to send template once again? \n" + email.Subject + ",\n" + Tools.ShowAllReceivers(), "Confirmation", MessageBoxButtons.YesNo);
@@ -272,6 +271,8 @@ namespace FormPlugin
                         replyMail.Send();
                     }
                 }
+                //RED CATEGORY
+                oznaczCalaKonwersacjeKategoria(email, "Bad Response");
             }                
         }
 

@@ -21,26 +21,29 @@ namespace FormPlugin
             Configuration.Config(outlookNameSpace, ref inbox, Application);
             items = inbox.Items;
             items.ItemAdd += new Outlook.ItemsEvents_ItemAddEventHandler(items_ItemAdd);
-            //Categories.EnumerateCategories();
+
             Categories.AddCategorires();
         }
 
         void items_ItemAdd(object Item)
         {
-            //Automatyczne nadawanie kategorii na wejściu
-            try
+            if (Item is Outlook.MailItem)
             {
-                Main.manuallyCheckAutomaticReplyMain(Item);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("CHECK CONVERSATION: \n" + ex.Message + "\n" + ex.StackTrace,
-                    "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //Automatyczne nadawanie kategorii na wejściu
+                try
+                {
+                    Main.manuallyCheckAutomaticReplyMain(Item);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("CHECK CONVERSATION: \n" + ex.Message + "\n" + ex.StackTrace,
+                        "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             //A na dole stara reszta pewnie do usunięcia potem
 
 
-            if (Item is Outlook.MailItem)
+/*            if (Item is Outlook.MailItem)
             {
                 Outlook.MailItem mail = (Outlook.MailItem)Item;
                 if (Item != null)
@@ -64,7 +67,7 @@ namespace FormPlugin
                     }
 
                 }
-            }
+            }*/
 
         }
 
