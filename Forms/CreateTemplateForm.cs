@@ -28,7 +28,8 @@ namespace FormPlugin.Forms
             chooseTemplateLabel.Hide();
             deleteQuestionButton.Show();
             label1.Hide();
-            editButton.Hide();
+            //editButton.Hide();
+            editButton.Enabled = false;
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -203,7 +204,7 @@ namespace FormPlugin.Forms
         {
             //editSpecificQuestion = true;
             if (questionList.SelectedIndex != -1)
-                editButton.Show();
+                editButton.Enabled = true;
 
             questionTextBox.Text=questionList.GetItemText(questionList.SelectedItem);
             choosenQuestionNumber = questionList.SelectedIndex;
