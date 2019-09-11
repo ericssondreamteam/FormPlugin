@@ -76,7 +76,7 @@ namespace FormPlugin.Forms
             else
                 warningLabelName.Text = "";
         }
-        private string createBodyMail()
+        private string CreateBodyMail()
         {
             StringBuilder body = new StringBuilder();
             body.Append("<html><body>Hi,<BR>please fill form ;)<BR><BR>");
@@ -122,7 +122,7 @@ namespace FormPlugin.Forms
 
                             Outlook.Application outlookApp = new Outlook.Application();
                             MailItem mailItem = outlookApp.CreateItem(OlItemType.olMailItem);
-                            mailItem.HTMLBody = createBodyMail();
+                            mailItem.HTMLBody = CreateBodyMail();
                             mailItem.SaveAs(Configuration.pathFileTemplate + "\\" + textBox2.Text + ".oft");
                             Close();
 
@@ -134,7 +134,7 @@ namespace FormPlugin.Forms
                     MessageBox.Show("RZECZYWISCIE ZAPISUJEMY EDYTOWANY PLIK");
                     Outlook.Application outlookApp = new Outlook.Application();
                     MailItem mailItem = outlookApp.CreateItem(OlItemType.olMailItem);
-                    mailItem.HTMLBody = createBodyMail();
+                    mailItem.HTMLBody = CreateBodyMail();
                     mailItem.SaveAs(Configuration.pathFileTemplate + "\\" + label1.Text);
                     Close();
                 }
@@ -159,6 +159,7 @@ namespace FormPlugin.Forms
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            questionList.Items.Clear();
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (Directory.Exists(Configuration.pathFileTemplate))
             {
@@ -278,6 +279,57 @@ namespace FormPlugin.Forms
         private void QuestionTextBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void StyleButton_Click(object sender, EventArgs e)
+        {
+            CreateBodyMail();
+            if (questionList.Items.Count == 0)
+            {
+                warningLabelEmpty.Text = "We cannot\n create template\n without any\n questions";
+            }
+            else
+            {
+                //check if directory exist
+                if (!Directory.Exists(Configuration.pathFileTemplate))
+                    Directory.CreateDirectory(Configuration.pathFileTemplate);
+                if (czyEdytujemy == false)
+                {
+                    if (textBox2.Text.Equals(""))
+                    {
+                        warningLabelName.Text = "Please enter a name";
+                    }
+                    else
+                    {
+                        if (File.Exists(Configuration.pathFileTemplate + "\\" + textBox2.Text + ".oft"))
+                        {
+                            warningLabelName.Text = "This file exists. We cannot save";
+                        }
+                        else
+                        {
+
+                            Application outlookApp = new Application();
+                            MailItem mailItem = outlookApp.CreateItem(OlItemType.olMailItem);
+                            mailItem.HTMLBody = CreateBodyMail();
+                            mailItem.SaveAs(Configuration.pathFileTemplate + "\\" + textBox2.Text + ".oft");
+                            mailItem.Display();
+                            Close();
+
+
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("RZECZYWISCIE ZAPISUJEMY EDYTOWANY PLIK");
+                    Outlook.Application outlookApp = new Outlook.Application();
+                    MailItem mailItem = outlookApp.CreateItem(OlItemType.olMailItem);
+                    mailItem.HTMLBody = CreateBodyMail();
+                    mailItem.SaveAs(Configuration.pathFileTemplate + "\\" + label1.Text);
+                    mailItem.Display();
+                    Close();
+                }
+            }
         }
     }
 }
