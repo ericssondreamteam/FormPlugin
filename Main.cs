@@ -3,6 +3,7 @@ using FormPlugin.Forms;
 using Microsoft.Office.Interop.Outlook;
 using System;
 using System.Collections;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -253,7 +254,7 @@ namespace FormPlugin
             }                
         }
 
-        private void oznaczCalaKonwersacjeKategoria(MailItem email, String category)
+        private void oznaczCalaKonwersacjeKategoria(MailItem email, string category)
         {
             Conversation conv = email.GetConversation();
             SimpleItems simpleItems = conv.GetRootItems();
@@ -273,8 +274,8 @@ namespace FormPlugin
                         mail.Categories = existingCategories + ", "+category;
                         
                     }
-
-                    mail.Categories = category; //DO ODKOMENTOWANIA
+                    mail.Categories = RemoveUnnecessaryCategories(mail.Categories, category);
+                    //mail.Categories = category; //DO ODKOMENTOWANIA
                     //MessageBox.Show("Kategoria nadana " + category); //DO SPRAWDZANIA
                 }
                 getNextItemFromConversation(item, conv, category);
@@ -302,12 +303,32 @@ namespace FormPlugin
                             mailItem.Categories = existingCategories + ", " + category;
 
                         }
+                        mailItem.Categories = RemoveUnnecessaryCategories(mailItem.Categories, category);
                         //mailItem.Categories = category; //DO ODKOMENTOWANIA
                         //MessageBox.Show("Kategoria nadana " + category); //DO SPRAWDZANIA
                     }
                     getNextItemFromConversation(myItem, conv, category);
                 }
             }
+        }
+        private string RemoveUnnecessaryCategories(string categories, string addedCategories )
+        {
+            Debug.WriteLine("PRzed:" +categories);
+            string[] categ = categories.Split(',');
+            string finnalCategories = "";
+            foreach (string s in categ)
+            {
+                Debug.WriteLine(s);
+                if(!s.Trim().Equals("Good Response".Trim()) && !s.Trim().Equals("Bad Response".Trim()) && !s.Trim().Equals("You Must Decide".Trim())  )
+                {
+                    finnalCategories = finnalCategories + ", " + s;
+                }
+            }
+            finnalCategories = finnalCategories + ", " + addedCategories;
+            if (finnalCategories.StartsWith(","))
+                finnalCategories=finnalCategories.Substring(2).Trim();
+            Debug.WriteLine("PO: "+finnalCategories);
+            return finnalCategories;
         }
 
 
