@@ -21,7 +21,7 @@ namespace FormPlugin.Forms
             InitializeComponent();
             loadData = new LoadData();
             reciversAll = new List<String>();
-            editButton.Hide();
+            editButton.Enabled = false;
             labelWarningError.Hide();
             allReceivers.Hide();
             info.Hide();
@@ -124,7 +124,7 @@ namespace FormPlugin.Forms
         private void QuestionList_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (questionList.SelectedIndex != -1)
-                editButton.Show();
+                editButton.Enabled = true;
             string a = allReceivers.Text;
             choosenQuestionNumber = questionList.SelectedIndex;
             questionTextBox.Text = questionList.GetItemText(questionList.SelectedItem);

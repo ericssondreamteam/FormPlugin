@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SendForm));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -114,7 +115,7 @@
             // 
             this.questionList.FormattingEnabled = true;
             this.questionList.ItemHeight = 20;
-            this.questionList.Location = new System.Drawing.Point(79, 215);
+            this.questionList.Location = new System.Drawing.Point(78, 232);
             this.questionList.Name = "questionList";
             this.questionList.Size = new System.Drawing.Size(365, 124);
             this.questionList.TabIndex = 20;
@@ -123,7 +124,7 @@
             // editButton
             // 
             this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.editButton.Location = new System.Drawing.Point(466, 168);
+            this.editButton.Location = new System.Drawing.Point(449, 168);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(101, 29);
             this.editButton.TabIndex = 25;
@@ -134,7 +135,7 @@
             // deleteQuestionButton
             // 
             this.deleteQuestionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.deleteQuestionButton.Location = new System.Drawing.Point(466, 256);
+            this.deleteQuestionButton.Location = new System.Drawing.Point(449, 276);
             this.deleteQuestionButton.Name = "deleteQuestionButton";
             this.deleteQuestionButton.Size = new System.Drawing.Size(101, 38);
             this.deleteQuestionButton.TabIndex = 24;
@@ -145,7 +146,7 @@
             // addButton
             // 
             this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addButton.Location = new System.Drawing.Point(466, 133);
+            this.addButton.Location = new System.Drawing.Point(449, 133);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(101, 29);
             this.addButton.TabIndex = 23;
@@ -157,7 +158,7 @@
             // 
             this.questionTextBox.Location = new System.Drawing.Point(79, 134);
             this.questionTextBox.Name = "questionTextBox";
-            this.questionTextBox.Size = new System.Drawing.Size(365, 49);
+            this.questionTextBox.Size = new System.Drawing.Size(364, 63);
             this.questionTextBox.TabIndex = 26;
             this.questionTextBox.Text = "\n";
             this.questionTextBox.TextChanged += new System.EventHandler(this.QuestionTextBox_TextChanged);
@@ -187,7 +188,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.label3.Location = new System.Drawing.Point(94, 195);
+            this.label3.Location = new System.Drawing.Point(94, 212);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(96, 17);
             this.label3.TabIndex = 29;
@@ -212,6 +213,7 @@
             this.Controls.Add(this.allReceivers);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(705, 600);
             this.Name = "SendForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
