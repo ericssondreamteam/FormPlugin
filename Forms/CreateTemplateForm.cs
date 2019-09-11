@@ -214,6 +214,12 @@ namespace FormPlugin.Forms
             {
                 //ZAZNACZ COS XD
             }
+
+            if(questionList.Items.Count == 0)
+            {
+                deleteQuestionButton.Enabled = false;
+                editButton.Enabled = false;
+            }
             
         }
 
@@ -224,7 +230,12 @@ namespace FormPlugin.Forms
             {
                 editButton.Enabled = true;
                 deleteQuestionButton.Enabled = true;
-            }               
+            }
+            else
+            {
+                editButton.Enabled = false;
+                deleteQuestionButton.Enabled = false;
+            }
             questionTextBox.Text=questionList.GetItemText(questionList.SelectedItem);
             choosenQuestionNumber = questionList.SelectedIndex;
         }
