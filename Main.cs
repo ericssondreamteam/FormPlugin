@@ -295,7 +295,7 @@ namespace FormPlugin
                         mail.Categories = existingCategories + ", "+category;
                         
                     }
-                    mail.Categories = RemoveUnnecessaryCategories(mail.Categories, category);
+                    //mail.Categories = RemoveUnnecessaryCategories(mail.Categories, category);
                     //mail.Categories = category; //DO ODKOMENTOWANIA
                     //MessageBox.Show("Kategoria nadana " + category); //DO SPRAWDZANIA
                 }
@@ -324,7 +324,7 @@ namespace FormPlugin
                             mailItem.Categories = existingCategories + ", " + category;
 
                         }
-                        mailItem.Categories = RemoveUnnecessaryCategories(mailItem.Categories, category);
+                        //mailItem.Categories = RemoveUnnecessaryCategories(mailItem.Categories, category);
                         //mailItem.Categories = category; //DO ODKOMENTOWANIA
                         //MessageBox.Show("Kategoria nadana " + category); //DO SPRAWDZANIA
                     }
