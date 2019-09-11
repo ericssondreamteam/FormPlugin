@@ -4,16 +4,22 @@ using System.IO;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Outlook;
 using Outlook = Microsoft.Office.Interop.Outlook;
+using System.Collections.Generic;
+
 namespace FormPlugin.Forms
 {
     public partial class SendForm : Form
     {
         bool checkTemplate = false;
         LoadData loadData;
+        String [] recivers;
+        int choosenQuestionNumber;
+        List<String> reciversAll;
         public SendForm()
         {
             InitializeComponent();
             loadData = new LoadData();
+            reciversAll = new List<String>();
         }
 
         private void Label1_Click(object sender, EventArgs e)
@@ -37,8 +43,25 @@ namespace FormPlugin.Forms
                     loadData.SetPathFile(path);
                     checkTemplate = true;
                     button3.Text = openFileDialog.SafeFileName + " is choosen";
-
                     allReceivers.Text = Tools.ShowAllReceivers();
+                    MessageBox.Show(allReceivers.Text.ToString());
+                    
+                    String[] pom = new String[2];
+                    foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
+                    {
+                        pom = email.ReplyAll().To.Split(';');
+                        foreach(String s in pom)
+                        {
+                            reciversAll.Add(s);
+                        }
+                        //MessageBox.Show(pom);
+                    }
+                    for (int i = 0; i < pom.Length; i++)
+                    {
+                        questionList.Items.Add(pom[i].Trim());
+                    }
+                    
+                    
                 }
             }
             else
@@ -59,21 +82,28 @@ namespace FormPlugin.Forms
                     Outlook.Application oApp = new Outlook.Application();
                     MailItem emailToReply = oApp.CreateItemFromTemplate(loadData.GetPathFile()) as Outlook.MailItem;
                     emailToReply.Subject = "RE: " + email.Subject;
+
                     emailToReply.To = email.ReplyAll().To;
-                    //emailToReply = email.Reply();
-                    //emailToReply.Display(true);
-                    //loadData.sendMail("RE: " + email.Subject, email.ReplyAll().To);
-                    //Outlook.MailItem mail = (Outlook.MailItem)Item;
+
+                    //recivers = reciversAll.ToArray();
+                    reciversAll = new List<String>();
+                    foreach (String k in questionList.Items)
+                    {
+                        reciversAll.Add(k);
+                    }
+                    recivers = reciversAll.ToArray();
+
+
+                    foreach (String s in recivers)
+                    {
+                        //MessageBox.Show(s);
+                    }
+                    
                     if (email != null)
                     {
                         Outlook.MailItem replyMail = email.Reply();
-
-                        //MessageBox.Show(replyMail.HTMLBody);
-                        //replyMail.BodyHtml = ;
                         replyMail.HTMLBody = emailToReply.HTMLBody + replyMail.HTMLBody;
-                        //replyMail.Body += emailToReply.Body; 
-                        replyMail.To = email.ReplyAll().To;
-                        //replyMail.Display(true);
+                        replyMail.To = String.Join("; ", recivers);
                         //replyMail.Display(true);
                         replyMail.Send();
                     }
@@ -83,7 +113,50 @@ namespace FormPlugin.Forms
             else
                 MessageBox.Show("First choose your template", "Warning");
 
+        }
+        private void QuestionList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string a = allReceivers.Text;
+            //MessageBox.Show(a);
+            //questionTextBox.Text = questionList.GetItemText(questionList.SelectedItem);
+            choosenQuestionNumber = questionList.SelectedIndex;
+        }
 
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            string to = questionTextBox.Text;
+            if(to != null)
+            {
+                reciversAll.Add(to);
+                questionList.Items.Add(to);
+                questionTextBox.Text = "";
+            }
+        }
+
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            questionList.Items[choosenQuestionNumber] = questionTextBox.Text;
+            questionTextBox.Clear();
+        }
+        private void DeleteQuestionButton_Click(object sender, EventArgs e)
+        {
+            if (questionList.SelectedItems != null)
+            {
+                questionList.Items.RemoveAt(choosenQuestionNumber);
+            }
+            else
+            {
+                MessageBox.Show("Firstly, please choose an item");
+            }
+        }
+
+        private void SendForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void QuestionTextBox_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
