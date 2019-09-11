@@ -339,9 +339,9 @@ namespace FormPlugin
             string finnalCategories = "";
             foreach (string s in categ)
             {
-                Debug.WriteLine(s);
-                if(!s.Trim().Equals("Good Response".Trim()) && !s.Trim().Equals("Bad Response".Trim()) && !s.Trim().Equals("You Must Decide".Trim())  )
+                if(!s.Trim().Equals("Good Response") && !s.Trim().Equals("Bad Response") && !s.Trim().Equals("You Must Decide")  )
                 {
+                    MessageBox.Show(s);
                     finnalCategories = finnalCategories + ", " + s;
                 }
             }
