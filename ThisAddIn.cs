@@ -27,6 +27,19 @@ namespace FormPlugin
 
         void items_ItemAdd(object Item)
         {
+            //Automatyczne nadawanie kategorii na wejściu
+            try
+            {
+                Main.manuallyCheckAutomaticReplyMain(Item);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("CHECK CONVERSATION: \n" + ex.Message + "\n" + ex.StackTrace,
+                    "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            //A na dole stara reszta pewnie do usunięcia potem
+
+
             if (Item is Outlook.MailItem)
             {
                 Outlook.MailItem mail = (Outlook.MailItem)Item;

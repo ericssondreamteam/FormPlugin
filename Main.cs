@@ -79,15 +79,16 @@ namespace FormPlugin
             try
             {
                 manuallyCheckAutomaticReply();
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("CHECK CONVERSATION: \n" + ex.Message + "\n" + ex.StackTrace,
                     "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
+
         }
 
-        private void manuallyCheckAutomaticReply()
+        public static void manuallyCheckAutomaticReply()
         {
             int counter = 0;
             foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
@@ -115,7 +116,27 @@ namespace FormPlugin
             checkIfTemplateWasSend = false;
         }
 
-        private void check(MailItem newEmail)
+        public static void manuallyCheckAutomaticReplyMain(object Item)
+        {
+            if (Item is Outlook.MailItem)
+            {
+                Outlook.MailItem email = (Outlook.MailItem)Item;
+                if (Item != null)
+                {
+                    check(email);
+                    automaticReply(email);
+                }
+                else
+                {
+                    MessageBox.Show("Mail jest null XD", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            Main.counter = 0;
+            checkIfFitToTemplate = false;
+            checkIfTemplateWasSend = false;            
+        }
+
+        public static void check(MailItem newEmail)
         {
             Conversation conv = newEmail.GetConversation();
             SimpleItems simpleItems = conv.GetRootItems();
@@ -151,7 +172,7 @@ namespace FormPlugin
             }
         }
 
-        private void EnumerateConversation(object item, Conversation conversation)
+        public static void EnumerateConversation(object item, Conversation conversation)
         {
             SimpleItems items = conversation.GetChildren(item);
             bool isTemplate = false;
@@ -181,7 +202,7 @@ namespace FormPlugin
             }
         }
 
-        private bool checkTemplateConversation(MailItem mail)
+        public static bool checkTemplateConversation(MailItem mail)
         {
             if (Directory.Exists(Configuration.pathFileTemplate))
             {
@@ -210,7 +231,7 @@ namespace FormPlugin
             return false;
         }
 
-        private void automaticReply(MailItem email)
+        public static void automaticReply(MailItem email)
         {
 
             if(!checkIfTemplateWasSend)
@@ -253,7 +274,7 @@ namespace FormPlugin
             }                
         }
 
-        private void oznaczCalaKonwersacjeKategoria(MailItem email, String category)
+        public static void oznaczCalaKonwersacjeKategoria(MailItem email, String category)
         {
             Conversation conv = email.GetConversation();
             SimpleItems simpleItems = conv.GetRootItems();
@@ -281,7 +302,7 @@ namespace FormPlugin
             }
         }
 
-        private void getNextItemFromConversation(object email, Conversation conv, String category)
+        public static void getNextItemFromConversation(object email, Conversation conv, String category)
         {
             SimpleItems items = conv.GetChildren(email);
             if (items.Count > 0)
