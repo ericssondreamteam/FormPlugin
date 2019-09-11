@@ -3,6 +3,7 @@ using FormPlugin.Forms;
 using Microsoft.Office.Interop.Outlook;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -296,7 +297,7 @@ namespace FormPlugin
                         mail.Categories = existingCategories + ", "+category;
                         
                     }
-                    //mail.Categories = RemoveUnnecessaryCategories(mail.Categories, category);
+                    mail.Categories = RemoveUnnecessaryCategories(mail.Categories, category);
                     //mail.Categories = category; //DO ODKOMENTOWANIA
                     //MessageBox.Show("Kategoria nadana " + category); //DO SPRAWDZANIA
                 }
@@ -325,7 +326,7 @@ namespace FormPlugin
                             mailItem.Categories = existingCategories + ", " + category;
 
                         }
-                        //mailItem.Categories = RemoveUnnecessaryCategories(mailItem.Categories, category);
+                        mailItem.Categories = RemoveUnnecessaryCategories(mailItem.Categories, category);
                         //mailItem.Categories = category; //DO ODKOMENTOWANIA
                         //MessageBox.Show("Kategoria nadana " + category); //DO SPRAWDZANIA
                     }
@@ -335,22 +336,30 @@ namespace FormPlugin
         }
         public static string RemoveUnnecessaryCategories(string categories, string addedCategories )
         {
-            Debug.WriteLine("PRzed:" +categories);
-            string[] categ = categories.Split(',');
-            string finnalCategories = "";
-            foreach (string s in categ)
+            MessageBox.Show("Started: "+categories);
+            HashSet<string> catWithoutDuplicate = new HashSet<string>();
+            string [] cat = categories.Split(',');
+            for (int i = 0; i < cat.Length; i++)
             {
-                if(!s.Trim().Equals("Good Response") && !s.Trim().Equals("Bad Response") && !s.Trim().Equals("You Must Decide")  )
+                catWithoutDuplicate.Add(cat[i].Trim());
+            }
+            string finnal = "";
+            foreach(string s in catWithoutDuplicate)
+            {
+                if (!s.Trim().Equals("You Must Decide") && !s.Equals("Bad Response") && !s.Equals("Good Response"))
                 {
-                    MessageBox.Show(s);
-                    finnalCategories = finnalCategories + ", " + s;
+                    if (!finnal.Equals(""))
+                        finnal = finnal + ", " + s.Trim();
+                    else
+                        finnal = s.Trim();
                 }
             }
-            finnalCategories = finnalCategories + ", " + addedCategories;
-            if (finnalCategories.StartsWith(","))
-                finnalCategories=finnalCategories.Substring(2).Trim();
-            Debug.WriteLine("PO: "+finnalCategories);
-            return finnalCategories;
+            if (!finnal.Equals(""))
+                finnal = finnal + ", " + addedCategories;
+            else
+                finnal = addedCategories;
+            MessageBox.Show("Finnal: "+finnal);
+            return finnal;
         }
 
 
