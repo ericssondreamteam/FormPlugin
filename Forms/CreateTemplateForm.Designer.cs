@@ -46,9 +46,9 @@
             this.editButton = new System.Windows.Forms.Button();
             this.questionTextBox = new System.Windows.Forms.RichTextBox();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
-            this.fontFormatButton = new System.Windows.Forms.Button();
             this.upButton = new System.Windows.Forms.PictureBox();
             this.downButton = new System.Windows.Forms.PictureBox();
+            this.styleButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.upButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.downButton)).BeginInit();
             this.SuspendLayout();
@@ -219,16 +219,6 @@
             // 
             this.fontDialog1.Apply += new System.EventHandler(this.FontDialog1_Apply);
             // 
-            // fontFormatButton
-            // 
-            this.fontFormatButton.Location = new System.Drawing.Point(319, 68);
-            this.fontFormatButton.Name = "fontFormatButton";
-            this.fontFormatButton.Size = new System.Drawing.Size(123, 30);
-            this.fontFormatButton.TabIndex = 24;
-            this.fontFormatButton.Text = "Font Format";
-            this.fontFormatButton.UseVisualStyleBackColor = true;
-            this.fontFormatButton.Click += new System.EventHandler(this.FontFormatButton_Click);
-            // 
             // upButton
             // 
             this.upButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -253,14 +243,24 @@
             this.downButton.TabStop = false;
             this.downButton.Click += new System.EventHandler(this.DownButton_Click);
             // 
+            // styleButton
+            // 
+            this.styleButton.Location = new System.Drawing.Point(674, 13);
+            this.styleButton.Name = "styleButton";
+            this.styleButton.Size = new System.Drawing.Size(112, 37);
+            this.styleButton.TabIndex = 27;
+            this.styleButton.Text = "Styles";
+            this.styleButton.UseVisualStyleBackColor = true;
+            this.styleButton.Click += new System.EventHandler(this.StyleButton_Click);
+            // 
             // CreateTemplateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(853, 558);
+            this.Controls.Add(this.styleButton);
             this.Controls.Add(this.downButton);
             this.Controls.Add(this.upButton);
-            this.Controls.Add(this.fontFormatButton);
             this.Controls.Add(this.questionTextBox);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.questionList);
@@ -309,8 +309,8 @@
         private System.Windows.Forms.Button editButton;
         private System.Windows.Forms.RichTextBox questionTextBox;
         private System.Windows.Forms.FontDialog fontDialog1;
-        private System.Windows.Forms.Button fontFormatButton;
         private System.Windows.Forms.PictureBox upButton;
         private System.Windows.Forms.PictureBox downButton;
+        private System.Windows.Forms.Button styleButton;
     }
 }
