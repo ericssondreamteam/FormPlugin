@@ -86,11 +86,11 @@
             // addButton
             // 
             this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addButton.Location = new System.Drawing.Point(737, 185);
+            this.addButton.Location = new System.Drawing.Point(686, 113);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(101, 56);
             this.addButton.TabIndex = 5;
-            this.addButton.Text = "Add";
+            this.addButton.Text = "Add new";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
@@ -187,7 +187,7 @@
             // deleteQuestionButton
             // 
             this.deleteQuestionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.deleteQuestionButton.Location = new System.Drawing.Point(740, 355);
+            this.deleteQuestionButton.Location = new System.Drawing.Point(737, 364);
             this.deleteQuestionButton.Name = "deleteQuestionButton";
             this.deleteQuestionButton.Size = new System.Drawing.Size(101, 56);
             this.deleteQuestionButton.TabIndex = 19;
@@ -198,7 +198,7 @@
             // editButton
             // 
             this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.editButton.Location = new System.Drawing.Point(737, 286);
+            this.editButton.Location = new System.Drawing.Point(686, 175);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(101, 56);
             this.editButton.TabIndex = 22;
@@ -213,6 +213,7 @@
             this.questionTextBox.Size = new System.Drawing.Size(621, 137);
             this.questionTextBox.TabIndex = 23;
             this.questionTextBox.Text = "\n";
+            this.questionTextBox.TextChanged += new System.EventHandler(this.QuestionTextBox_TextChanged);
             // 
             // fontDialog1
             // 

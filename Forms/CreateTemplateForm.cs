@@ -26,8 +26,9 @@ namespace FormPlugin.Forms
             comboBox1.SelectedText = "Create Template";
             browseButton.Hide();
             chooseTemplateLabel.Hide();
-            deleteQuestionButton.Hide();
+            deleteQuestionButton.Show();
             label1.Hide();
+            editButton.Hide();
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -39,7 +40,7 @@ namespace FormPlugin.Forms
                 browseButton.Hide();
                 chooseTemplateLabel.Hide();
                 label1.Hide();
-                deleteQuestionButton.Hide();
+                deleteQuestionButton.Show();
                 czyEdytujemy = false;
                 templateZaladowany = false;
                 questionList.Items.Clear();
@@ -201,7 +202,9 @@ namespace FormPlugin.Forms
         private void QuestionList_SelectedIndexChanged(object sender, EventArgs e)
         {
             //editSpecificQuestion = true;
-            questionTextBox.Text = e.ToString();
+            if (questionList.SelectedIndex != -1)
+                editButton.Show();
+
             questionTextBox.Text=questionList.GetItemText(questionList.SelectedItem);
             choosenQuestionNumber = questionList.SelectedIndex;
         }
@@ -269,6 +272,11 @@ namespace FormPlugin.Forms
                 questionList.Items.Insert(newIndex, selectedItem);
                 questionList.SetSelected(newIndex, true);
             }
+        }
+
+        private void QuestionTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
