@@ -35,9 +35,9 @@ namespace FormPlugin.Data
 
         internal static void AddCategorires()
         {
-            AddACategory("Good Response",Outlook.OlCategoryColor.olCategoryColorDarkGreen);
-            AddACategory("Bad Response",Outlook.OlCategoryColor.olCategoryColorDarkRed);
-            AddACategory("You Must Decide",Outlook.OlCategoryColor.olCategoryColorDarkYellow);
+            AddACategory("Good Response",Outlook.OlCategoryColor.olCategoryColorGreen);
+            AddACategory("Bad Response",Outlook.OlCategoryColor.olCategoryColorOrange);
+           // AddACategory("You Must Decide",Outlook.OlCategoryColor.olCategoryColorDarkYellow);
         }
 
         private static bool CategoryExists(string categoryName)
