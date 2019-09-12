@@ -2,21 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace FormPlugin.Data
 {
     class Categories
     {
-
         public static void EnumerateCategories()
         {
-            Outlook.Categories categories =
-                ThisAddIn.zmiennaDoSettinngs.Session.Categories;
+            Outlook.Categories categories = ThisAddIn.zmiennaDoSettinngs.Session.Categories;
             foreach (Outlook.Category category in categories)
             {
                 Debug.WriteLine(category.Name);
@@ -39,9 +33,7 @@ namespace FormPlugin.Data
         {
             AddACategory("Good Response",Outlook.OlCategoryColor.olCategoryColorGreen);
             AddACategory("Bad Response",Outlook.OlCategoryColor.olCategoryColorOrange);
-
         }
-        public DateTime dateTime;
         public static void  DeleteAllOurCategoires(DateTime date)
         {
             Outlook.Application oApp = new Outlook.Application();
@@ -75,7 +67,6 @@ namespace FormPlugin.Data
         }
         private static string RemoveUnnecessaryCategories(string categories)
         {
-            //MessageBox.Show("Started: "+categories);
             HashSet<string> catWithoutDuplicate = new HashSet<string>();
             string[] cat = categories.Split(',');
             for (int i = 0; i < cat.Length; i++)
@@ -93,7 +84,6 @@ namespace FormPlugin.Data
                         finnal = s.Trim();
                 }
             }          
-            //MessageBox.Show("Finnal: "+finnal);
             return finnal;
         }
         private static bool CategoryExists(string categoryName)
