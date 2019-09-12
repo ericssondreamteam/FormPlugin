@@ -75,6 +75,10 @@ namespace FormPlugin
             SendForm sendForm = new SendForm();
             sendForm.Show();
         }
+        public void CleanCategories(Office.IRibbonControl control)
+        {
+            Data.Categories.DeleteAllOurCategoires(DateTime.Now.AddHours(-1));
+        }
 
         public void CheckConversation(Office.IRibbonControl control)
         {
@@ -336,7 +340,7 @@ namespace FormPlugin
         }
         public static string RemoveUnnecessaryCategories(string categories, string addedCategories )
         {
-            MessageBox.Show("Started: "+categories);
+           // MessageBox.Show("Started: "+categories);
             HashSet<string> catWithoutDuplicate = new HashSet<string>();
             string [] cat = categories.Split(',');
             for (int i = 0; i < cat.Length; i++)
@@ -358,7 +362,7 @@ namespace FormPlugin
                 finnal = finnal + ", " + addedCategories;
             else
                 finnal = addedCategories;
-            MessageBox.Show("Finnal: "+finnal);
+           // MessageBox.Show("Finnal: "+finnal);
             return finnal;
         }
 
