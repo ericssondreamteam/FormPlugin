@@ -359,8 +359,6 @@ namespace FormPlugin.Forms
                             mailItem.SaveAs(Configuration.pathFileTemplate + "\\" + textBox2.Text + ".oft");
                             mailItem.Display();
                             Close();
-
-
                         }
                     }
                 }
