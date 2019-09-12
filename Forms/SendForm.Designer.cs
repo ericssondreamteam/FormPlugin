@@ -60,10 +60,10 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(186, 398);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(220, 395);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(292, 29);
+            this.label2.Size = new System.Drawing.Size(240, 25);
             this.label2.TabIndex = 2;
             this.label2.Text = "Do you want to send mail?";
             // 
@@ -71,7 +71,7 @@
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(230, 453);
+            this.button1.Location = new System.Drawing.Point(241, 453);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(87, 38);
             this.button1.TabIndex = 3;
@@ -83,7 +83,7 @@
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(358, 453);
+            this.button2.Location = new System.Drawing.Point(357, 453);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(85, 38);
             this.button2.TabIndex = 4;
@@ -117,16 +117,16 @@
             this.questionList.ItemHeight = 20;
             this.questionList.Location = new System.Drawing.Point(78, 232);
             this.questionList.Name = "questionList";
-            this.questionList.Size = new System.Drawing.Size(365, 124);
+            this.questionList.Size = new System.Drawing.Size(364, 124);
             this.questionList.TabIndex = 20;
             this.questionList.SelectedIndexChanged += new System.EventHandler(this.QuestionList_SelectedIndexChanged);
             // 
             // editButton
             // 
             this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.editButton.Location = new System.Drawing.Point(449, 168);
+            this.editButton.Location = new System.Drawing.Point(449, 174);
             this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(101, 29);
+            this.editButton.Size = new System.Drawing.Size(101, 30);
             this.editButton.TabIndex = 25;
             this.editButton.Text = "Edit";
             this.editButton.UseVisualStyleBackColor = true;
@@ -135,9 +135,9 @@
             // deleteQuestionButton
             // 
             this.deleteQuestionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.deleteQuestionButton.Location = new System.Drawing.Point(449, 276);
+            this.deleteQuestionButton.Location = new System.Drawing.Point(449, 279);
             this.deleteQuestionButton.Name = "deleteQuestionButton";
-            this.deleteQuestionButton.Size = new System.Drawing.Size(101, 38);
+            this.deleteQuestionButton.Size = new System.Drawing.Size(101, 30);
             this.deleteQuestionButton.TabIndex = 24;
             this.deleteQuestionButton.Text = "Delete";
             this.deleteQuestionButton.UseVisualStyleBackColor = true;
@@ -146,9 +146,9 @@
             // addButton
             // 
             this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addButton.Location = new System.Drawing.Point(449, 133);
+            this.addButton.Location = new System.Drawing.Point(449, 134);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(101, 29);
+            this.addButton.Size = new System.Drawing.Size(101, 30);
             this.addButton.TabIndex = 23;
             this.addButton.Text = "Add new";
             this.addButton.UseVisualStyleBackColor = true;
@@ -156,9 +156,9 @@
             // 
             // questionTextBox
             // 
-            this.questionTextBox.Location = new System.Drawing.Point(79, 134);
+            this.questionTextBox.Location = new System.Drawing.Point(78, 134);
             this.questionTextBox.Name = "questionTextBox";
-            this.questionTextBox.Size = new System.Drawing.Size(364, 63);
+            this.questionTextBox.Size = new System.Drawing.Size(364, 70);
             this.questionTextBox.TabIndex = 26;
             this.questionTextBox.Text = "\n";
             this.questionTextBox.TextChanged += new System.EventHandler(this.QuestionTextBox_TextChanged);

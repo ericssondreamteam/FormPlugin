@@ -200,7 +200,7 @@
             // editButton
             // 
             this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.editButton.Location = new System.Drawing.Point(643, 140);
+            this.editButton.Location = new System.Drawing.Point(643, 144);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(101, 30);
             this.editButton.TabIndex = 22;
