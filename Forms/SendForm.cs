@@ -26,6 +26,7 @@ namespace FormPlugin.Forms
             allReceivers.Hide();
             info.Hide();
             deleteQuestionButton.Enabled = false;
+            addButton.Enabled = false;
         }
 
         private void Label1_Click(object sender, EventArgs e)
@@ -189,7 +190,14 @@ namespace FormPlugin.Forms
 
         private void QuestionTextBox_TextChanged(object sender, EventArgs e)
         {
-
+            if(questionTextBox.Text.Length > 0)
+            {
+                addButton.Enabled = true;
+            }
+            else
+            {
+                addButton.Enabled = false;
+            }
         }
 
         private void SendForm_SizeChanged(object sender, EventArgs e)

@@ -77,7 +77,12 @@ namespace FormPlugin
         }
         public void CleanCategories(Office.IRibbonControl control)
         {
-            Data.Categories.DeleteAllOurCategoires(DateTime.Now.AddHours(-1));
+            DialogResult dr = MessageBox.Show("Do you want to clear all messages from our categories?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if(dr == DialogResult.Yes)
+            {
+                Data.Categories.DeleteAllOurCategoires(DateTime.Now.AddHours(-1));
+            }
+            
         }
 
         public void CheckConversation(Office.IRibbonControl control)
