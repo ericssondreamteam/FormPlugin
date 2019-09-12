@@ -31,6 +31,7 @@ namespace FormPlugin.Forms
             //editButton.Hide();
             editButton.Enabled = false;
             deleteQuestionButton.Enabled = false;
+            addButton.Enabled = false;
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,8 +65,8 @@ namespace FormPlugin.Forms
 
         private void ResizeEvent(object sender, EventArgs e)
         {
-            questionTextBox.Size = new Size(Size.Width - 245, 137);
-            questionList.Size = new Size(Size.Width - 245, Size.Height- 420); ;
+            questionTextBox.Size = new Size(Size.Width - 245, questionTextBox.Size.Height);
+            questionList.Size = new Size(Size.Width - 245, Size.Height- 400); ;
         }
 
         private void TextBox2_TextChanged(object sender, EventArgs e)
@@ -97,7 +98,7 @@ namespace FormPlugin.Forms
         {
             if (questionList.Items.Count == 0)
             {
-                warningLabelEmpty.Text = "We cannot\n create template\n without any\n questions";
+                warningLabelEmpty.Text = "You can't create template with no questions";
             }
             else
             {
@@ -136,7 +137,8 @@ namespace FormPlugin.Forms
                     Outlook.Application outlookApp = new Outlook.Application();
                     MailItem mailItem = outlookApp.CreateItem(OlItemType.olMailItem);
                     mailItem.HTMLBody = CreateBodyMail();
-                    mailItem.SaveAs(Configuration.pathFileTemplate + "\\" + label1.Text);
+                    string nazwaPliku = label1.Text.Substring(17);
+                    mailItem.SaveAs(Configuration.pathFileTemplate + "\\" + nazwaPliku);
                     Close();
                 }
                 
@@ -180,7 +182,7 @@ namespace FormPlugin.Forms
                 {
                     string filePath = openFileDialog.FileName;
                     label1.Show();
-                    label1.Text = openFileDialog.SafeFileName;
+                    label1.Text = "You are editing: " + openFileDialog.SafeFileName;
 
                     Application app = new Application();
                     MailItem mail = app.CreateItemFromTemplate(filePath) as MailItem;
@@ -314,7 +316,14 @@ namespace FormPlugin.Forms
 
         private void QuestionTextBox_TextChanged(object sender, EventArgs e)
         {
-
+            if(questionTextBox.Text.Length > 0)
+            {
+                addButton.Enabled = true;
+            }
+            else
+            {
+                addButton.Enabled = false;
+            }
         }
 
         private void StyleButton_Click(object sender, EventArgs e)
@@ -322,7 +331,7 @@ namespace FormPlugin.Forms
             CreateBodyMail();
             if (questionList.Items.Count == 0)
             {
-                warningLabelEmpty.Text = "We cannot\n create template\n without any\n questions";
+                warningLabelEmpty.Text = "You can't create template with no questions";
             }
             else
             {
@@ -361,7 +370,8 @@ namespace FormPlugin.Forms
                     Outlook.Application outlookApp = new Outlook.Application();
                     MailItem mailItem = outlookApp.CreateItem(OlItemType.olMailItem);
                     mailItem.HTMLBody = CreateBodyMail();
-                    mailItem.SaveAs(Configuration.pathFileTemplate + "\\" + label1.Text);
+                    string nazwaPliku = label1.Text.Substring(17);
+                    mailItem.SaveAs(Configuration.pathFileTemplate + "\\" + nazwaPliku);
                     mailItem.Display();
                     Close();
                 }
