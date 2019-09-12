@@ -307,8 +307,6 @@ namespace FormPlugin
                         
                     }
                     mail.Categories = RemoveUnnecessaryCategories(mail.Categories, category);
-                    //mail.Categories = category; //DO ODKOMENTOWANIA
-                    //MessageBox.Show("Kategoria nadana " + category); //DO SPRAWDZANIA
                 }
                 getNextItemFromConversation(item, conv, category);
             }
@@ -336,8 +334,6 @@ namespace FormPlugin
 
                         }
                         mailItem.Categories = RemoveUnnecessaryCategories(mailItem.Categories, category);
-                        //mailItem.Categories = category; //DO ODKOMENTOWANIA
-                        //MessageBox.Show("Kategoria nadana " + category); //DO SPRAWDZANIA
                     }
                     getNextItemFromConversation(myItem, conv, category);
                 }
@@ -345,9 +341,6 @@ namespace FormPlugin
         }
         public static string RemoveUnnecessaryCategories(string categories, string addedCategories )
         {
-
-           // MessageBox.Show("Started: "+categories);
-
             HashSet<string> catWithoutDuplicate = new HashSet<string>();
             string [] cat = categories.Split(',');
             for (int i = 0; i < cat.Length; i++)
@@ -369,8 +362,6 @@ namespace FormPlugin
                 finnal = finnal + ", " + addedCategories;
             else
                 finnal = addedCategories;
-
-           // MessageBox.Show("Finnal: "+finnal);
 
             return finnal;
         }
