@@ -25,6 +25,7 @@ namespace FormPlugin.Forms
             labelWarningError.Hide();
             allReceivers.Hide();
             info.Hide();
+            deleteQuestionButton.Enabled = false;
         }
 
         private void Label1_Click(object sender, EventArgs e)
@@ -124,7 +125,15 @@ namespace FormPlugin.Forms
         private void QuestionList_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (questionList.SelectedIndex != -1)
+            {
                 editButton.Enabled = true;
+                deleteQuestionButton.Enabled = true;
+            } else
+            {
+                editButton.Enabled = false;
+                deleteQuestionButton.Enabled = false;
+            }
+                
             string a = allReceivers.Text;
             choosenQuestionNumber = questionList.SelectedIndex;
             questionTextBox.Text = questionList.GetItemText(questionList.SelectedItem);

@@ -86,9 +86,9 @@
             // addButton
             // 
             this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addButton.Location = new System.Drawing.Point(686, 113);
+            this.addButton.Location = new System.Drawing.Point(643, 126);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(101, 56);
+            this.addButton.Size = new System.Drawing.Size(101, 40);
             this.addButton.TabIndex = 5;
             this.addButton.Text = "Add new";
             this.addButton.UseVisualStyleBackColor = true;
@@ -187,9 +187,9 @@
             // deleteQuestionButton
             // 
             this.deleteQuestionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.deleteQuestionButton.Location = new System.Drawing.Point(737, 364);
+            this.deleteQuestionButton.Location = new System.Drawing.Point(737, 368);
             this.deleteQuestionButton.Name = "deleteQuestionButton";
-            this.deleteQuestionButton.Size = new System.Drawing.Size(101, 56);
+            this.deleteQuestionButton.Size = new System.Drawing.Size(101, 37);
             this.deleteQuestionButton.TabIndex = 19;
             this.deleteQuestionButton.Text = "Delete";
             this.deleteQuestionButton.UseVisualStyleBackColor = true;
@@ -198,9 +198,9 @@
             // editButton
             // 
             this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.editButton.Location = new System.Drawing.Point(686, 175);
+            this.editButton.Location = new System.Drawing.Point(643, 172);
             this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(101, 56);
+            this.editButton.Size = new System.Drawing.Size(101, 36);
             this.editButton.TabIndex = 22;
             this.editButton.Text = "Edit";
             this.editButton.UseVisualStyleBackColor = true;

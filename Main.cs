@@ -243,7 +243,7 @@ namespace FormPlugin
             if(!checkIfTemplateWasSend)
             {
                 //ORANGE CATEGORY
-                oznaczCalaKonwersacjeKategoria(email, "You Must Decide");
+                //oznaczCalaKonwersacjeKategoria(email, "You Must Decide");
                 ///////////////
                 /*MessageBox.Show("Musisz wysłać dopiero template.");*/
             }
@@ -340,7 +340,9 @@ namespace FormPlugin
         }
         public static string RemoveUnnecessaryCategories(string categories, string addedCategories )
         {
+
            // MessageBox.Show("Started: "+categories);
+
             HashSet<string> catWithoutDuplicate = new HashSet<string>();
             string [] cat = categories.Split(',');
             for (int i = 0; i < cat.Length; i++)
@@ -350,7 +352,7 @@ namespace FormPlugin
             string finnal = "";
             foreach(string s in catWithoutDuplicate)
             {
-                if (!s.Trim().Equals("You Must Decide") && !s.Equals("Bad Response") && !s.Equals("Good Response"))
+                if (!s.Equals("Bad Response") && !s.Equals("Good Response"))
                 {
                     if (!finnal.Equals(""))
                         finnal = finnal + ", " + s.Trim();
@@ -362,7 +364,9 @@ namespace FormPlugin
                 finnal = finnal + ", " + addedCategories;
             else
                 finnal = addedCategories;
+
            // MessageBox.Show("Finnal: "+finnal);
+
             return finnal;
         }
 

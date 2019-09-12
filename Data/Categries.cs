@@ -38,8 +38,8 @@ namespace FormPlugin.Data
         internal static void AddCategorires()
         {
             AddACategory("Good Response",Outlook.OlCategoryColor.olCategoryColorGreen);
-            AddACategory("Bad Response",Outlook.OlCategoryColor.olCategoryColorDarkRed);
-            //AddACategory("You Must Decide",Outlook.OlCategoryColor.olCategoryColorDarkYellow);
+            AddACategory("Bad Response",Outlook.OlCategoryColor.olCategoryColorOrange);
+
         }
         public DateTime dateTime;
         public static void  DeleteAllOurCategoires(DateTime date)
