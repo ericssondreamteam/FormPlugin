@@ -48,6 +48,8 @@ namespace FormPlugin.Data
             MailItem email1 = null;
 
             StringBuilder debug = new StringBuilder();
+            debug.Append("Start: " + deleteCategoriesDateStart+"\n" + "Koniec: " +deleteCategoriesDateFinish+"\n");
+            debug.Append("Folder: "+oInbox2.Name+"\n");
             foreach (object collectionItem in oItems)
             {
                 try
@@ -63,6 +65,8 @@ namespace FormPlugin.Data
                                 debug.Append(" After: "+email1.Categories+"\n");
                                
                             }
+                            else
+                            { }
                                 
                         else
                             break;
