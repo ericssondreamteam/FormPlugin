@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Text;
+using System.Windows.Forms;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace FormPlugin.Data
@@ -34,7 +36,7 @@ namespace FormPlugin.Data
             AddACategory("Good Response",Outlook.OlCategoryColor.olCategoryColorGreen);
             AddACategory("Bad Response",Outlook.OlCategoryColor.olCategoryColorOrange);
         }
-        public static void  DeleteAllOurCategoires(DateTime date)
+        public static void  DeleteAllOurCategoires(DateTime deleteCategoriesDateStart, DateTime deleteCategoriesDateFinish)
         {
             Outlook.Application oApp = new Outlook.Application();
             NameSpace oNS = oApp.GetNamespace("mapi");
@@ -44,6 +46,8 @@ namespace FormPlugin.Data
             //Sort all items
             oItems.Sort("[ReceivedTime]", true);
             MailItem email1 = null;
+
+            StringBuilder debug = new StringBuilder();
             foreach (object collectionItem in oItems)
             {
                 try
@@ -51,8 +55,15 @@ namespace FormPlugin.Data
                     email1 = collectionItem as MailItem;
                     if (email1 != null)
                     {
-                        if (email1.ReceivedTime > date)
-                            email1.Categories = RemoveUnnecessaryCategories(email1.Categories);
+                        if (email1.ReceivedTime > deleteCategoriesDateStart)
+                            if(email1.ReceivedTime < deleteCategoriesDateFinish)
+                            {
+                                debug.Append(email1.Subject + ". Befor: " + email1.Categories);
+                                email1.Categories = RemoveUnnecessaryCategories(email1.Categories);
+                                debug.Append(" After: "+email1.Categories+"\n");
+                               
+                            }
+                                
                         else
                             break;
                     }
@@ -61,7 +72,9 @@ namespace FormPlugin.Data
                 {
                     _ = e.Message;
                 }
+
             }
+            MessageBox.Show(debug.ToString());
 
 
         }

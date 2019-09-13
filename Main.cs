@@ -76,8 +76,16 @@ namespace FormPlugin
             sendForm.Show();
         }
         public void CleanCategories(Office.IRibbonControl control)
-        {
-            Data.Categories.DeleteAllOurCategoires(DateTime.Now.AddHours(-1));
+        {            
+            DeleteCategories delete = new DeleteCategories();
+            delete.ShowDialog();
+            if(GlobalInfo.DeleteCategoriesConfirmation == DialogResult.OK)
+            {
+                MessageBox.Show("rsda");
+                Data.Categories.DeleteAllOurCategoires(GlobalInfo.DeleteCategoriesDateStart, GlobalInfo.DeleteCategoriesDateFinish);
+                
+            }
+
         }
 
         public void CheckConversation(Office.IRibbonControl control)
@@ -301,7 +309,7 @@ namespace FormPlugin
                         mail.Categories = existingCategories + ", "+category;
                         
                     }
-                    mail.Categories = RemoveUnnecessaryCategories(mail.Categories, category);
+                    mail.Categories = RemoveUnnecessaryCategories(mail.Categories, category);   
                 }
                 getNextItemFromConversation(item, conv, category);
             }

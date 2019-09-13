@@ -162,6 +162,7 @@
     <Compile Include="Data\Categries.cs" />
     <Compile Include="Data\CheckMail.cs" />
     <Compile Include="Data\Configuration.cs" />
+    <Compile Include="Data\GlobalInfo.cs" />
     <Compile Include="Data\LoadData.cs" />
     <Compile Include="Data\Tools.cs" />
     <Compile Include="Forms\Check.cs">
@@ -175,6 +176,12 @@
     </Compile>
     <Compile Include="Forms\CreateTemplateForm.Designer.cs">
       <DependentUpon>CreateTemplateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DeleteCategories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DeleteCategories.Designer.cs">
+      <DependentUpon>DeleteCategories.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LoadTemplate.cs">
       <SubType>Form</SubType>
@@ -197,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CreateTemplateForm.resx">
       <DependentUpon>CreateTemplateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DeleteCategories.resx">
+      <DependentUpon>DeleteCategories.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoadTemplate.resx">
       <DependentUpon>LoadTemplate.cs</DependentUpon>
