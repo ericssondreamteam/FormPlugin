@@ -12,14 +12,15 @@ namespace FormPlugin.Data
         {
             dictionary.Add("Automatyczna odpowiedź: ");
             dictionary.Add("Autosvar: ");
+            dictionary.Add("Automatic Replay: ");
         }
         public static void DeleteDefaultReplay(MailItem mailItem)
         {
-            MessageBox.Show("delete"+ mailItem.Subject);
+            MessageBox.Show("delete: "+ mailItem.Subject);
             foreach(string s in dictionary)
             {
                 //MessageBox.Show(mailItem.Subject);
-                if(mailItem.Subject.StartsWith(s))
+                if(mailItem.Subject.ToLower().StartsWith(s.ToLower()))
                 {
                     mailItem.Delete();
                     MessageBox.Show("usnieto");
