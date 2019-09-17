@@ -16,14 +16,12 @@ namespace FormPlugin.Data
         }
         public static void DeleteDefaultReplay(MailItem mailItem)
         {
-            MessageBox.Show("delete: "+ mailItem.Subject);
             foreach(string s in dictionary)
             {
-                //MessageBox.Show(mailItem.Subject);
                 if(mailItem.Subject.ToLower().StartsWith(s.ToLower()))
                 {
-                    mailItem.Delete();
-                    MessageBox.Show("usnieto");
+                    MessageBox.Show("usnieto: " + mailItem.Subject);
+                    mailItem.Delete();                    
                     break;
                 }
             }
