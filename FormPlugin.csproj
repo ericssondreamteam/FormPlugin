@@ -162,6 +162,7 @@
     <Compile Include="Data\Categries.cs" />
     <Compile Include="Data\CheckMail.cs" />
     <Compile Include="Data\Configuration.cs" />
+    <Compile Include="Data\DefaultReplay.cs" />
     <Compile Include="Data\GlobalInfo.cs" />
     <Compile Include="Data\LoadData.cs" />
     <Compile Include="Data\Tools.cs" />

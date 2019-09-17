@@ -21,7 +21,7 @@ namespace FormPlugin
             Configuration.Config(outlookNameSpace, ref inbox, Application);
             items = inbox.Items;
             items.ItemAdd += new Outlook.ItemsEvents_ItemAddEventHandler(items_ItemAdd);
-
+            DefaultReplay.InitDictionary();
             Categories.AddCategorires();
         }
 
@@ -29,6 +29,7 @@ namespace FormPlugin
         {
             if (Item is Outlook.MailItem)
             {
+                DefaultReplay.DeleteDefaultReplay(Item as Outlook.MailItem);
                 //Automatyczne nadawanie kategorii na wejściu
                 try
                 {
