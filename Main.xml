@@ -12,7 +12,7 @@
                screentip="Resend custom-email tamplate to customer" onAction="LoadForm"
                supertip="Resend XD."/>
           
-          <button id="defaultReplayButton" label="Defult Replay"
+          <button id="defaultReplayButton" label="Defult Reply"
                screentip="Resend custom-email tamplate to customer" onAction="DefultReplay"
                supertip="Resend XD."/>
           
