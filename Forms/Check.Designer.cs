@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateTemplateForm));
-            this.button1 = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SendForm));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon"))); this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -80,7 +80,7 @@
             this.Load += new System.EventHandler(this.Check_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            
 
         }
 

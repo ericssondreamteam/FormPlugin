@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateTemplateForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SendForm));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Info = new System.Windows.Forms.Label();
             this.Start = new System.Windows.Forms.Label();
             this.Koniec = new System.Windows.Forms.Label();
@@ -138,7 +139,7 @@
             this.Text = "DeleteCategories";
             this.ResumeLayout(false);
             this.PerformLayout();
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+           
 
         }
 

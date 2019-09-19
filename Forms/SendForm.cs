@@ -81,20 +81,20 @@ namespace FormPlugin.Forms
                     allReceivers.Text = Tools.ShowAllReceivers();
                     //MessageBox.Show(allReceivers.Text.ToString());
                     
-                    String[] pom = new String[2];
-                    foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
-                    {
-                        pom = email.ReplyAll().To.Split(';');
-                        foreach(String s in pom)
-                        {
-                            reciversAll.Add(s);
-                        }
-                        //MessageBox.Show(pom);
-                    }
-                    for (int i = 0; i < pom.Length; i++)
-                    {
-                        questionList.Items.Add(pom[i].Trim());
-                    }
+                    //String[] pom = new String[2];
+                    //foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
+                    //{
+                    //    pom = email.ReplyAll().To.Split(';');
+                    //    foreach(String s in pom)
+                    //    {
+                    //        reciversAll.Add(s);
+                    //    }
+                    //    //MessageBox.Show(pom);
+                    //}
+                    //for (int i = 0; i < pom.Length; i++)
+                    //{
+                    //    questionList.Items.Add(pom[i].Trim());
+                    //}
                     
                     
                 }

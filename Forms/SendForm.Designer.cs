@@ -43,6 +43,7 @@
             this.labelWarningError = new System.Windows.Forms.Label();
             this.info = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -194,11 +195,21 @@
             this.label3.TabIndex = 29;
             this.label3.Text = "All recipients: ";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(483, 32);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(188, 60);
+            this.label4.TabIndex = 30;
+            this.label4.Text = "If You created\n template called \"Default\"\n then You have less job";
+            // 
             // SendForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(683, 544);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.questionTextBox);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.deleteQuestionButton);
@@ -241,5 +252,6 @@
         private System.Windows.Forms.Label labelWarningError;
         private System.Windows.Forms.Label info;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
