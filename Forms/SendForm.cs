@@ -27,6 +27,32 @@ namespace FormPlugin.Forms
             info.Hide();
             deleteQuestionButton.Enabled = false;
             addButton.Enabled = false;
+            if (Directory.Exists(Configuration.pathFileTemplate))
+            {
+                string path = Configuration.pathFileTemplate + "\\Default.oft";
+                if (File.Exists(path))
+                {
+                    checkTemplate = true;
+                    loadData.SetPathFile(path);
+                    info.Show();
+                    info.Text = "Default.oft" + " is chosen";
+                    allReceivers.Text = Tools.ShowAllReceivers();
+                    String[] pom = new String[2];
+                    foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
+                    {
+                        pom = email.ReplyAll().To.Split(';');
+                        foreach (String s in pom)
+                        {
+                            reciversAll.Add(s);
+                        }
+                        //MessageBox.Show(pom);
+                    }
+                    for (int i = 0; i < pom.Length; i++)
+                    {
+                        questionList.Items.Add(pom[i].Trim());
+                    }
+                }
+            }
         }
 
         private void Label1_Click(object sender, EventArgs e)

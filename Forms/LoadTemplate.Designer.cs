@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateTemplateForm));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -38,6 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -125,11 +125,23 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "This field is optional.";
             // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(25, 195);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(289, 40);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "If You created template called \"Default\"\n then You have less job";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // LoadTemplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(683, 369);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.label3);
@@ -142,7 +154,6 @@
             this.Name = "LoadTemplate";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoadTemplate";
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -159,5 +170,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label listView1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
     }
 }

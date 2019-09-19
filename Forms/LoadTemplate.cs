@@ -13,6 +13,16 @@ namespace FormPlugin.Forms
         {
             InitializeComponent();
             loadData = new LoadData();
+            if (Directory.Exists(Configuration.pathFileTemplate))
+            {
+                string path = Configuration.pathFileTemplate + "\\Default.oft";
+                if (File.Exists(path))
+                {
+                    checkTemplate = true;
+                    loadData.SetPathFile(path);
+                    label3.Text = "Default.oft";
+                }
+            }
         }
 
         private void Button1_Click(object sender, EventArgs e)
