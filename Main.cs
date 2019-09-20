@@ -2,9 +2,7 @@
 using FormPlugin.Forms;
 using Microsoft.Office.Interop.Outlook;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -25,41 +23,38 @@ namespace FormPlugin
         private static string pathForTemplate = null;
 
         public Main()
-        {
-
-        }
+        {}
         public void OnSettingsAction(Office.IRibbonControl control)
         {
             Settings settings = new Settings();
-            settings.Show();
- 
+            settings.Show(); 
         }
         public void CreateForm(Office.IRibbonControl control)
         {
             CreateTemplateForm create = new CreateTemplateForm();
             create.Show();
         }
-        public void LoadForm(Office.IRibbonControl control)
-        {
-            LoadTemplate loadTemplate = new LoadTemplate();
-            loadTemplate.Show();
-        }
+        //public void LoadForm(Office.IRibbonControl control)
+        //{
+        //    LoadTemplate loadTemplate = new LoadTemplate();
+        //    loadTemplate.Show();
+        //}
 
-        public void CheckMailForm(Office.IRibbonControl control)
-        {
-            try
-            {
-                Check check = new Check();
-                check.Show();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Exception");
-                _ = ex.Message;
-            }
+        //public void CheckMailForm(Office.IRibbonControl control)
+        //{
+        //    try
+        //    {
+        //        Check check = new Check();
+        //        check.Show();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Exception");
+        //        _ = ex.Message;
+        //    }
 
 
-        }
+        //}
         public void DefultReplay(Office.IRibbonControl control)
         {
             SendForm sendForm = new SendForm();
@@ -67,19 +62,19 @@ namespace FormPlugin
         }
        
 
-        public void CheckConversation(Office.IRibbonControl control)
-        {
-            try
-            {
-                manuallyCheckAutomaticReply();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("CHECK CONVERSATION: \n" + ex.Message + "\n" + ex.StackTrace,
-                    "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+        //public void CheckConversation(Office.IRibbonControl control)
+        //{
+        //    try
+        //    {
+        //        manuallyCheckAutomaticReply();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("CHECK CONVERSATION: \n" + ex.Message + "\n" + ex.StackTrace,
+        //            "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
 
-        }
+        //}
 
         public static void manuallyCheckAutomaticReply()
         {

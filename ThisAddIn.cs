@@ -1,7 +1,6 @@
 ﻿using System;
 using Outlook = Microsoft.Office.Interop.Outlook;
 using System.Windows.Forms;
-using System.IO;
 using FormPlugin.Data;
 
 namespace FormPlugin
@@ -41,34 +40,7 @@ namespace FormPlugin
                      //   "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            //A na dole stara reszta pewnie do usunięcia potem
-
-
-/*            if (Item is Outlook.MailItem)
-            {
-                Outlook.MailItem mail = (Outlook.MailItem)Item;
-                if (Item != null)
-                {
-                    if (Directory.Exists(Configuration.pathFileTemplate))
-                    {
-                        string[] filePaths = Directory.GetFiles(Configuration.pathFileTemplate, "*.oft");
-                        CheckMail check = new CheckMail(mail);
-                        bool anyTemplateSuits = false;
-                        foreach (string s in filePaths)
-                        {
-                            check.setFilePath(s);
-                            if (check.CreateItemFromTemplateAndCheck())
-                            {
-                                MessageBox.Show("OK " + s);
-                                anyTemplateSuits = true;
-                            }
-                        }
-                        if (!anyTemplateSuits)
-                            MessageBox.Show("Email doesn't suit to any template");
-                    }
-
-                }
-            }*/
+         
 
         }
 

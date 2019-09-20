@@ -1,14 +1,8 @@
 ﻿using FormPlugin.Data;
 using Microsoft.Office.Interop.Outlook;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Exception = System.Exception;
 
 namespace FormPlugin.Forms
 {
@@ -43,6 +37,39 @@ namespace FormPlugin.Forms
             else if (dialogResult == DialogResult.No)
             {
                 //do something else
+            }
+        }
+
+        private void LoadForm_Click(object sender, EventArgs e)
+        {
+            LoadTemplate loadTemplate = new LoadTemplate();
+            loadTemplate.Show();
+        }
+
+        private void TESTCheckMail_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Check check = new Check();
+                check.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception");
+                _ = ex.Message;
+            }
+        }
+
+        private void TESTCheckConv_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Main.manuallyCheckAutomaticReply();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("CHECK CONVERSATION: \n" + ex.Message + "\n" + ex.StackTrace,
+                    "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
