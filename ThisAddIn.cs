@@ -37,8 +37,8 @@ namespace FormPlugin
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("CHECK CONVERSATION: \n" + ex.Message + "\n" + ex.StackTrace,
-                        "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                   // MessageBox.Show("CHECK CONVERSATION: \n" + ex.Message + "\n" + ex.StackTrace,
+                     //   "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             //A na dole stara reszta pewnie do usunięcia potem
