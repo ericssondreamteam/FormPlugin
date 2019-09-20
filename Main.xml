@@ -5,20 +5,21 @@
       <tab idMso="TabAddIns">
         <group id="Form"
                label="Form">
-          <button id="createFormButton" label="Create Form"
+          <!--<button id="createFormButton" label="Create Form"
                screentip="Create or Edit Templates" onAction="CreateForm"
-               />
+               />-->
           <!--<button id="laodFormButton" label="Load Form"
                screentip="Resend custom-email tamplate to customer" onAction="LoadForm"
                supertip="Resend XD."/>-->
           
-          <button id="defaultReplayButton" label="Defult Reply"
-               screentip="Resend custom-email tamplate to customer" onAction="DefultReplay"
-               supertip="Resend XD."/>
+         
           
           <button id="Settings" label="Settings"
                screentip="Edit Settings" onAction="OnSettingsAction"
                />
+          <button id="defaultReplayButton" label="Defult Reply"
+              screentip="Resend custom-email tamplate to customer" onAction="DefultReplay"
+              supertip="Resend XD."/>
           <!--<button id="checkMailFormButton" label="TEST Check Mail"
                screentip="Resend custom-email tamplate to customer" onAction="CheckMailForm"
                supertip="Resend XD."/>

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SendForm));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.cleanCategories = new System.Windows.Forms.Button();
             this.cleanCatLabel = new System.Windows.Forms.Label();
             this.changeObservedFolder = new System.Windows.Forms.Button();
@@ -35,6 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.TESTCheckMail = new System.Windows.Forms.Button();
             this.TESTCheckConv = new System.Windows.Forms.Button();
+            this.CreateForm = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cleanCategories
@@ -108,11 +111,22 @@
             this.TESTCheckConv.UseVisualStyleBackColor = true;
             this.TESTCheckConv.Click += new System.EventHandler(this.TESTCheckConv_Click);
             // 
+            // CreateForm
+            // 
+            this.CreateForm.Location = new System.Drawing.Point(330, 182);
+            this.CreateForm.Name = "CreateForm";
+            this.CreateForm.Size = new System.Drawing.Size(132, 78);
+            this.CreateForm.TabIndex = 7;
+            this.CreateForm.Text = "Create or Edit Template Emails";
+            this.CreateForm.UseVisualStyleBackColor = true;
+            this.CreateForm.Click += new System.EventHandler(this.CreateForm_Click);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.CreateForm);
             this.Controls.Add(this.TESTCheckConv);
             this.Controls.Add(this.TESTCheckMail);
             this.Controls.Add(this.label1);
@@ -138,5 +152,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button TESTCheckMail;
         private System.Windows.Forms.Button TESTCheckConv;
+        private System.Windows.Forms.Button CreateForm;
     }
 }

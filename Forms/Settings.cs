@@ -72,5 +72,11 @@ namespace FormPlugin.Forms
                     "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void CreateForm_Click(object sender, EventArgs e)
+        {
+            CreateTemplateForm create = new CreateTemplateForm();
+            create.Show();
+        }
     }
 }

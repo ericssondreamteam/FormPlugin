@@ -29,11 +29,11 @@ namespace FormPlugin
             Settings settings = new Settings();
             settings.Show(); 
         }
-        public void CreateForm(Office.IRibbonControl control)
-        {
-            CreateTemplateForm create = new CreateTemplateForm();
-            create.Show();
-        }
+        //public void CreateForm(Office.IRibbonControl control)
+        //{
+        //    CreateTemplateForm create = new CreateTemplateForm();
+        //    create.Show();
+        //}
         //public void LoadForm(Office.IRibbonControl control)
         //{
         //    LoadTemplate loadTemplate = new LoadTemplate();
