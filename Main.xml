@@ -26,9 +26,7 @@
           <button id="checkConversation" label="TEST Check Conv"
                screentip="Resend custom-email tamplate to customer" onAction="CheckConversation"
                supertip="Resend XD."/>
-          <button id="deleteCategories" label="Clean Categories"
-              onAction="CleanCategories"
-             />
+         
           
         </group>
       </tab>

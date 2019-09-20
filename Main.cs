@@ -22,7 +22,7 @@ namespace FormPlugin
         private static int counter = 0;
         private static bool checkIfFitToTemplate = false;
         private static bool checkIfTemplateWasSend = false;
-        private static String pathForTemplate = null;
+        private static string pathForTemplate = null;
 
         public Main()
         {
@@ -30,19 +30,9 @@ namespace FormPlugin
         }
         public void OnSettingsAction(Office.IRibbonControl control)
         {
-            DialogResult dialogResult = MessageBox.Show("Want You edit settings?", "Editing Settings", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                Configuration.DeleteConfig();
-                NameSpace outlookNameSpace = ThisAddIn.zmiennaDoSettinngs.GetNamespace("MAPI");
-                MAPIFolder inbox=outlookNameSpace.GetDefaultFolder(OlDefaultFolders.olFolderInbox);                
-                Configuration.Config(outlookNameSpace, ref inbox, ThisAddIn.zmiennaDoSettinngs.Application);
-                MessageBox.Show("Please restart outlook to introduce changes");
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                //do something else
-            }
+            Settings settings = new Settings();
+            settings.Show();
+ 
         }
         public void CreateForm(Office.IRibbonControl control)
         {
@@ -75,25 +65,7 @@ namespace FormPlugin
             SendForm sendForm = new SendForm();
             sendForm.Show();
         }
-        public void CleanCategories(Office.IRibbonControl control)
-
-        {            
-            DeleteCategories delete = new DeleteCategories();
-            delete.ShowDialog();
-            if(GlobalInfo.DeleteCategoriesConfirmation == DialogResult.OK)
-            {
-                MessageBox.Show("rsda");
-                Data.Categories.DeleteAllOurCategoires(GlobalInfo.DeleteCategoriesDateStart, GlobalInfo.DeleteCategoriesDateFinish);
-                
-            }
-
-      //  {
-        //    DialogResult dr = MessageBox.Show("Do you want to clear all messages from our categories?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-          //  if(dr == DialogResult.Yes)
-            //{
-              //  Data.Categories.DeleteAllOurCategoires(DateTime.Now.AddHours(-1));
-           // }
-        }
+       
 
         public void CheckConversation(Office.IRibbonControl control)
         {
