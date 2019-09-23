@@ -86,8 +86,8 @@ namespace FormPlugin.Forms
                         foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
                         {
                             pom = email.ReplyAll().To.Split(';');
-                            foreach (String s in pom)
-                            {
+                                foreach (String s in pom)
+                                {
                                 reciversAll.Add(s);
                             }
                             //MessageBox.Show(pom);
