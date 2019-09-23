@@ -50,9 +50,10 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(237, 23);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(227, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(223, 20);
+            this.label1.Size = new System.Drawing.Size(250, 22);
             this.label1.TabIndex = 0;
             this.label1.Text = "First choose template to send:";
             this.label1.Click += new System.EventHandler(this.Label1_Click);
@@ -94,6 +95,7 @@
             // 
             // button3
             // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.MidnightBlue;
             this.button3.Location = new System.Drawing.Point(252, 46);
             this.button3.Name = "button3";
@@ -113,17 +115,20 @@
             // 
             // questionList
             // 
+            this.questionList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.questionList.ForeColor = System.Drawing.Color.MidnightBlue;
             this.questionList.FormattingEnabled = true;
-            this.questionList.ItemHeight = 20;
+            this.questionList.ItemHeight = 22;
             this.questionList.Location = new System.Drawing.Point(78, 232);
             this.questionList.Name = "questionList";
-            this.questionList.Size = new System.Drawing.Size(364, 124);
+            this.questionList.Size = new System.Drawing.Size(364, 114);
             this.questionList.TabIndex = 20;
             this.questionList.SelectedIndexChanged += new System.EventHandler(this.QuestionList_SelectedIndexChanged);
             // 
             // editButton
             // 
             this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.editButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editButton.Location = new System.Drawing.Point(449, 174);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(101, 30);
@@ -135,6 +140,7 @@
             // deleteQuestionButton
             // 
             this.deleteQuestionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteQuestionButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteQuestionButton.Location = new System.Drawing.Point(449, 279);
             this.deleteQuestionButton.Name = "deleteQuestionButton";
             this.deleteQuestionButton.Size = new System.Drawing.Size(101, 30);
@@ -146,6 +152,7 @@
             // addButton
             // 
             this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.addButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addButton.Location = new System.Drawing.Point(449, 134);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(101, 30);
@@ -166,20 +173,21 @@
             // labelWarningError
             // 
             this.labelWarningError.AutoSize = true;
-            this.labelWarningError.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWarningError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelWarningError.ForeColor = System.Drawing.SystemColors.InfoText;
             this.labelWarningError.Location = new System.Drawing.Point(94, 108);
             this.labelWarningError.Name = "labelWarningError";
-            this.labelWarningError.Size = new System.Drawing.Size(123, 17);
+            this.labelWarningError.Size = new System.Drawing.Size(136, 20);
             this.labelWarningError.TabIndex = 27;
             this.labelWarningError.Text = "labelWarningError";
             // 
             // info
             // 
             this.info.AutoSize = true;
-            this.info.Location = new System.Drawing.Point(241, 82);
+            this.info.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.info.Location = new System.Drawing.Point(237, 78);
             this.info.Name = "info";
-            this.info.Size = new System.Drawing.Size(51, 20);
+            this.info.Size = new System.Drawing.Size(58, 22);
             this.info.TabIndex = 28;
             this.info.Text = "label3";
             this.info.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -187,11 +195,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.label3.Location = new System.Drawing.Point(94, 212);
+            this.label3.Location = new System.Drawing.Point(93, 207);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 17);
+            this.label3.Size = new System.Drawing.Size(122, 22);
             this.label3.TabIndex = 29;
             this.label3.Text = "All recipients: ";
             // 
