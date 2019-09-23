@@ -53,6 +53,10 @@ namespace FormPlugin.Data
                 FolderEntryID = folder.EntryID;
                 inbox = outlookNameSpace.GetFolderFromID(folder.EntryID, folder.StoreID);
             }
+            else
+            {
+                MessageBox.Show("Ooops . . . Something went wrong.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
 
