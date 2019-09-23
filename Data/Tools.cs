@@ -18,6 +18,14 @@ namespace FormPlugin.Data
                 if (!s.Equals(""))
                     nextLineOfEmail.Add(s);
             }
+            for(int i=0;i<nextLineOfEmail.Count;i++)
+            {
+                if(nextLineOfEmail[i].Equals(" "))
+                {
+                    nextLineOfEmail.RemoveAt(i);
+                    i--;
+                }
+            }
             return nextLineOfEmail;
         }
 
