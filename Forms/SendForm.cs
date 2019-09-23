@@ -224,7 +224,7 @@ namespace FormPlugin.Forms
 
         private void SendForm_Load(object sender, EventArgs e)
         {
-
+            label4.Visible = false;
         }
 
         private void QuestionTextBox_TextChanged(object sender, EventArgs e)
@@ -243,6 +243,11 @@ namespace FormPlugin.Forms
         {
             questionTextBox.Size = new Size(Size.Width - 330, questionTextBox.Height);
             questionList.Size = new Size(Size.Width - 330, Size.Height - 450);
+        }
+
+        private void Label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

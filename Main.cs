@@ -27,6 +27,18 @@ namespace FormPlugin
         public void OnSettingsAction(Office.IRibbonControl control)
         {
             Settings settings = new Settings();
+            settings.FormBorderStyle = FormBorderStyle.FixedDialog;
+
+            // Set the MaximizeBox to false to remove the maximize box.
+            settings.MaximizeBox = false;
+
+            // Set the MinimizeBox to false to remove the minimize box.
+            settings.MinimizeBox = false;
+
+            // Set the start position of the form to the center of the screen.
+            settings.StartPosition = FormStartPosition.CenterScreen;
+
+            // Display the form as a modal dialog box.
             settings.Show(); 
         }
         //public void CreateForm(Office.IRibbonControl control)
