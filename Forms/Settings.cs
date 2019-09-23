@@ -1,6 +1,7 @@
 ﻿using FormPlugin.Data;
 using Microsoft.Office.Interop.Outlook;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 using Exception = System.Exception;
 
@@ -11,6 +12,9 @@ namespace FormPlugin.Forms
         public Settings()
         {
             InitializeComponent();
+            loadForm.Visible = false;
+            TESTCheckMail.Visible = false;
+            TESTCheckConv.Visible = false;
         }
 
         private void CleanCategories_Click(object sender, EventArgs e)
@@ -77,6 +81,52 @@ namespace FormPlugin.Forms
         {
             CreateTemplateForm create = new CreateTemplateForm();
             create.Show();
+        }
+
+        private void ChangeObservedFolder_MouseHover(object sender, EventArgs e)
+        {
+            infoChangeMain.ForeColor = Color.DodgerBlue;
+        }
+
+        private void ChangeObservedFolder_MouseLeave(object sender, EventArgs e)
+        {
+            infoChangeMain.ForeColor = Color.MidnightBlue;
+        }
+
+        private void CreateForm_MouseHover(object sender, EventArgs e)
+        {
+            infoCreateTemp.ForeColor = Color.DodgerBlue;
+        }
+
+        private void CreateForm_MouseLeave(object sender, EventArgs e)
+        {
+            infoCreateTemp.ForeColor = Color.MidnightBlue;
+        }
+
+        private void CleanCategories_MouseHover(object sender, EventArgs e)
+        {
+            cleanCatLabel.ForeColor = Color.DodgerBlue;
+        }
+
+        private void CleanCategories_MouseLeave(object sender, EventArgs e)
+        {
+            cleanCatLabel.ForeColor = Color.MidnightBlue;
+        }
+
+        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBox1.Checked)
+            {
+                loadForm.Visible = true;
+                TESTCheckMail.Visible = true;
+                TESTCheckConv.Visible = true;
+            }
+            else
+            {
+                loadForm.Visible = false;
+                TESTCheckMail.Visible = false;
+                TESTCheckConv.Visible = false;
+            }
         }
     }
 }
