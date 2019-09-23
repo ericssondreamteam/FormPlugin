@@ -166,6 +166,8 @@
             this.Controls.Add(this.cleanCatLabel);
             this.Controls.Add(this.cleanCategories);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximumSize = new System.Drawing.Size(611, 452);
+            this.MinimumSize = new System.Drawing.Size(611, 452);
             this.Name = "Settings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Settings";

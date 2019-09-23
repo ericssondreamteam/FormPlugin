@@ -94,8 +94,7 @@
             // 
             // button3
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button3.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button3.ForeColor = System.Drawing.Color.MidnightBlue;
             this.button3.Location = new System.Drawing.Point(252, 46);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(191, 29);
@@ -183,6 +182,7 @@
             this.info.Size = new System.Drawing.Size(51, 20);
             this.info.TabIndex = 28;
             this.info.Text = "label3";
+            this.info.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
@@ -203,6 +203,7 @@
             this.label4.Size = new System.Drawing.Size(188, 60);
             this.label4.TabIndex = 30;
             this.label4.Text = "If You created\n template called \"Default\"\n then You have less job";
+            this.label4.Click += new System.EventHandler(this.Label4_Click);
             // 
             // SendForm
             // 

@@ -18,8 +18,7 @@
                screentip="Edit Settings" onAction="OnSettingsAction"
                />
           <button id="defaultReplayButton" label="Defult Reply"
-              screentip="Resend custom-email tamplate to customer" onAction="DefultReplay"
-              supertip="Resend XD."/>
+              screentip="Resend custom-email tamplate to customer" onAction="DefultReplay"/>
           <!--<button id="checkMailFormButton" label="TEST Check Mail"
                screentip="Resend custom-email tamplate to customer" onAction="CheckMailForm"
                supertip="Resend XD."/>
