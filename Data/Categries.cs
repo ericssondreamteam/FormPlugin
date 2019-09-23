@@ -78,7 +78,7 @@ namespace FormPlugin.Data
                 }
 
             }
-            MessageBox.Show(debug.ToString());
+            //MessageBox.Show(debug.ToString());
 
 
         }

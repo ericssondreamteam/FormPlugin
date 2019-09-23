@@ -20,16 +20,34 @@ namespace FormPlugin.Forms
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            GlobalInfo.DeleteCategoriesDateStart = startDate.Value;
-            GlobalInfo.DeleteCategoriesDateFinish = finishDate.Value;
-            GlobalInfo.DeleteCategoriesConfirmation = DialogResult.OK;
-            Close();
+            if(startDate.Value > finishDate.Value)
+            {
+                MessageBox.Show("Choose correct start date and end date.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                GlobalInfo.DeleteCategoriesDateStart = startDate.Value;
+                GlobalInfo.DeleteCategoriesDateFinish = finishDate.Value;
+                GlobalInfo.DeleteCategoriesConfirmation = DialogResult.OK;
+                Close();
+            }
+            
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
             GlobalInfo.DeleteCategoriesConfirmation = DialogResult.Cancel;
             Close();
+        }
+
+        private void Koniec_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
