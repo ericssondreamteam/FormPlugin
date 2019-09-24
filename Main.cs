@@ -147,6 +147,7 @@ namespace FormPlugin
             {
                 MessageBox.Show("Exception in Send Again: \n" + e.Message);
             }
+            checkIfFitToTemplate = false;
             checkIfTemplateWasSend = false;
         }
 
