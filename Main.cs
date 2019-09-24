@@ -146,7 +146,8 @@ namespace FormPlugin
             } catch (Exception e)
             {
                 MessageBox.Show("Exception in Send Again: \n" + e.Message);
-            }   
+            }
+            checkIfTemplateWasSend = false;
         }
 
         //public void CheckConversation(Office.IRibbonControl control)
@@ -225,7 +226,7 @@ namespace FormPlugin
                         Main.counter++;
                         MailItem mail = item as MailItem;
                         bool checkTemplate = checkTemplateConversation(mail);
-                                               
+
                         //DO TESTOWANIA
                         /*Folder inFolder = mail.Parent as Folder;
                         string msg = mail.Subject + " in folder " + inFolder.Name + " Sender: " + mail.SenderName + " Date: " + mail.ReceivedTime;*/
