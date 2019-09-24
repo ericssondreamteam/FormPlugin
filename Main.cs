@@ -255,21 +255,21 @@ namespace FormPlugin
                 
                 /////////////
                 /*MessageBox.Show("ODSYŁAMY automatycznie bo chamy niemyte nie czytajoXD");*/
-                DialogResult result = MessageBox.Show("Do you want to send template once again? \n" + email.Subject + ",\n" + Tools.ShowAllReceivers(), "Confirmation", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
-                {
-                    Outlook.Application oApp = new Outlook.Application();
-                    MailItem emailToReply = oApp.CreateItemFromTemplate(pathForTemplate) as MailItem;
-                    emailToReply.Subject = "RE: " + email.Subject;
-                    emailToReply.To = email.ReplyAll().To;
-                    if (email != null)
-                    {
-                        Outlook.MailItem replyMail = email.Reply();
-                        replyMail.HTMLBody = emailToReply.HTMLBody + replyMail.HTMLBody;
-                        replyMail.To = email.ReplyAll().To;
-                        replyMail.Send();
-                    }
-                }
+                //DialogResult result = MessageBox.Show("Do you want to send template once again? \n" + email.Subject + ",\n" + Tools.ShowAllReceivers(), "Confirmation", MessageBoxButtons.YesNo);
+                //if (result == DialogResult.Yes)
+                //{
+                //    Outlook.Application oApp = new Outlook.Application();
+                //    MailItem emailToReply = oApp.CreateItemFromTemplate(pathForTemplate) as MailItem;
+                //    emailToReply.Subject = "RE: " + email.Subject;
+                //    emailToReply.To = email.ReplyAll().To;
+                //    if (email != null)
+                //    {
+                //        Outlook.MailItem replyMail = email.Reply();
+                //        replyMail.HTMLBody = emailToReply.HTMLBody + replyMail.HTMLBody;
+                //        replyMail.To = email.ReplyAll().To;
+                //        replyMail.Send();
+                //    }
+                //}
                 //RED CATEGORY
                 oznaczCalaKonwersacjeKategoria(email, "Bad Response");
             }                
