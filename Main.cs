@@ -91,22 +91,30 @@ namespace FormPlugin
                         if (email != null)
                         {
                             check(email);
-                            /*MessageBox.Show("ODSYŁAMY automatycznie bo chamy niemyte nie czytajoXD");*/
-                            DialogResult result = MessageBox.Show("Do you want to send template once again? \n" + "On mail: " + email.Subject + ",\n\n" + Tools.ShowAllReceivers(), "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                            if (result == DialogResult.Yes)
+                            if(checkIfTemplateWasSend)
                             {
-                                Outlook.Application oApp = new Outlook.Application();
-                                MailItem emailToReply = oApp.CreateItemFromTemplate(pathForTemplate) as MailItem;
-                                emailToReply.Subject = "RE: " + email.Subject;
-                                emailToReply.To = email.ReplyAll().To;
-                                if (email != null)
+                                /*MessageBox.Show("ODSYŁAMY automatycznie bo chamy niemyte nie czytajoXD");*/
+                                DialogResult result = MessageBox.Show("Do you want to send template once again? \n" + "On mail: " + email.Subject + ",\n\n" + Tools.ShowAllReceivers(), "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                                if (result == DialogResult.Yes)
                                 {
-                                    Outlook.MailItem replyMail = email.Reply();
-                                    replyMail.HTMLBody = emailToReply.HTMLBody + replyMail.HTMLBody;
-                                    replyMail.To = email.ReplyAll().To;
-                                    replyMail.Send();
+                                    Outlook.Application oApp = new Outlook.Application();
+                                    MailItem emailToReply = oApp.CreateItemFromTemplate(pathForTemplate) as MailItem;
+                                    emailToReply.Subject = "RE: " + email.Subject;
+                                    emailToReply.To = email.ReplyAll().To;
+                                    if (email != null)
+                                    {
+                                        Outlook.MailItem replyMail = email.Reply();
+                                        replyMail.HTMLBody = emailToReply.HTMLBody + replyMail.HTMLBody;
+                                        replyMail.To = email.ReplyAll().To;
+                                        replyMail.Send();
+                                    }
                                 }
                             }
+                            else
+                            {
+                                MessageBox.Show("First you should send template.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                            
                         }
                         else
                         {
