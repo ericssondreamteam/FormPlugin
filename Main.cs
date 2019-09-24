@@ -26,20 +26,23 @@ namespace FormPlugin
         {}
         public void OnSettingsAction(Office.IRibbonControl control)
         {
-            Settings settings = new Settings();
-            settings.FormBorderStyle = FormBorderStyle.FixedDialog;
-
-            // Set the MaximizeBox to false to remove the maximize box.
-            settings.MaximizeBox = false;
-
-            // Set the MinimizeBox to false to remove the minimize box.
-            settings.MinimizeBox = false;
-
-            // Set the start position of the form to the center of the screen.
-            settings.StartPosition = FormStartPosition.CenterScreen;
-
-            // Display the form as a modal dialog box.
-            settings.Show(); 
+            try
+            {
+                Settings settings = new Settings();
+                settings.FormBorderStyle = FormBorderStyle.FixedDialog;
+                // Set the MaximizeBox to false to remove the maximize box.
+                settings.MaximizeBox = false;
+                // Set the MinimizeBox to false to remove the minimize box.
+                settings.MinimizeBox = false;
+                // Set the start position of the form to the center of the screen.
+                settings.StartPosition = FormStartPosition.CenterScreen;
+                // Display the form as a modal dialog box.
+                settings.Show();
+            } catch(Exception e)
+            {
+                MessageBox.Show("Exception in Settings: \n" + e.Message);
+            }
+            
         }
         //public void CreateForm(Office.IRibbonControl control)
         //{
@@ -69,72 +72,82 @@ namespace FormPlugin
         //}
         public void DefultReplay(Office.IRibbonControl control)
         {
-            SendForm sendForm = new SendForm();
-            sendForm.Show();
+            try
+            {
+                SendForm sendForm = new SendForm();
+                sendForm.Show();
+            } catch(Exception e)
+            {
+                MessageBox.Show("Exception in Default Replay: \n" + e.Message);
+            }
+            
         }
 
         public void SendAgain(Office.IRibbonControl control)
         {
-            int counter = 0;
-            int check1 = 0;
-            foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
+            try
             {
-                check1++;
-            }
-            if(check1 == 1)
-            {
+                int counter = 0;
+                int check1 = 0;
                 foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
                 {
-                    //DZIAŁA MIMO IŻ NIE POWINNO XD
-                    if (counter == 0)
+                    check1++;
+                }
+                if (check1 == 1)
+                {
+                    foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
                     {
-                        if (email != null)
+                        //DZIAŁA MIMO IŻ NIE POWINNO XD
+                        if (counter == 0)
                         {
-                            check(email);
-                            if(checkIfTemplateWasSend)
+                            if (email != null)
                             {
-                                /*MessageBox.Show("ODSYŁAMY automatycznie bo chamy niemyte nie czytajoXD");*/
-                                DialogResult result = MessageBox.Show("Do you want to send template once again? \n" + "On mail: " + email.Subject + ",\n\n" + Tools.ShowAllReceivers(), "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                                if (result == DialogResult.Yes)
+                                check(email);
+                                if (checkIfTemplateWasSend)
                                 {
-                                    Outlook.Application oApp = new Outlook.Application();
-                                    MailItem emailToReply = oApp.CreateItemFromTemplate(pathForTemplate) as MailItem;
-                                    emailToReply.Subject = "RE: " + email.Subject;
-                                    emailToReply.To = email.ReplyAll().To;
-                                    if (email != null)
+                                    /*MessageBox.Show("ODSYŁAMY automatycznie bo chamy niemyte nie czytajoXD");*/
+                                    DialogResult result = MessageBox.Show("Do you want to send template once again? \n" + "On mail: " + email.Subject + ",\n\n" + Tools.ShowAllReceivers(), "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                                    if (result == DialogResult.Yes)
                                     {
-                                        Outlook.MailItem replyMail = email.Reply();
-                                        replyMail.HTMLBody = emailToReply.HTMLBody + replyMail.HTMLBody;
-                                        replyMail.To = email.ReplyAll().To;
-                                        replyMail.Send();
+                                        Outlook.Application oApp = new Outlook.Application();
+                                        MailItem emailToReply = oApp.CreateItemFromTemplate(pathForTemplate) as MailItem;
+                                        emailToReply.Subject = "RE: " + email.Subject;
+                                        emailToReply.To = email.ReplyAll().To;
+                                        if (email != null)
+                                        {
+                                            Outlook.MailItem replyMail = email.Reply();
+                                            replyMail.HTMLBody = emailToReply.HTMLBody + replyMail.HTMLBody;
+                                            replyMail.To = email.ReplyAll().To;
+                                            replyMail.Send();
+                                        }
                                     }
                                 }
+                                else
+                                {
+                                    MessageBox.Show("First you should send template.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+
                             }
                             else
                             {
-                                MessageBox.Show("First you should send template.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                MessageBox.Show("Mail jest null XD", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
-                            
+
                         }
                         else
-                        {
-                            MessageBox.Show("Mail jest null XD", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-
+                            MessageBox.Show("You choose more than one mail", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        counter++;
                     }
-                    else
-                        MessageBox.Show("You choose more than one mail", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    counter++;
                 }
-            }
-            else
+                else
+                {
+                    MessageBox.Show("You choose more than one mail", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            } catch (Exception e)
             {
-                MessageBox.Show("You choose more than one mail", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-                
+                MessageBox.Show("Exception in Send Again: \n" + e.Message);
+            }   
         }
-
 
         //public void CheckConversation(Office.IRibbonControl control)
         //{
@@ -147,7 +160,6 @@ namespace FormPlugin
         //        MessageBox.Show("CHECK CONVERSATION: \n" + ex.Message + "\n" + ex.StackTrace,
         //            "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
         //    }
-
         //}
 
         public static void manuallyCheckAutomaticReply()
@@ -202,7 +214,7 @@ namespace FormPlugin
         {
             Conversation conv = newEmail.GetConversation();
             SimpleItems simpleItems = conv.GetRootItems();
-            bool isTemplate = false;
+            //bool isTemplate = false;
 
             foreach (object item in simpleItems)
             {
@@ -220,8 +232,8 @@ namespace FormPlugin
                         /*MessageBox.Show(counter + ". " + msg +
                             "\nTemplate was sent: " + isTemplate +
                             "\nTemplate was filled: " + checkTemplate);*/
-                        if (checkIfTemplateWasSend)
-                            isTemplate = true;
+                        /*if (checkIfTemplateWasSend)
+                            isTemplate = true;*/
                         if (checkTemplate)
                             checkIfFitToTemplate = checkTemplate;
                     }
@@ -237,7 +249,7 @@ namespace FormPlugin
         public static void EnumerateConversation(object item, Conversation conversation)
         {
             SimpleItems items = conversation.GetChildren(item);
-            bool isTemplate = false;
+            //bool isTemplate = false;
             if (items.Count > 0)
             {
                 foreach (object myItem in items)
@@ -254,8 +266,8 @@ namespace FormPlugin
                         /*MessageBox.Show(counter + ". " + msg +
                             "\nTemplate was sent: " + isTemplate +
                             "\nTemplate was filled: " + checkTemplate);*/
-                        if (checkIfTemplateWasSend)
-                            isTemplate = true;
+                        /*if (checkIfTemplateWasSend)
+                            isTemplate = true;*/
                         if (checkTemplate)
                             checkIfFitToTemplate = checkTemplate;
                     }

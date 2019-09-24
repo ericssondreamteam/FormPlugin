@@ -13,15 +13,22 @@ namespace FormPlugin
         public static Outlook.Application zmiennaDoSettinngs;
         private void ThisAddIn_Startup(object sender, EventArgs e)
         {
-            zmiennaDoSettinngs = Application;
-            outlookNameSpace = Application.GetNamespace("MAPI");
-            inbox = outlookNameSpace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderInbox);
+            try
+            {
+                zmiennaDoSettinngs = Application;
+                outlookNameSpace = Application.GetNamespace("MAPI");
+                inbox = outlookNameSpace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderInbox);
 
-            Configuration.Config(outlookNameSpace, ref inbox, Application);
-            items = inbox.Items;
-            items.ItemAdd += new Outlook.ItemsEvents_ItemAddEventHandler(items_ItemAdd);
-            //DefaultReplay.InitDictionary();
-            Categories.AddCategorires();
+                Configuration.Config(outlookNameSpace, ref inbox, Application);
+                items = inbox.Items;
+                items.ItemAdd += new Outlook.ItemsEvents_ItemAddEventHandler(items_ItemAdd);
+                //DefaultReplay.InitDictionary();
+                Categories.AddCategorires();
+            } catch(Exception ex)
+            {
+                MessageBox.Show("Exception in ThisAddIn_Startup: \n" + ex.Message);
+            }
+            
         }
 
         void items_ItemAdd(object Item)
