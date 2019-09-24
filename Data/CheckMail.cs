@@ -2,6 +2,7 @@
 using Microsoft.Office.Interop.Outlook;
 using Application = Microsoft.Office.Interop.Outlook.Application;
 using FormPlugin.Data;
+using System.Windows.Forms;
 
 namespace FormPlugin
 {
@@ -25,8 +26,25 @@ namespace FormPlugin
             string body = mailItem.Body;
             string templateBody = mail.Body;
             receviedMailLines = Tools.GetEmailLineByLine(body);
-            templateLines =Tools.GetEmailLineByLine(templateBody);
+            templateLines = Tools.GetEmailLineByLine(templateBody);
             bool conteinsAllTemplateLine = true;
+
+            /*//DEBUG
+            string bodyFromMail = "";
+            string bodyFromTemplate = "";
+            foreach(string s in receviedMailLines)
+            {
+                bodyFromMail += s + "\n";
+            }
+            foreach (string s in templateLines)
+            {
+                bodyFromTemplate += s + "\n";
+            }
+            MessageBox.Show("OTRZYMANY MAIL: \n" + bodyFromMail + 
+                "\n\nTEMPLATE: \n" + bodyFromTemplate);
+            //KONIEC DEBUG*/
+
+
             foreach(string s in templateLines)
             {
                 if(!body.Contains(s))
