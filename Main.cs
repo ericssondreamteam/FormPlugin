@@ -72,7 +72,61 @@ namespace FormPlugin
             SendForm sendForm = new SendForm();
             sendForm.Show();
         }
-       
+
+        public void SendAgain(Office.IRibbonControl control)
+        {
+            int counter = 0;
+            int check1 = 0;
+            foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
+            {
+                check1++;
+            }
+            if(check1 == 1)
+            {
+                foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
+                {
+                    //DZIAŁA MIMO IŻ NIE POWINNO XD
+                    if (counter == 0)
+                    {
+                        if (email != null)
+                        {
+                            check(email);
+                            /*MessageBox.Show("ODSYŁAMY automatycznie bo chamy niemyte nie czytajoXD");*/
+                            DialogResult result = MessageBox.Show("Do you want to send template once again? \n" + "On mail: " + email.Subject + ",\n\n" + Tools.ShowAllReceivers(), "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (result == DialogResult.Yes)
+                            {
+                                Outlook.Application oApp = new Outlook.Application();
+                                MailItem emailToReply = oApp.CreateItemFromTemplate(pathForTemplate) as MailItem;
+                                emailToReply.Subject = "RE: " + email.Subject;
+                                emailToReply.To = email.ReplyAll().To;
+                                if (email != null)
+                                {
+                                    Outlook.MailItem replyMail = email.Reply();
+                                    replyMail.HTMLBody = emailToReply.HTMLBody + replyMail.HTMLBody;
+                                    replyMail.To = email.ReplyAll().To;
+                                    replyMail.Send();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Mail jest null XD", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                    }
+                    else
+                        MessageBox.Show("You choose more than one mail", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    counter++;
+                }
+            }
+            else
+            {
+                MessageBox.Show("You choose more than one mail", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+                
+        }
+
 
         //public void CheckConversation(Office.IRibbonControl control)
         //{

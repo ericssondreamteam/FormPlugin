@@ -127,9 +127,9 @@ namespace FormPlugin.Data
             foreach (MailItem email in new Microsoft.Office.Interop.Outlook.Application().ActiveExplorer().Selection)
             {
                 counter++;
-                allReceiversText += counter + ". " + email.ReplyAll().To + "\n";
+                allReceiversText += email.ReplyAll().To + "\n";
             }
-            allReceiversText = allReceiversText.Replace(";", "\n    ");
+            allReceiversText = allReceiversText.Replace(";", "\n");
             return allReceiversText;
         }
     }  
