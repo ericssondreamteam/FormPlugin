@@ -69,6 +69,7 @@ namespace FormPlugin.Forms
             try
             {
                 Main.manuallyCheckAutomaticReply();
+                MessageBox.Show("Successfully finished.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {

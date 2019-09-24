@@ -87,7 +87,7 @@
             // 
             // TESTCheckMail
             // 
-            this.TESTCheckMail.Location = new System.Drawing.Point(223, 332);
+            this.TESTCheckMail.Location = new System.Drawing.Point(369, 334);
             this.TESTCheckMail.Name = "TESTCheckMail";
             this.TESTCheckMail.Size = new System.Drawing.Size(140, 50);
             this.TESTCheckMail.TabIndex = 5;
@@ -97,7 +97,7 @@
             // 
             // TESTCheckConv
             // 
-            this.TESTCheckConv.Location = new System.Drawing.Point(369, 332);
+            this.TESTCheckConv.Location = new System.Drawing.Point(223, 334);
             this.TESTCheckConv.Name = "TESTCheckConv";
             this.TESTCheckConv.Size = new System.Drawing.Size(140, 50);
             this.TESTCheckConv.TabIndex = 5;
