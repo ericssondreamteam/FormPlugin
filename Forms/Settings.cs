@@ -29,7 +29,7 @@ namespace FormPlugin.Forms
 
         private void ChangeObservedFolder_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Want You edit settings?", "Editing Settings", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Do You want to edit settings?", "Edit Settings", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (dialogResult == DialogResult.Yes)
             {
                 Configuration.DeleteConfig();

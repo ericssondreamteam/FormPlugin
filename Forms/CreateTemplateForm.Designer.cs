@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SendForm));
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon"))); this.comboBox1 = new System.Windows.Forms.ComboBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateTemplateForm));
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.chooseTemplateLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.addButton = new System.Windows.Forms.Button();
@@ -225,6 +225,7 @@
             // 
             this.upButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.upButton.Image = ((System.Drawing.Image)(resources.GetObject("upButton.Image")));
+            this.upButton.InitialImage = ((System.Drawing.Image)(resources.GetObject("upButton.InitialImage")));
             this.upButton.Location = new System.Drawing.Point(664, 247);
             this.upButton.Name = "upButton";
             this.upButton.Size = new System.Drawing.Size(60, 56);
@@ -237,6 +238,7 @@
             // 
             this.downButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.downButton.Image = ((System.Drawing.Image)(resources.GetObject("downButton.Image")));
+            this.downButton.InitialImage = ((System.Drawing.Image)(resources.GetObject("downButton.InitialImage")));
             this.downButton.Location = new System.Drawing.Point(664, 309);
             this.downButton.Name = "downButton";
             this.downButton.Size = new System.Drawing.Size(60, 56);
@@ -279,6 +281,7 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.warningLabelName);
             this.Controls.Add(this.warningLabelEmpty);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(855, 590);
             this.Name = "CreateTemplateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -133,7 +133,7 @@ namespace FormPlugin.Forms
                 }
                 else
                 {
-                    MessageBox.Show("RZECZYWISCIE ZAPISUJEMY EDYTOWANY PLIK");
+                    //MessageBox.Show("RZECZYWISCIE ZAPISUJEMY EDYTOWANY PLIK");
                     Outlook.Application outlookApp = new Outlook.Application();
                     MailItem mailItem = outlookApp.CreateItem(OlItemType.olMailItem);
                     mailItem.HTMLBody = CreateBodyMail();
@@ -196,7 +196,7 @@ namespace FormPlugin.Forms
                 }
             }
             else
-                MessageBox.Show("First use 'Create Form' button from menu.", "Warning");
+                MessageBox.Show("First use 'New template' button from 'Settings'.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void DeleteQuestionButton_Click(object sender, EventArgs e)
@@ -209,7 +209,7 @@ namespace FormPlugin.Forms
                 }
                 else
                 {
-                    MessageBox.Show("Firstly, please choose an item");
+                    MessageBox.Show("Firstly, please choose an item", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
@@ -364,7 +364,7 @@ namespace FormPlugin.Forms
                 }
                 else
                 {
-                    MessageBox.Show("RZECZYWISCIE ZAPISUJEMY EDYTOWANY PLIK");
+                    //MessageBox.Show("RZECZYWISCIE ZAPISUJEMY EDYTOWANY PLIK");
                     Outlook.Application outlookApp = new Outlook.Application();
                     MailItem mailItem = outlookApp.CreateItem(OlItemType.olMailItem);
                     mailItem.HTMLBody = CreateBodyMail();

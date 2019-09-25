@@ -33,7 +33,7 @@ namespace FormPlugin.Forms
                 loadData.CreateMail();
             }
             else
-                MessageBox.Show("First choose your template", "Warning");
+                MessageBox.Show("First choose your template", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             
         }
 
@@ -56,7 +56,7 @@ namespace FormPlugin.Forms
                 }
             }
             else
-                MessageBox.Show("First use 'Create Form' button from menu.", "Warning");
+                MessageBox.Show("First use 'New template' button from 'Settings'.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             
         }
 

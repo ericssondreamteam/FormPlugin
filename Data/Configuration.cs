@@ -43,10 +43,9 @@ namespace FormPlugin.Data
         }
         private static void ShowFolderInfo(Outlook.NameSpace outlookNameSpace, ref Outlook.MAPIFolder inbox, Outlook.Application app)
         {
-            MessageBox.Show("Za chwilę pojawi Ci się okno z wyborem folderu.\n" +
-                "Rozsądnym wyborem będzie zaznaczenie folderu \"Inbox\" skrzynki \"NC MailBox\"" +
-                "\n(jest to wybór skrzynki dla której będą sprawdzane maile przychodzące pod kątem poprawności)" +
-                "\nPS Jak nic nie wybierzesz, albo wybierz coś aby wywalić to Ci się to uda...");
+            MessageBox.Show("Za chwilę pojawi się okno z wyborem folderu.\n" +
+                "Rozsądnym wyborem będzie zaznaczenie folderu \"Inbox\" dla skrzynki \"NC MailBox\"" +
+                "\n(jest to wybór skrzynki, dla której będą sprawdzane maile przychodzące pod kątem poprawności)");
             if (app.Session.PickFolder() is Outlook.Folder folder)
             {
                 FolderStoreID = folder.StoreID;
@@ -55,7 +54,7 @@ namespace FormPlugin.Data
             }
             else
             {
-                MessageBox.Show("Ooops . . . Something went wrong.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Ooops . . . Something went wrong in ShowFolderInfo.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -93,7 +92,7 @@ namespace FormPlugin.Data
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Zla konfiguracja:\n" + e.Message);
+                    MessageBox.Show("Zla konfiguracja:\n" + e.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 file.Close();

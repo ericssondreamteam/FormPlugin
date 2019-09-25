@@ -130,7 +130,7 @@ namespace FormPlugin
                             }
                             else
                             {
-                                MessageBox.Show("Mail jest null XD", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Mail is null.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
 
                         }
@@ -179,7 +179,7 @@ namespace FormPlugin
                     }
                     else
                     {
-                        MessageBox.Show("Mail jest null XD", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Mail is null.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                 }
@@ -204,7 +204,7 @@ namespace FormPlugin
                 }
                 else
                 {
-                    MessageBox.Show("Mail jest null XD", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Mail is null.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             Main.counter = 0;

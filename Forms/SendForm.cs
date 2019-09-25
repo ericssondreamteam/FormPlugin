@@ -102,7 +102,7 @@ namespace FormPlugin.Forms
                 }
             }
             else
-                MessageBox.Show("First use 'Create Form' button from menu.", "Warning");
+                MessageBox.Show("First use 'New template' button from 'Settings'.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         bool weHaventDefaultFile()
         {
@@ -142,10 +142,10 @@ namespace FormPlugin.Forms
                     recivers = reciversAll.ToArray();
 
 
-                    foreach (String s in recivers)
+                    /*foreach (String s in recivers)
                     {
                         //MessageBox.Show(s);
-                    }
+                    }*/
                     
                     if (email != null)
                     {
@@ -159,7 +159,7 @@ namespace FormPlugin.Forms
                 Close();
             }
             else
-                MessageBox.Show("First choose your template", "Warning");
+                MessageBox.Show("First choose your template", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
         }
         private void QuestionList_SelectedIndexChanged(object sender, EventArgs e)
@@ -218,7 +218,7 @@ namespace FormPlugin.Forms
             }
             else
             {
-                MessageBox.Show("Firstly, please choose an item");
+                MessageBox.Show("First, you should choose an item", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

@@ -37,7 +37,7 @@ namespace FormPlugin.Forms
                 }
             }
             else
-                MessageBox.Show("First use 'Create Form' button from menu.", "Warning");
+                MessageBox.Show("First use 'New template' button from 'Settings'.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -47,12 +47,12 @@ namespace FormPlugin.Forms
                 Close();
 
                 if(checkMail.CreateItemFromTemplateAndCheck())
-                    MessageBox.Show("OK");
+                    MessageBox.Show("OK", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
-                    MessageBox.Show("Format is not ok.");
+                    MessageBox.Show("Format is not ok.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
-                MessageBox.Show("First choose your template", "Warning");
+                MessageBox.Show("First choose your template", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
         }
 
