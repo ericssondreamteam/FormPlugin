@@ -81,7 +81,7 @@ namespace FormPlugin.Forms
         private string CreateBodyMail()
         {
             StringBuilder body = new StringBuilder();
-            body.Append("<html><body>Hi,<BR>please fill form ;)<BR><BR>");
+            body.Append("<html><body>Hi,<BR>please copy this message, fill form and resend <BR><BR>");
             int questionCounter = 1;
             foreach (object anItem in questionList.Items)
             {
@@ -89,7 +89,7 @@ namespace FormPlugin.Forms
                 //body.Append(questionCounter + ". " + anItem.ToString()  + "<BR><BR><BR>");
                 questionCounter++;
             }
-
+            body.Append("Best Regards<BR>NC MailBox");
             body.Append("</body></html>");
             return body.ToString();
         }

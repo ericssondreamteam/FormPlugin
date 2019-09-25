@@ -66,7 +66,7 @@ namespace FormPlugin.Data
                             try
                             {   //jeśli nie ma nic po ostatnim pytaniu to wywali wyjątek i zwróci false
                                 _ = recieivedMail[l + 1];
-                                if (recieivedMail[l + 1].StartsWith("From: "))
+                                if (recieivedMail[l + 1].StartsWith("From: ") || recieivedMail[l + 1].StartsWith("Best Regards:"))
                                     return false;
                                 return true;
                             }
