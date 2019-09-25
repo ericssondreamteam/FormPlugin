@@ -106,7 +106,9 @@ namespace FormPlugin
                                 if (checkIfTemplateWasSend)
                                 {
                                     /*MessageBox.Show("ODSYŁAMY automatycznie bo chamy niemyte nie czytajoXD");*/
-                                    DialogResult result = MessageBox.Show("Do you want to send template once again? \n" + "On mail: " + email.Subject + ",\n\n" + Tools.ShowAllReceivers(), "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                                    string[] tab = pathForTemplate.Split('\\');
+                                    string nazwaPliku = tab[tab.Length - 1];
+                                    DialogResult result = MessageBox.Show("Do you want to send template once again? \nTemplate name: " + nazwaPliku + "\nOn mail: " + email.Subject + ",\n\n" + Tools.ShowAllReceivers(), "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                                     if (result == DialogResult.Yes)
                                     {
                                         Outlook.Application oApp = new Outlook.Application();
