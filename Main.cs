@@ -387,9 +387,12 @@ namespace FormPlugin
                         mail.Categories = existingCategories + ", "+category;
                         
                     }
-                    mail.Categories = RemoveUnnecessaryCategories(mail.Categories, category);   
+                    mail.Categories = RemoveUnnecessaryCategories(mail.Categories, category);
+                    mail.Save();
                 }
+                
                 getNextItemFromConversation(item, conv, category);
+
             }
         }
 
@@ -415,6 +418,7 @@ namespace FormPlugin
 
                         }
                         mailItem.Categories = RemoveUnnecessaryCategories(mailItem.Categories, category);
+                        mailItem.Save();
                     }
                     getNextItemFromConversation(myItem, conv, category);
                 }
