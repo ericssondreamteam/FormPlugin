@@ -214,68 +214,82 @@ namespace FormPlugin
 
         public static void check(MailItem newEmail)
         {
-            Conversation conv = newEmail.GetConversation();
-            SimpleItems simpleItems = conv.GetRootItems();
-            //bool isTemplate = false;
-
-            foreach (object item in simpleItems)
+            try
             {
-                try
-                {
-                    if (item is MailItem)
-                    {
-                        Main.counter++;
-                        MailItem mail = item as MailItem;
-                        bool checkTemplate = checkTemplateConversation(mail);
+                Conversation conv = newEmail.GetConversation();
+                SimpleItems simpleItems = conv.GetRootItems();
+                //bool isTemplate = false;
 
-                        //DO TESTOWANIA
-                        /*Folder inFolder = mail.Parent as Folder;
-                        string msg = mail.Subject + " in folder " + inFolder.Name + " Sender: " + mail.SenderName + " Date: " + mail.ReceivedTime;*/
-                        /*MessageBox.Show(counter + ". " + msg +
-                            "\nTemplate was sent: " + isTemplate +
-                            "\nTemplate was filled: " + checkTemplate);*/
-                        /*if (checkIfTemplateWasSend)
-                            isTemplate = true;*/
-                        if (checkTemplate)
-                            checkIfFitToTemplate = checkTemplate;
-                    }
-                    EnumerateConversation(item, conv);
-                }
-                catch (Exception e)
+                foreach (object item in simpleItems)
                 {
-                    MessageBox.Show(e.Message);
+                    try
+                    {
+                        if (item is MailItem)
+                        {
+                            Main.counter++;
+                            MailItem mail = item as MailItem;
+                            bool checkTemplate = checkTemplateConversation(mail);
+
+                            //DO TESTOWANIA
+                            /*Folder inFolder = mail.Parent as Folder;
+                            string msg = mail.Subject + " in folder " + inFolder.Name + " Sender: " + mail.SenderName + " Date: " + mail.ReceivedTime;*/
+                            /*MessageBox.Show(counter + ". " + msg +
+                                "\nTemplate was sent: " + isTemplate +
+                                "\nTemplate was filled: " + checkTemplate);*/
+                            /*if (checkIfTemplateWasSend)
+                                isTemplate = true;*/
+                            if (checkTemplate)
+                                checkIfFitToTemplate = checkTemplate;
+                        }
+                        EnumerateConversation(item, conv);
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show(e.Message);
+                    }
                 }
+            } catch(Exception ex)
+            {
+                MessageBox.Show("Exception in check: \n" + ex.Message);
             }
+            
         }
 
         public static void EnumerateConversation(object item, Conversation conversation)
         {
-            SimpleItems items = conversation.GetChildren(item);
-            //bool isTemplate = false;
-            if (items.Count > 0)
+            try
             {
-                foreach (object myItem in items)
+                SimpleItems items = conversation.GetChildren(item);
+                //bool isTemplate = false;
+                if (items.Count > 0)
                 {
-                    if (myItem is MailItem)
+                    foreach (object myItem in items)
                     {
-                        Main.counter++;
-                        MailItem mailItem = myItem as MailItem;
-                        bool checkTemplate = checkTemplateConversation(mailItem);
-                        
-                        //DO TESTOWANIA
-                        /*Folder inFolder = mailItem.Parent as Folder;
-                        string msg = mailItem.Subject + " in folder " + inFolder.Name + " Sender: " + mailItem.SenderName + " Date: " + mailItem.ReceivedTime;*/
-                        /*MessageBox.Show(counter + ". " + msg +
-                            "\nTemplate was sent: " + isTemplate +
-                            "\nTemplate was filled: " + checkTemplate);*/
-                        /*if (checkIfTemplateWasSend)
-                            isTemplate = true;*/
-                        if (checkTemplate)
-                            checkIfFitToTemplate = checkTemplate;
+                        if (myItem is MailItem)
+                        {
+                            Main.counter++;
+                            MailItem mailItem = myItem as MailItem;
+                            bool checkTemplate = checkTemplateConversation(mailItem);
+
+                            //DO TESTOWANIA
+                            /*Folder inFolder = mailItem.Parent as Folder;
+                            string msg = mailItem.Subject + " in folder " + inFolder.Name + " Sender: " + mailItem.SenderName + " Date: " + mailItem.ReceivedTime;*/
+                            /*MessageBox.Show(counter + ". " + msg +
+                                "\nTemplate was sent: " + isTemplate +
+                                "\nTemplate was filled: " + checkTemplate);*/
+                            /*if (checkIfTemplateWasSend)
+                                isTemplate = true;*/
+                            if (checkTemplate)
+                                checkIfFitToTemplate = checkTemplate;
+                        }
+                        EnumerateConversation(myItem, conversation);
                     }
-                    EnumerateConversation(myItem, conversation);
                 }
+            } catch(Exception ex)
+            {
+                MessageBox.Show("Exception in enumerateConversation: \n" + ex.Message);
             }
+            
         }
 
         public static bool checkTemplateConversation(MailItem mail)

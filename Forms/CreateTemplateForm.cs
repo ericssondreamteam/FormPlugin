@@ -375,5 +375,10 @@ namespace FormPlugin.Forms
                 }
             }
         }
+
+        private void UpButton_MouseHover(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

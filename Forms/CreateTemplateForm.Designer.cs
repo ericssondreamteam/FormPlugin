@@ -233,6 +233,7 @@
             this.upButton.TabIndex = 25;
             this.upButton.TabStop = false;
             this.upButton.Click += new System.EventHandler(this.UpButton_Click);
+            this.upButton.MouseHover += new System.EventHandler(this.UpButton_MouseHover);
             // 
             // downButton
             // 
