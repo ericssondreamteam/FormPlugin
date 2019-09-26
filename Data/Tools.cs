@@ -129,7 +129,7 @@ namespace FormPlugin.Data
                 counter++;
                 allReceiversText += email.ReplyAll().To + "\n";
             }
-            allReceiversText = allReceiversText.Replace(";", "\n");
+            allReceiversText = allReceiversText.Replace("; ", "\n");
             return allReceiversText;
         }
     }  
