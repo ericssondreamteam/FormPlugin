@@ -59,7 +59,7 @@ namespace FormPlugin.Data
         }
 
 
-        private static void SaveConfiguration()
+        public static void SaveConfiguration()
         {
             if (Directory.Exists(configFilePath))
                 Directory.CreateDirectory(configFilePath);
@@ -67,6 +67,7 @@ namespace FormPlugin.Data
             StringBuilder settings = new StringBuilder();
             settings.Append(FolderStoreID + "\n");
             settings.Append(FolderEntryID + "\n");
+            settings.Append(pathFileTemplate + "\n");
 
             if (!File.Exists(configFilePath + confFileName))
                 File.Create(configFilePath + confFileName).Close();
@@ -89,6 +90,7 @@ namespace FormPlugin.Data
                 {
                     FolderStoreID = file.ReadLine();
                     FolderEntryID = file.ReadLine();
+                    pathFileTemplate = file.ReadLine();
                 }
                 catch (Exception e)
                 {

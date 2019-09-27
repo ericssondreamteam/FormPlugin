@@ -34,10 +34,12 @@ namespace FormPlugin.Forms
                 {
                     if (Directory.Exists(textBox1.Text))
                         Directory.CreateDirectory(textBox1.Text);
+                    Configuration.SaveConfiguration();
                 } catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
+                
                
                 Close();
             }
