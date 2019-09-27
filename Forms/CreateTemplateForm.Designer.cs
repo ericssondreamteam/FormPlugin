@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateTemplateForm));
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SendForm));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon"))); this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.chooseTemplateLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.addButton = new System.Windows.Forms.Button();
@@ -282,7 +282,6 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.warningLabelName);
             this.Controls.Add(this.warningLabelEmpty);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(855, 590);
             this.Name = "CreateTemplateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

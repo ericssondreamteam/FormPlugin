@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SendForm));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.cleanCategories = new System.Windows.Forms.Button();
             this.cleanCatLabel = new System.Windows.Forms.Label();
             this.changeObservedFolder = new System.Windows.Forms.Button();

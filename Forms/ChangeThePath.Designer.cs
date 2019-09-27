@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SendForm));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -44,7 +46,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(46, 36);
+            this.label1.Location = new System.Drawing.Point(46, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(249, 20);
             this.label1.TabIndex = 1;
@@ -69,6 +71,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Name = "ChangeThePath";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ChangeThePath";
             this.ResumeLayout(false);
             this.PerformLayout();
