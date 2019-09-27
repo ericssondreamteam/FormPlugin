@@ -38,6 +38,8 @@
             this.infoCreateTemp = new System.Windows.Forms.Label();
             this.infoChangeMain = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cleanCategories
@@ -77,7 +79,7 @@
             // 
             // loadForm
             // 
-            this.loadForm.Location = new System.Drawing.Point(77, 332);
+            this.loadForm.Location = new System.Drawing.Point(80, 401);
             this.loadForm.Name = "loadForm";
             this.loadForm.Size = new System.Drawing.Size(140, 50);
             this.loadForm.TabIndex = 3;
@@ -87,7 +89,7 @@
             // 
             // TESTCheckMail
             // 
-            this.TESTCheckMail.Location = new System.Drawing.Point(369, 334);
+            this.TESTCheckMail.Location = new System.Drawing.Point(372, 403);
             this.TESTCheckMail.Name = "TESTCheckMail";
             this.TESTCheckMail.Size = new System.Drawing.Size(140, 50);
             this.TESTCheckMail.TabIndex = 5;
@@ -97,7 +99,7 @@
             // 
             // TESTCheckConv
             // 
-            this.TESTCheckConv.Location = new System.Drawing.Point(223, 334);
+            this.TESTCheckConv.Location = new System.Drawing.Point(226, 403);
             this.TESTCheckConv.Name = "TESTCheckConv";
             this.TESTCheckConv.Size = new System.Drawing.Size(140, 50);
             this.TESTCheckConv.TabIndex = 5;
@@ -142,7 +144,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(40, 302);
+            this.checkBox1.Location = new System.Drawing.Point(43, 371);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(150, 24);
             this.checkBox1.TabIndex = 10;
@@ -150,11 +152,34 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(40, 280);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(140, 55);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Choose path";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label1.Location = new System.Drawing.Point(190, 295);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(387, 40);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Choose path for templates localization.";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(589, 396);
+            this.ClientSize = new System.Drawing.Size(589, 494);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.infoChangeMain);
             this.Controls.Add(this.infoCreateTemp);
@@ -166,8 +191,8 @@
             this.Controls.Add(this.cleanCatLabel);
             this.Controls.Add(this.cleanCategories);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximumSize = new System.Drawing.Size(611, 452);
-            this.MinimumSize = new System.Drawing.Size(611, 452);
+            this.MaximumSize = new System.Drawing.Size(611, 550);
+            this.MinimumSize = new System.Drawing.Size(611, 550);
             this.Name = "Settings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Settings";
@@ -188,5 +213,7 @@
         private System.Windows.Forms.Label infoCreateTemp;
         private System.Windows.Forms.Label infoChangeMain;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
     }
 }

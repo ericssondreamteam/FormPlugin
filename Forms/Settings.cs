@@ -129,5 +129,12 @@ namespace FormPlugin.Forms
                 TESTCheckConv.Visible = false;
             }
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            ChangeThePath ctp = new ChangeThePath();
+            ctp.Show();
+            var aaa = 0;
+        }
     }
 }

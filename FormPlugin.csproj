@@ -30,10 +30,10 @@
     <DefineConstants>VSTO40</DefineConstants>
     <IsWebBootstrapper>False</IsWebBootstrapper>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <PublishUrl>C:\Users\ELASKAR\Desktop\OutlookPlugin\nowyPUBLISH\</PublishUrl>
+    <PublishUrl>C:\Users\ELASKAR\Desktop\OutlookPlugin\1.0\</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>2.0.0.2</ApplicationVersion>
+    <ApplicationVersion>2.0.0.3</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
@@ -189,6 +189,12 @@
     <Compile Include="Data\GlobalInfo.cs" />
     <Compile Include="Data\LoadData.cs" />
     <Compile Include="Data\Tools.cs" />
+    <Compile Include="Forms\ChangeThePath.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChangeThePath.Designer.cs">
+      <DependentUpon>ChangeThePath.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Check.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,6 +235,9 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <EmbeddedResource Include="Forms\ChangeThePath.resx">
+      <DependentUpon>ChangeThePath.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Check.resx">
       <DependentUpon>Check.cs</DependentUpon>
     </EmbeddedResource>
