@@ -33,7 +33,7 @@
     <PublishUrl>C:\Users\ELASKAR\Desktop\OutlookPlugin\1.0\</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>2.0.0.3</ApplicationVersion>
+    <ApplicationVersion>2.0.0.4</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
